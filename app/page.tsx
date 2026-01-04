@@ -71,22 +71,22 @@ export default function Home() {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
         
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
           <div className="max-w-4xl">
-            <div className="mb-8 text-3xl md:text-4xl lg:text-5xl font-bold">
+            <div className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
               <TrueFocus text="TR Technologies Group PTY LTD" smallerLastWords={2} />
             </div>
             
-            <h1 className="font-heading font-bold text-5xl md:text-6xl lg:text-7xl text-primary mb-6 leading-[1.1] tracking-tight">
+            <h1 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-primary mb-4 sm:mb-6 leading-[1.1] tracking-tight">
               <span className="block">We Build and Operate</span>
               <span className="block mt-2 text-secondary">Modern Software Products</span>
             </h1>
             
-            <p className="font-description font-light text-lg md:text-xl text-secondary leading-relaxed max-w-2xl mb-8">
+            <p className="font-description font-light text-base sm:text-lg md:text-xl text-secondary leading-relaxed max-w-2xl mb-6 sm:mb-8">
               TR Technologies Group PTY LTD is a product-focused technology company that designs, develops, and operates our own portfolio of software platforms and digital tools.
             </p>
             
-            <p className="font-description font-light text-base md:text-lg text-secondary/80 leading-relaxed max-w-2xl mb-12">
+            <p className="font-description font-light text-sm sm:text-base md:text-lg text-secondary/80 leading-relaxed max-w-2xl mb-8 sm:mb-12">
               Our mission is to create practical, scalable software products that solve real-world problems and deliver measurable value.
             </p>
             
@@ -102,11 +102,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="relative py-24 md:py-32 overflow-hidden">
+      <section id="about" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-backgroundAlt"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-4xl md:text-5xl text-primary mb-4 tracking-tight">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-primary mb-4 tracking-tight">
               About TR Technologies Group PTY LTD
             </h2>
             <div className="w-20 h-0.5 bg-accent mx-auto mb-4"></div>
@@ -114,15 +114,15 @@ export default function Home() {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <div className="card-premium p-10">
+            <div className="card-premium p-6 sm:p-8 md:p-10">
               <div className="space-y-6 text-secondary font-description font-light leading-relaxed">
-                <p className="text-lg">
+                <p className="text-base sm:text-lg">
                   Founded in 2025, TR Technologies Group PTY LTD is a Perth-based software product company focused on building and operating our own digital platforms and technology solutions.
                 </p>
-                <p className="text-lg">
+                <p className="text-base sm:text-lg">
                   Rather than operating as a traditional service-based consultancy, our work centres on identifying opportunities, designing software products, and growing them into sustainable, real-world solutions.
                 </p>
-                <p className="text-lg">
+                <p className="text-base sm:text-lg">
                   Our approach emphasises simplicity, practicality, and long-term value; building products that are efficient to operate, meaningful to users, and built with a focus on real outcomes rather than complexity.
                 </p>
                 <p className="text-base text-secondary/80 italic mt-8 pt-6 border-t border-border">
@@ -134,64 +134,66 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="products" className="relative py-24 md:py-32 bg-background">
+      <section id="products" className="relative py-16 sm:py-24 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-4xl md:text-5xl text-primary mb-4 tracking-tight">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-primary mb-4 tracking-tight">
               Our Products
             </h2>
             <div className="w-20 h-0.5 bg-accent mx-auto mb-4"></div>
             <p className="text-muted text-sm uppercase tracking-wider mb-4">What We Build</p>
-            <p className="text-xl text-secondary max-w-3xl mx-auto font-description font-light">
+            <p className="text-base sm:text-lg md:text-xl text-secondary max-w-3xl mx-auto font-description font-light">
               A growing portfolio of software products designed, built, and operated by TR Technologies Group PTY LTD.
             </p>
           </div>
 
-          <Carousel
-            opts={{ loop: true }}
-            plugins={[
-              Autoplay({
-                delay: 8000,
-              }),
-            ]}
-            className="max-w-3xl mx-auto"
-          >
-            <CarouselContent>
-              {products.map((product) => (
-                <CarouselItem key={product.title}>
-                  <div className="card-premium p-10 group">
-                    <div className="flex items-start justify-between mb-6">
-                      <h3 className="font-heading font-semibold text-3xl text-primary tracking-tight">
+          <div className="relative">
+            <Carousel
+              opts={{ loop: true }}
+              plugins={[
+                Autoplay({
+                  delay: 8000,
+                }),
+              ]}
+              className="max-w-3xl mx-auto"
+            >
+              <CarouselContent>
+                {products.map((product) => (
+                  <CarouselItem key={product.title}>
+                    <div className="card-premium p-6 sm:p-8 md:p-10 group">
+                    <div className="flex flex-col sm:flex-row items-start justify-between mb-6 gap-4">
+                      <h3 className="font-heading font-semibold text-2xl sm:text-3xl text-primary tracking-tight">
                         {product.title}
                       </h3>
-                      <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center group-hover:bg-accent/20 transition-colors flex-shrink-0">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-accent/10 rounded-xl flex items-center justify-center group-hover:bg-accent/20 transition-colors flex-shrink-0">
                         {product.icon}
                       </div>
                     </div>
-                    <p className="text-secondary font-description font-light leading-relaxed text-lg mb-6">
+                    <p className="text-secondary font-description font-light leading-relaxed text-base sm:text-lg mb-6">
                       {product.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {product.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-4 py-2 bg-accent/10 text-accent text-sm font-medium rounded-full border border-accent/20"
+                          className="px-3 py-1.5 sm:px-4 sm:py-2 bg-accent/10 text-accent text-xs sm:text-sm font-medium rounded-full border border-accent/20"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-0 -translate-x-16" />
-            <CarouselNext className="right-0 translate-x-16" />
-          </Carousel>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden sm:flex left-0 -translate-x-16" />
+              <CarouselNext className="hidden sm:flex right-0 translate-x-16" />
+            </Carousel>
+          </div>
 
-          <div className="max-w-3xl mx-auto mt-12">
-            <div className="card p-6 bg-backgroundAlt/50 border-accent/20">
-              <p className="text-secondary/80 font-description font-light text-sm leading-relaxed text-center">
+          <div className="max-w-3xl mx-auto mt-8 sm:mt-12">
+            <div className="card p-4 sm:p-6 bg-backgroundAlt/50 border-accent/20">
+              <p className="text-secondary/80 font-description font-light text-xs sm:text-sm leading-relaxed text-center">
                 Our focus is on designing, owning, and operating our own software products and platforms. From time to time, we may collaborate selectively with partners where there is strategic alignment - however, product development remains our core focus.
               </p>
             </div>
@@ -199,20 +201,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="relative py-24 md:py-32 bg-backgroundAlt">
+      <section id="contact" className="relative py-16 sm:py-24 md:py-32 bg-backgroundAlt">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-4xl md:text-5xl text-primary mb-4 tracking-tight">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-primary mb-4 tracking-tight">
               Get in Touch
             </h2>
             <div className="w-20 h-0.5 bg-accent mx-auto mb-4"></div>
             <p className="text-muted text-sm uppercase tracking-wider mb-4">Contact Us</p>
-            <p className="text-xl text-secondary max-w-3xl mx-auto font-description font-light">
+            <p className="text-base sm:text-lg md:text-xl text-secondary max-w-3xl mx-auto font-description font-light">
               Interested in partnering with one of our products, exploring collaboration opportunities, or learning more about what we're building? Get in touch with our team.
             </p>
           </div>
           
-          <div className="flex justify-center gap-64 max-w-4xl mx-auto">
+          <div className="flex flex-col sm:flex-row justify-center gap-12 sm:gap-24 md:gap-32 lg:gap-64 max-w-4xl mx-auto">
             <HoverCard>
               <HoverCardTrigger asChild>
                 <div className="flex flex-col items-center group cursor-pointer">
