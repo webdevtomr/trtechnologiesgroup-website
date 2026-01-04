@@ -5,9 +5,10 @@ import React, { useEffect, useState } from "react";
 type TrueFocusProps = {
   text: string;
   intervalMs?: number;
+  smallerLastWords?: number;
 };
 
-export function TrueFocus({ text, intervalMs = 1800 }: TrueFocusProps) {
+export function TrueFocus({ text, intervalMs = 700, smallerLastWords = 0 }: TrueFocusProps) {
   const words = text.split(" ").filter(Boolean);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -26,6 +27,7 @@ export function TrueFocus({ text, intervalMs = 1800 }: TrueFocusProps) {
       <span className="tf-words">
         {words.map((word, index) => {
           const isActive = index === activeIndex;
+          const isSmaller = smallerLastWords > 0 && index >= words.length - smallerLastWords;
 
           return (
             <span
@@ -33,6 +35,7 @@ export function TrueFocus({ text, intervalMs = 1800 }: TrueFocusProps) {
               className={`tf-word ${
                 isActive ? "tf-word-active" : "tf-word-blur"
               }`}
+              style={isSmaller ? { fontSize: "0.65em" } : undefined}
             >
               {isActive && (
                 <>

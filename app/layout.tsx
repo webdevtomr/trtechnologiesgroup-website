@@ -4,8 +4,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "TR Technologies Group — Professional Software Engineering and Technology Services",
-  description: "A client-focused technology consultancy delivering practical, modern software and digital solutions for small and medium organisations.",
+  title: "TR Technologies Group PTY LTD — Software Product Company",
+  description: "Developer and operator of independent software products and digital platforms. We build, operate, and grow our own portfolio of practical software solutions.",
 };
 
 export default function RootLayout({

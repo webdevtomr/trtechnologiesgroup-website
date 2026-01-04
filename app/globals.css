@@ -158,11 +158,11 @@ body::before {
 /* crosshairs – now relative to each active word */
 .tf-corner {
   position: absolute;
-  width: 0.55em;
-  height: 0.55em;
+  width: 0.45em;
+  height: 0.45em;
   border-color: var(--tf-accent);
   border-style: solid;
-  border-width: 0.12em;
+  border-width: 0.08em;
   filter: drop-shadow(0 0 6px rgba(77, 139, 255, 0.75));
   z-index: 1;
 }

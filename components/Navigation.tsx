@@ -9,8 +9,7 @@ export default function Navigation() {
 
   const navLinks = [
     { href: "#home", label: "Home" },
-    { href: "#services", label: "Services" },
-    { href: "#projects", label: "Projects" },
+    { href: "#products", label: "Products" },
     { href: "#about", label: "About" },
     { href: "#contact", label: "Contact" },
   ];
@@ -61,11 +60,12 @@ export default function Navigation() {
           <a href="#home" onClick={(e) => handleClick(e, "#home")} className="flex items-center group py-3">
             <Image
               src="/full_logo.png"
-              alt="TR Technologies Group"
-              width={320}
-              height={58}
-              className="h-16 w-auto brightness-0 invert transition-all group-hover:drop-shadow-[0_0_8px_rgba(77,139,255,0.3)]"
+              alt="TR Technologies Group PTY LTD"
+              width={616}
+              height={112}
+              className="h-14 w-auto brightness-0 invert transition-all group-hover:drop-shadow-[0_0_8px_rgba(77,139,255,0.3)]"
               priority
+              quality={100}
             />
           </a>
 

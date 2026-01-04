@@ -2,7 +2,7 @@ export default function About() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
       <h1 className="font-heading font-bold text-4xl md:text-5xl text-primary mb-12">
-        About TR Technologies Group
+        About TR Technologies Group PTY LTD
       </h1>
 
       <div className="space-y-8 text-body font-body leading-relaxed">
@@ -11,7 +11,7 @@ export default function About() {
             Overview
           </h2>
           <p>
-            TR Technologies Group is a Perth-based technology consultancy founded in 2025. We are a team of 2 professionals specialising in software engineering and digital solutions for small and medium organisations.
+            TR Technologies Group PTY LTD is a Perth-based technology consultancy founded in 2025. We are a team of 2 professionals specialising in software engineering and digital solutions for small and medium organisations.
           </p>
         </section>
 
