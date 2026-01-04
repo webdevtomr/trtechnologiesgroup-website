@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0B0B0D;
+  color: #AEB5C2;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.02) 2px, rgba(255,255,255,.02) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,.02) 2px, rgba(255,255,255,.02) 4px);
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+  
+  .card-premium {
+    background-color: #181B21;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    transition: all 0.3s ease-out;
+  }
+  
+  .card-premium:hover {
+    background-color: #1E2229;
+    border-color: rgba(77, 139, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(77, 139, 255, 0.1);
+    transform: scale(1.01) translateY(-2px);
+  }
+  
+  .link-hover {
+    @apply transition-all duration-200 ease-out hover:text-accent;
+  }
+  
+  .btn-primary {
+    @apply px-8 py-4 bg-transparent border-2 border-accent text-accent font-medium rounded-full;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:bg-accent hover:text-white hover:shadow-accent-glow;
+  }
+  
+  .btn-secondary {
+    @apply px-8 py-4 bg-card border border-border text-primary font-medium rounded-full;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:bg-cardHover hover:border-borderHover hover:shadow-card;
+  }
+  
+  .section-fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .accent-glow {
+    text-shadow: 0 0 20px rgba(77, 139, 255, 0.3);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* True Focus — word-by-word focus with moving crosshairs */
+
+.tf-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1em 0.2em;
+  --tf-accent: #4D8BFF; /* electric cyan accent matching site theme */
+}
+
+.tf-words {
+  position: relative;
+  z-index: 2;
+}
+
+.tf-word {
+  position: relative;
+  display: inline-block;
+  font: inherit;
+  color: #ffffff;
+  white-space: nowrap;
+  transition:
+    filter 250ms ease,
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+.tf-word-text {
+  position: relative;
+  z-index: 2;
+}
+
+.tf-space {
+  display: inline-block;
+}
+
+/* focused word */
+.tf-word-active {
+  filter: none;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* blurred words */
+.tf-word-blur {
+  filter: blur(4px);
+  opacity: 0.45;
+  transform: translateY(1px);
+}
+
+/* optional gentle breathing of the whole phrase */
+@keyframes tf-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.01) translateY(1px); }
+  100% { transform: scale(1); }
+}
+
+.tf-wrapper {
+  animation: tf-pulse 5s ease-in-out infinite;
+}
+
+/* crosshairs – now relative to each active word */
+.tf-corner {
+  position: absolute;
+  width: 0.55em;
+  height: 0.55em;
+  border-color: var(--tf-accent);
+  border-style: solid;
+  border-width: 0.12em;
+  filter: drop-shadow(0 0 6px rgba(77, 139, 255, 0.75));
+  z-index: 1;
+}
+
+.tf-corner-tl {
+  top: -0.25em;
+  left: -0.25em;
+  border-right: none;
+  border-bottom: none;
+}
+
+.tf-corner-tr {
+  top: -0.25em;
+  right: -0.25em;
+  border-left: none;
+  border-bottom: none;
+}
+
+.tf-corner-bl {
+  bottom: -0.25em;
+  left: -0.25em;
+  border-right: none;
+  border-top: none;
+}
+
+.tf-corner-br {
+  bottom: -0.25em;
+  right: -0.25em;
+  border-left: none;
+  border-top: none;
+}
