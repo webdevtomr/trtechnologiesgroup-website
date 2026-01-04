@@ -6,6 +6,9 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "TR Technologies Group PTY LTD — Software Product Company",
   description: "Developer and operator of independent software products and digital platforms. We build, operate, and grow our own portfolio of practical software solutions.",
+  icons: {
+    icon: "/logo_only.png",
+  },
 };
 
 export default function RootLayout({
