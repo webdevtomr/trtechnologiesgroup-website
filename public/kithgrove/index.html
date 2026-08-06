@@ -1333,9 +1333,9 @@ img{max-width:100%}
 .eyebrow.left{justify-content:flex-start}
 .eyebrow .leaf-glyph{flex:none}
 .h2{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4vw,44px);line-height:1.15;color:var(--forest-deep);margin:14px 0 16px}
-.btn-pill{display:inline-block;font-family:var(--caps);font-weight:600;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;background:var(--forest);color:var(--cream);border:0;border-radius:999px;padding:15px 32px;cursor:pointer;transition:transform .18s ease,background .18s ease}
-.btn-pill:hover{transform:translateY(-2px);background:var(--forest-deep)}
-.btn-pill:active{transform:translateY(0) scale(.96)}
+.btn-pill{display:inline-block;font-family:var(--caps);font-weight:600;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;background:var(--forest);color:var(--cream);border:0;border-radius:999px;padding:15px 32px;cursor:pointer;transition:background .18s ease}
+.btn-pill:hover{background:var(--forest-deep)}
+
 .btn-pill:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
 .wrap{max-width:1160px;margin:0 auto;padding:0 clamp(22px,4vw,48px)}
 
@@ -1369,8 +1369,8 @@ img{max-width:100%}
 
 .badge-cta{position:relative;display:block;width:108px;height:108px;margin:24px auto 0;flex:none;text-decoration:none}
 .badge-cta .ring{position:absolute;inset:0;will-change:transform}
-.badge-cta .core{position:absolute;inset:19px;border-radius:50%;background:var(--forest);color:var(--cream);display:flex;align-items:center;justify-content:center;font-family:var(--caps);font-weight:600;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:8px;transition:transform .18s ease}
-.badge-cta:hover .core{transform:scale(1.08)}
+.badge-cta .core{position:absolute;inset:19px;border-radius:50%;background:var(--forest);color:var(--cream);display:flex;align-items:center;justify-content:center;font-family:var(--caps);font-weight:600;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:8px}
+
 .hero .dots{position:absolute;z-index:2;left:clamp(20px,4vw,70px);bottom:40px}
 
 
@@ -1382,16 +1382,16 @@ img{max-width:100%}
 .supports{padding:64px 0 84px;text-align:center}
 .supports .sub{max-width:60ch;margin:0 auto}
 .arches{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:52px;text-align:left}
-.arch{background:#fff;border:1px solid var(--mist);border-radius:200px 200px 22px 22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease;text-decoration:none;color:inherit}
-.arch:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(34,56,44,.14)}
+.arch{background:#fff;border:1px solid var(--mist);border-radius:200px 200px 22px 22px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+
 .arch .pic{aspect-ratio:4/4.6;overflow:hidden}
-.arch .pic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.2,.7,.3,1)}
-.arch:hover .pic img{transform:scale(1.07)}
+.arch .pic img{width:100%;height:100%;object-fit:cover;display:block}
+
 .arch .body{padding:22px 24px 26px}
 .arch h3{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--forest-deep);margin-bottom:6px}
 .arch p{font-size:14.5px;color:#3E5448}
-.arch .go{margin-top:14px;width:38px;height:38px;border-radius:50%;background:var(--mist-soft);color:var(--forest);display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .15s ease,color .15s ease,transform .25s ease}
-.arch:hover .go{background:var(--forest);color:var(--cream);transform:translateX(5px)}
+.arch .go{margin-top:14px;width:38px;height:38px;border-radius:50%;background:var(--mist-soft);color:var(--forest);display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .15s ease,color .15s ease}
+.arch:hover .go{background:var(--forest);color:var(--cream)}
 .arch.solid{background:var(--forest);border-color:var(--forest);color:var(--cream)}
 .arch.solid .pad{padding:56px 26px 26px;display:flex;flex-direction:column;height:100%}
 .arch.solid h3{color:var(--cream);font-size:22px}
@@ -1412,8 +1412,8 @@ img{max-width:100%}
 .band .lockline .gr{font-family:var(--hand);font-size:clamp(22px,2.6vw,30px);letter-spacing:.3em;color:var(--sage)}
 .band p{color:var(--mist-soft);max-width:54ch;margin-top:14px}
 
-.band .pic{border-radius:26px 120px 26px 46%;overflow:hidden;box-shadow:0 24px 60px rgba(11,20,15,.3);transition:transform .4s ease}
-.band .pic:hover{transform:scale(1.015)}
+.band .pic{border-radius:26px 120px 26px 46%;overflow:hidden;box-shadow:0 24px 60px rgba(11,20,15,.3)}
+
 .band .pic img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:3/3.6}
 @media(max-width:880px){.band .wrap{grid-template-columns:1fr;gap:36px}}
 
@@ -1421,16 +1421,16 @@ img{max-width:100%}
 .duo{padding:84px 0}
 .duo .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
 .chat-circle{position:relative;width:min(400px,80vw);margin:0 auto}
-.chat-circle .disc{width:100%;aspect-ratio:1;border-radius:50%;background:#fff;border:1px solid var(--mist);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:52px;box-shadow:0 22px 54px rgba(34,56,44,.12);text-decoration:none;color:inherit;transition:transform .2s ease,box-shadow .2s ease}
-.chat-circle .disc:hover{transform:translateY(-3px);box-shadow:0 28px 64px rgba(34,56,44,.16)}
+.chat-circle .disc{width:100%;aspect-ratio:1;border-radius:50%;background:#fff;border:1px solid var(--mist);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:52px;box-shadow:0 22px 54px rgba(34,56,44,.12);text-decoration:none;color:inherit}
+
 .disc-cta{margin-top:14px;font-family:var(--caps);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--forest);display:inline-flex;align-items:center;gap:6px}
 .disc-cta .go{width:24px;height:24px;border-radius:50%;background:var(--mist-soft);display:inline-flex;align-items:center;justify-content:center;font-size:13px;transition:background .15s ease,color .15s ease}
 .chat-circle .disc:hover .disc-cta .go{background:var(--forest);color:var(--cream)}
 .chat-circle .free{font-family:var(--script);font-size:34px;color:var(--sage-mid)}
 .chat-circle h3{font-family:var(--serif);font-weight:600;font-size:26px;color:var(--forest-deep);margin:4px 0 10px}
 .chat-circle p{font-size:14.5px;color:#3E5448;max-width:26ch}
-.chat-circle .mini{position:absolute;right:-8px;bottom:6%;width:112px;height:112px;border-radius:50%;overflow:hidden;border:5px solid var(--cream);box-shadow:0 12px 30px rgba(34,56,44,.2);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
-.chat-circle .mini:hover{transform:rotate(-5deg) scale(1.06)}
+.chat-circle .mini{position:absolute;right:-8px;bottom:6%;width:112px;height:112px;border-radius:50%;overflow:hidden;border:5px solid var(--cream);box-shadow:0 12px 30px rgba(34,56,44,.2)}
+
 .chat-circle .mini img{width:100%;height:100%;object-fit:cover}
 .duo .mission .eyebrow{justify-content:flex-start}
 .duo .mission p{max-width:56ch;color:#33493C}
@@ -1496,7 +1496,7 @@ footer .f-lines b{color:var(--cream)}
 @media(prefers-reduced-motion:reduce){
   .kith-img{animation:none;-webkit-mask-image:none;mask-image:none}
   #vineTrack .leafG{opacity:1;transform:none;transition:none}
-  .btn-pill,.arch{transition:none}
+  .btn-pill{transition:none}
 }
 
 /* hero (from Concept 1 · The Grove — static, brand-faithful) */
@@ -1522,8 +1522,8 @@ footer .f-lines b{color:var(--cream)}
 }
 
 /* buttons (from Concept 1) */
-.btn{display:inline-block;font-family:var(--caps);font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:15px 30px;border-radius:999px;transition:transform .18s ease,background .18s ease}
-.btn:hover{transform:translateY(-2px)}
+.btn{display:inline-block;font-family:var(--caps);font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:15px 30px;border-radius:999px;transition:background .18s ease}
+
 .btn:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
 .btn-cream{background:var(--cream);color:var(--forest-deep)}
 .btn-cream:hover{background:#fff}
