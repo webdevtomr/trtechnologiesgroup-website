@@ -348,6 +348,10 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
 .mini-form{margin-top:22px}
 .mini-form .rf-actions{flex-direction:column;align-items:flex-start}
 
+/* real Splose referral form embed — iframe fills this card, per Splose's own embed snippet */
+.ref-form.embed{padding:0;position:relative;height:1200px;overflow:hidden}
+@media(max-width:640px){.ref-form.embed{height:900px}}
+
 </style>
 
 </head>
@@ -386,25 +390,24 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
 
 <section class="reveal section-card section-pad">
   <div class="wrap">
-    <div class="ref-form">
-      <div class="rf-row">
-        <div class="field"><label for="r2-name">Child's first name</label><input id="r2-name" type="text" placeholder="First name"></div>
-        <div class="field"><label for="r2-dob">Date of birth</label><input id="r2-dob" type="text" placeholder="DD / MM / YYYY"></div>
-      </div>
-      <div class="rf-row">
-        <div class="field"><label for="r2-email">Your email</label><input id="r2-email" type="email" placeholder="you@email.com"></div>
-        <div class="field"><label for="r2-rel">Your relationship</label><select id="r2-rel"><option>Parent / guardian</option><option>GP or paediatrician</option><option>Educator</option><option>Allied health professional</option><option>Other</option></select></div>
-      </div>
-      <div class="rf-row single">
-        <div class="field"><label for="r2-notes">What are you noticing?</label><textarea id="r2-notes" rows="3" placeholder="A sentence or two is plenty, we'll ask the rest when we call."></textarea></div>
-      </div>
-      <div class="rf-actions">
-        <span class="splose-note"><b>Design note:</b> the live Splose referral form embeds here, styled to match.</span>
-        <button class="btn-pill" type="button">Submit referral</button>
-      </div>
+    <div class="ref-form embed">
+      <iframe id="splose-form-f807f9d4-21d4-4adc-a8da-9fe50c36a425" src="https://kith-grove-healthcare.splose.com/public-form/f807f9d4-21d4-4adc-a8da-9fe50c36a425" name="embeddableForm" style="position:absolute;top:0;left:0;width:100%;height:100%" scrolling="auto" width="100%" height="100%" loading="lazy" frameborder="0"></iframe>
     </div>
   </div>
 </section>
+<script>
+window.addEventListener('message', function(e) {
+  if (e.origin !== 'https://kith-grove-healthcare.splose.com') return;
+  if (!e.data || !e.data.type) return;
+  var f = document.getElementById('splose-form-f807f9d4-21d4-4adc-a8da-9fe50c36a425');
+  if (!f || e.source !== f.contentWindow) return;
+  if (e.data.type === 'sploseFormSubmit') {
+    var p = e.data.payload || {};
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event: 'splose_form_submit', formName: String(p.formName), formId: String(p.formId)});
+  }
+});
+</script>
 
 <svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true" ><path d="M0,40 C240,75 420,5 720,28 C1020,51 1240,12 1440,34 L1440,70 L0,70 Z" fill="#406C55"/></svg>
 
