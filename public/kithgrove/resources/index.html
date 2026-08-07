@@ -310,7 +310,9 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
 
 /* grove notes / resources cards (reuse .arch visual language) */
 .arch{position:relative}
-.soon-tag{position:absolute;margin:14px;font-family:var(--caps);font-weight:600;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--cream);color:var(--forest-deep);padding:5px 12px;border-radius:999px;z-index:1}
+/* centred, not top-left: .arch's own 200px corner radius clips a top-left-pinned tag once the
+   card gets narrow (mobile single-column, or a dense desktop grid) — centring clears both curves */
+.soon-tag{position:absolute;top:18px;left:50%;transform:translateX(-50%);font-family:var(--caps);font-weight:600;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--cream);color:var(--forest-deep);padding:5px 12px;border-radius:999px;z-index:1;white-space:nowrap}
 .notes-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .notes-head .all-link{font-family:var(--caps);font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--forest);text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
 
@@ -347,6 +349,13 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
 /* homepage mini contact form (narrower column than the full referral form) */
 .mini-form{margin-top:22px}
 .mini-form .rf-actions{flex-direction:column;align-items:flex-start}
+
+/* chat-circle disc: the mini avatar badge overlapped the paragraph text at narrow widths
+   (2026-08-07 mobile pass), shrink + tuck it further into the corner so it clears the text */
+@media(max-width:480px){
+  .chat-circle .disc{padding:44px 34px}
+  .chat-circle .mini{width:72px;height:72px;right:0;bottom:2%}
+}
 
 /* real Splose referral form embed — iframe fills this card, per Splose's own embed snippet.
    Splose doesn't send a resize postMessage (checked: only sploseFormSubmit fires, on submit),
