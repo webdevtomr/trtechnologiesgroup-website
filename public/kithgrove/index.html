@@ -365,9 +365,16 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
 .mini-form{margin-top:22px}
 .mini-form .rf-actions{flex-direction:column;align-items:flex-start}
 
-/* real Splose referral form embed — iframe fills this card, per Splose's own embed snippet */
-.ref-form.embed{padding:0;position:relative;height:1200px;overflow:hidden}
-@media(max-width:640px){.ref-form.embed{height:900px}}
+/* real Splose referral form embed — iframe fills this card, per Splose's own embed snippet.
+   Splose doesn't send a resize postMessage (checked: only sploseFormSubmit fires, on submit),
+   so true fluid auto-height isn't available from their end. Measured the real form's rendered
+   height at both the card's actual width (880px) and a narrow mobile width (380px), landed on
+   the same ~5700-5900px either way (it's already single-column by 880px), so one flat height
+   works across breakpoints. Sized generously above that so the page scrolls the whole form
+   naturally with no inner scrollbox. iframe keeps scrolling=&quot;auto&quot; as a fallback in case Splose
+   ever lengthens the form and this estimate falls short, front-desk should know this number may
+   need bumping up if fields are added/removed on the Splose side. */
+.ref-form.embed{padding:0;position:relative;height:6200px}
 
 </style>
 
