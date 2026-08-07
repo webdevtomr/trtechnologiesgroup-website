@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Resources | Kith Grove Healthcare</title>
+<title>Shop | Kith Grove Healthcare</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Guides, downloadable tools and online resources for families and therapists, coming soon.">
+<meta name="description" content="Guides, downloadable tools and online products for families and therapists, coming soon.">
 <style>
 :root{
   --forest:#406C55; --forest-deep:#2E4F3D; --ink:#22382C;
@@ -368,6 +368,20 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
    need bumping up if fields are added/removed on the Splose side. */
 .ref-form.embed{padding:0;position:relative;height:6200px}
 
+/* Arch-card heading clipping (caught in the 2026-08-07 mobile QA pass on the Shop page, and it
+   hits every .arch card site-wide). .arch's base radius is a fixed `200px 200px` top pair. At
+   desktop's 4-column width (~245px cards) the browser auto-shrinks overlapping radii to ~122px,
+   so the h3 at 56px down clears the curve. Once the grid drops to 2 or 1 columns the card gets
+   WIDER (346px at 390vw, ~470px on tablet), the radii no longer overlap, the full 200px curve
+   applies, and the curve is still ~60px inboard at the heading's baseline — so the first letter
+   of every card title got sliced off ("Parent guides" rendered as a cropped P).
+   Fix: at those widths swap the fixed-px arch for an ELLIPTICAL one that scales with the card
+   (50% horizontal radius, fixed 90px vertical), which keeps the arch silhouette at any width
+   while pulling the curve's inset at the heading line down to ~12-16px, inside the 26px pad. */
+@media(max-width:1000px){
+  .arch{border-radius:50% 50% 22px 22px / 90px 90px 22px 22px}
+}
+
 </style>
 
 </head>
@@ -382,7 +396,7 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
     <a class="link" href="/kithgrove/home/">Home</a>
     <a class="link" href="/kithgrove/about/">About us</a>
     <a class="link" href="/kithgrove/grove-notes/">Grove Notes</a>
-    <a class="link active" href="/kithgrove/resources/" aria-current="page">Resources</a>
+    <a class="link active" href="/kithgrove/shop/" aria-current="page">Shop</a>
     <a class="link" href="/kithgrove/faq/">FAQ</a>
     <a class="link" href="/kithgrove/contact/">Contact</a>
     <a class="btn btn-cream" href="/kithgrove/referral/">Make a referral</a>
@@ -397,50 +411,49 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
 
 <div class="page-head">
   <div class="wrap">
-    <div class="eyebrow"><svg class="leaf-glyph" width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true"><path d="M8 13 C8 8 8 6 8 5" stroke="#84A594" stroke-width="1.6" stroke-linecap="round"/><path d="M8 6 C5 5.4 3.4 3.4 3.4 1 C6.2 1.6 8 3.4 8 6 Z" fill="#84A594"/><path d="M8 7.6 C11 7 12.6 5 12.6 2.6 C9.8 3.2 8 5 8 7.6 Z" fill="#C9D8CE"/></svg>Resources</div>
-    <h1>Real support, ready when you need it.</h1>
-    <p>We're building out a library of resources for families and therapists, guides, downloadable tools, and (soon) online products you can access anytime. Still early days, here's what's on the way.</p>
+    <div class="eyebrow"><svg class="leaf-glyph" width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true"><path d="M8 13 C8 8 8 6 8 5" stroke="#84A594" stroke-width="1.6" stroke-linecap="round"/><path d="M8 6 C5 5.4 3.4 3.4 3.4 1 C6.2 1.6 8 3.4 8 6 Z" fill="#84A594"/><path d="M8 7.6 C11 7 12.6 5 12.6 2.6 C9.8 3.2 8 5 8 7.6 Z" fill="#C9D8CE"/></svg>Shop</div>
+    <h1>Support you can take home.</h1>
+    <p>The shop isn't open yet. When it is, it'll hold the things we find ourselves explaining over and over: guides for families, printable tools you can actually use, and training for other clinicians. Here's what we're making.</p>
   </div>
 </div>
 
 <section class="reveal section-mist section-pad">
   <div class="wrap">
     <div class="arches stagger">
-      <a class="arch solid" href="/kithgrove/referral/" aria-label="Parent guides, coming soon">
+      <div class="arch solid">
         <div class="pad">
           <h3>Parent guides</h3>
           <ul><li>Early language milestones</li><li>Mealtime troubleshooting</li><li>Play-based activities</li></ul>
-          <span class="go">&rarr;</span>
         </div>
-      </a>
-      <a class="arch solid" href="/kithgrove/referral/" aria-label="Downloadable tools, coming soon">
+      </div>
+      <div class="arch solid">
         <div class="pad">
           <h3>Downloadable tools</h3>
           <ul><li>Printable visuals</li><li>Home practice sheets</li><li>Progress trackers</li></ul>
-          <span class="go">&rarr;</span>
         </div>
-      </a>
-      <a class="arch solid" href="/kithgrove/referral/" aria-label="Therapist resources, coming soon">
+      </div>
+      <div class="arch solid">
         <div class="pad">
-          <h3>Therapist resources</h3>
+          <h3>For therapists</h3>
           <ul><li>Supervision packages</li><li>Mentoring resources</li><li>CPD-style sessions</li></ul>
-          <span class="go">&rarr;</span>
         </div>
-      </a>
-      <a class="arch solid" href="/kithgrove/referral/" aria-label="Online products, coming soon">
+      </div>
+      <div class="arch solid">
         <div class="pad">
           <h3>Online products</h3>
           <ul><li>Self-paced courses</li><li>Digital resource packs</li><li>Community membership</li></ul>
-          <span class="go">&rarr;</span>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="reveal section-card section-pad" style="text-align:center">
   <div class="wrap" style="max-width:640px">
-    <span class="design-note"><b>Design note:</b> online checkout for paid resources wires in here once your products are ready, happy to use Splose's own payment flow or a simple Stripe checkout, whichever you'd prefer.</span>
+    <h2 class="h2" style="margin-bottom:10px">Want first dibs?</h2>
+    <p class="sub" style="margin-bottom:26px">Send us a quick note and we'll tell you the moment the shop opens. No newsletter, no spam, just the one email.</p>
+    <a class="btn-pill" href="mailto:hello@kithgrovehealthcare.com.au?subject=Tell%20me%20when%20the%20shop%20opens">Tell me when it opens</a>
+    <div style="margin-top:34px"><span class="design-note"><b>Design note:</b> that button is a plain mailto for now, so it works today with nothing wired up. Once there are products, online checkout drops in here, happy to use Splose's own payment flow or a simple Stripe checkout, whichever you'd prefer. Order notifications go to hello@kithgrovehealthcare.com.au like everything else.</span></div>
   </div>
 </section>
 
@@ -454,7 +467,7 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
       <h3>Contact information</h3>
       <p class="f-copy">We're planting Kith Grove in Perth right now. Reach out and we'll keep you posted as the grove grows.</p>
       <div class="f-lines">
-        <div><b>Email:</b> hello@kithgrovehealthcare.com.au</div>
+        <div><b>Email:</b> <a href="mailto:hello@kithgrovehealthcare.com.au" style="color:inherit">hello@kithgrovehealthcare.com.au</a></div>
         <div><b>Instagram:</b> @kithgrove</div>
         <div><b>Location:</b> Perth, Western Australia</div>
       </div>
@@ -464,7 +477,7 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
       <a href="/kithgrove/home/">Home</a>
       <a href="/kithgrove/about/">About us</a>
       <a href="/kithgrove/grove-notes/">Grove Notes</a>
-      <a href="/kithgrove/resources/">Resources</a>
+      <a href="/kithgrove/shop/">Shop</a>
       <a href="/kithgrove/faq/">FAQ</a>
       <a href="/kithgrove/contact/">Contact</a>
     </div>

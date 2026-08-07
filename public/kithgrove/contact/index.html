@@ -368,6 +368,20 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
    need bumping up if fields are added/removed on the Splose side. */
 .ref-form.embed{padding:0;position:relative;height:6200px}
 
+/* Arch-card heading clipping (caught in the 2026-08-07 mobile QA pass on the Shop page, and it
+   hits every .arch card site-wide). .arch's base radius is a fixed `200px 200px` top pair. At
+   desktop's 4-column width (~245px cards) the browser auto-shrinks overlapping radii to ~122px,
+   so the h3 at 56px down clears the curve. Once the grid drops to 2 or 1 columns the card gets
+   WIDER (346px at 390vw, ~470px on tablet), the radii no longer overlap, the full 200px curve
+   applies, and the curve is still ~60px inboard at the heading's baseline — so the first letter
+   of every card title got sliced off ("Parent guides" rendered as a cropped P).
+   Fix: at those widths swap the fixed-px arch for an ELLIPTICAL one that scales with the card
+   (50% horizontal radius, fixed 90px vertical), which keeps the arch silhouette at any width
+   while pulling the curve's inset at the heading line down to ~12-16px, inside the 26px pad. */
+@media(max-width:1000px){
+  .arch{border-radius:50% 50% 22px 22px / 90px 90px 22px 22px}
+}
+
 </style>
 
 </head>
@@ -382,7 +396,7 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
     <a class="link" href="/kithgrove/home/">Home</a>
     <a class="link" href="/kithgrove/about/">About us</a>
     <a class="link" href="/kithgrove/grove-notes/">Grove Notes</a>
-    <a class="link" href="/kithgrove/resources/">Resources</a>
+    <a class="link" href="/kithgrove/shop/">Shop</a>
     <a class="link" href="/kithgrove/faq/">FAQ</a>
     <a class="link active" href="/kithgrove/contact/" aria-current="page">Contact</a>
     <a class="btn btn-cream" href="/kithgrove/referral/">Make a referral</a>
@@ -399,17 +413,18 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
   <div class="wrap">
     <div class="eyebrow"><svg class="leaf-glyph" width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true"><path d="M8 13 C8 8 8 6 8 5" stroke="#84A594" stroke-width="1.6" stroke-linecap="round"/><path d="M8 6 C5 5.4 3.4 3.4 3.4 1 C6.2 1.6 8 3.4 8 6 Z" fill="#84A594"/><path d="M8 7.6 C11 7 12.6 5 12.6 2.6 C9.8 3.2 8 5 8 7.6 Z" fill="#C9D8CE"/></svg>Get in touch</div>
     <h1>We'd love to hear from you.</h1>
-    <p>Whether you're ready to refer, want to ask a question first, or you're a clinician curious about Kith Grove, reach out.</p>
+    <p>Whether you're ready to refer, want to ask a question first, or you're a clinician curious about Kith Grove, reach out. We read every message ourselves and we'll get back to you within two business days.</p>
   </div>
 </div>
 
 <section class="reveal section-mist section-pad" style="text-align:center">
   <div class="wrap" style="max-width:520px">
     <div class="contact-lines">
-      <div><b>Email:</b> hello@kithgrovehealthcare.com.au</div>
+      <div><b>Email:</b> <a href="mailto:hello@kithgrovehealthcare.com.au" style="color:inherit">hello@kithgrovehealthcare.com.au</a></div>
       <div><b>Instagram:</b> @kithgrove</div>
       <div><b>Location:</b> Perth, Western Australia</div>
     </div>
+    <p class="sub" style="margin-top:26px">While we're getting set up, email is the fastest way to reach us.</p>
     <div class="contact-ctas">
       <a class="btn-pill" href="/kithgrove/referral/">Make a referral</a>
       <a class="btn btn-ghost" style="border-color:var(--forest);color:var(--forest-deep)" href="/kithgrove/home/#chat">Book a free chat</a>
@@ -427,7 +442,7 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
       <h3>Contact information</h3>
       <p class="f-copy">We're planting Kith Grove in Perth right now. Reach out and we'll keep you posted as the grove grows.</p>
       <div class="f-lines">
-        <div><b>Email:</b> hello@kithgrovehealthcare.com.au</div>
+        <div><b>Email:</b> <a href="mailto:hello@kithgrovehealthcare.com.au" style="color:inherit">hello@kithgrovehealthcare.com.au</a></div>
         <div><b>Instagram:</b> @kithgrove</div>
         <div><b>Location:</b> Perth, Western Australia</div>
       </div>
@@ -437,7 +452,7 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
       <a href="/kithgrove/home/">Home</a>
       <a href="/kithgrove/about/">About us</a>
       <a href="/kithgrove/grove-notes/">Grove Notes</a>
-      <a href="/kithgrove/resources/">Resources</a>
+      <a href="/kithgrove/shop/">Shop</a>
       <a href="/kithgrove/faq/">FAQ</a>
       <a href="/kithgrove/contact/">Contact</a>
     </div>

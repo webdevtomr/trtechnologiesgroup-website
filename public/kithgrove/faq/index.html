@@ -368,6 +368,20 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
    need bumping up if fields are added/removed on the Splose side. */
 .ref-form.embed{padding:0;position:relative;height:6200px}
 
+/* Arch-card heading clipping (caught in the 2026-08-07 mobile QA pass on the Shop page, and it
+   hits every .arch card site-wide). .arch's base radius is a fixed `200px 200px` top pair. At
+   desktop's 4-column width (~245px cards) the browser auto-shrinks overlapping radii to ~122px,
+   so the h3 at 56px down clears the curve. Once the grid drops to 2 or 1 columns the card gets
+   WIDER (346px at 390vw, ~470px on tablet), the radii no longer overlap, the full 200px curve
+   applies, and the curve is still ~60px inboard at the heading's baseline — so the first letter
+   of every card title got sliced off ("Parent guides" rendered as a cropped P).
+   Fix: at those widths swap the fixed-px arch for an ELLIPTICAL one that scales with the card
+   (50% horizontal radius, fixed 90px vertical), which keeps the arch silhouette at any width
+   while pulling the curve's inset at the heading line down to ~12-16px, inside the 26px pad. */
+@media(max-width:1000px){
+  .arch{border-radius:50% 50% 22px 22px / 90px 90px 22px 22px}
+}
+
 </style>
 
 </head>
@@ -382,7 +396,7 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
     <a class="link" href="/kithgrove/home/">Home</a>
     <a class="link" href="/kithgrove/about/">About us</a>
     <a class="link" href="/kithgrove/grove-notes/">Grove Notes</a>
-    <a class="link" href="/kithgrove/resources/">Resources</a>
+    <a class="link" href="/kithgrove/shop/">Shop</a>
     <a class="link active" href="/kithgrove/faq/" aria-current="page">FAQ</a>
     <a class="link" href="/kithgrove/contact/">Contact</a>
     <a class="btn btn-cream" href="/kithgrove/referral/">Make a referral</a>
@@ -399,14 +413,15 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
   <div class="wrap">
     <div class="eyebrow"><svg class="leaf-glyph" width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true"><path d="M8 13 C8 8 8 6 8 5" stroke="#84A594" stroke-width="1.6" stroke-linecap="round"/><path d="M8 6 C5 5.4 3.4 3.4 3.4 1 C6.2 1.6 8 3.4 8 6 Z" fill="#84A594"/><path d="M8 7.6 C11 7 12.6 5 12.6 2.6 C9.8 3.2 8 5 8 7.6 Z" fill="#C9D8CE"/></svg>FAQ</div>
     <h1>Questions? We've got you.</h1>
-    <p>The things families ask us most, answered plainly. Can't find what you need? Reach out, we're always happy to chat.</p>
+    <p>The things families ask us most, answered plainly. Can't find what you need? Email us at <a href="mailto:hello@kithgrovehealthcare.com.au" style="color:var(--sage-mid)">hello@kithgrovehealthcare.com.au</a>, we're always happy to chat.</p>
   </div>
 </div>
 
 <section class="reveal section-mist section-pad">
   <div class="wrap">
     <div class="faq-list">
-      <details><summary>Do I need a referral from my GP or paediatrician?</summary><div class="a">No. Parents, GPs, paediatricians and educators can all refer, and families can refer themselves too.</div></details>
+      <details><summary>How do we get started?</summary><div class="a">Two ways in, whichever suits. Send a referral through the form on this site and we'll come back to you within two business days, or book the free 15-minute chat first if you'd rather talk it through before committing to anything. <a href="/kithgrove/referral/" style="color:var(--sage-mid)">Send a referral</a> or <a href="/kithgrove/home/#chat" style="color:var(--sage-mid)">book a chat</a>.</div></details>
+<details><summary>Do I need a referral from my GP or paediatrician?</summary><div class="a">No. Parents, GPs, paediatricians and educators can all refer, and families can refer themselves too.</div></details>
 <details><summary>What happens after I send a referral?</summary><div class="a">We'll be in touch within two business days to arrange next steps.</div></details>
 <details><summary>I'm not sure if we need therapy yet, can I just talk to someone first?</summary><div class="a">Yes, that's exactly what our free 15-minute chat is for. No referral needed, just a friendly conversation about what you're noticing. <a href="/kithgrove/home/#chat" style="color:var(--sage-mid)">Book a time</a>.</div></details>
 <details><summary>Where are you based?</summary><div class="a">Perth, Western Australia. We're growing here first, with plans to build out a wider allied-health community over time.</div></details>
@@ -424,7 +439,7 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
       <h3>Contact information</h3>
       <p class="f-copy">We're planting Kith Grove in Perth right now. Reach out and we'll keep you posted as the grove grows.</p>
       <div class="f-lines">
-        <div><b>Email:</b> hello@kithgrovehealthcare.com.au</div>
+        <div><b>Email:</b> <a href="mailto:hello@kithgrovehealthcare.com.au" style="color:inherit">hello@kithgrovehealthcare.com.au</a></div>
         <div><b>Instagram:</b> @kithgrove</div>
         <div><b>Location:</b> Perth, Western Australia</div>
       </div>
@@ -434,7 +449,7 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
       <a href="/kithgrove/home/">Home</a>
       <a href="/kithgrove/about/">About us</a>
       <a href="/kithgrove/grove-notes/">Grove Notes</a>
-      <a href="/kithgrove/resources/">Resources</a>
+      <a href="/kithgrove/shop/">Shop</a>
       <a href="/kithgrove/faq/">FAQ</a>
       <a href="/kithgrove/contact/">Contact</a>
     </div>
