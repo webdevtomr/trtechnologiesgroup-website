@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>FAQ | Kith Grove Healthcare</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Answers to the questions families ask us most about referrals, our free chat and getting started.">
+<meta name="description" content="Ages we see, what we help with, where we visit, session length, and our full NDIS and private fees. The questions Perth families ask us most, answered plainly.">
 <style>
 
 @font-face {
@@ -447,6 +447,57 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
   .arch{border-radius:50% 50% 22px 22px / 90px 90px 22px 22px}
 }
 
+/* ---- round 2, built from the client's answers (2026-08-10) ---- */
+
+/* "What we help with": 6 concern cards (reusing .support-card) + a 2-up pair underneath for the
+   two things that aren't child concerns but ARE real services (parent support, playgroups). Six
+   splits cleanly 3x2 at desktop; the odd pair sits below rather than leaving a ragged last row. */
+.help-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;text-align:left}
+@media(max-width:760px){.help-pair{grid-template-columns:1fr}}
+
+/* practical-facts strip: ages / where / languages / funding, the four things a parent needs
+   before they can decide anything. Deliberately above the fold-ish and scannable. */
+.fact-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px;text-align:left}
+.fact{background:#fff;border:1px solid var(--mist);border-radius:16px;padding:18px 20px}
+.fact .k{font-family:var(--caps);font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-mid);display:block;margin-bottom:6px}
+.fact .v{font-size:15px;color:#33493C;line-height:1.5}
+.fact .v a{color:var(--forest)}
+@media(max-width:1000px){.fact-row{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.fact-row{grid-template-columns:1fr}}
+
+/* fees block (FAQ page). Rates published at the client's request, 2026-08-10. */
+.fees{max-width:760px;margin:0 auto}
+.fee-card{background:#fff;border:1px solid var(--mist);border-radius:20px;padding:26px 26px 22px;margin-bottom:20px}
+.fee-card h3{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--forest-deep);margin-bottom:4px}
+.fee-card .lede{font-size:15px;color:#3E5448}
+.fee-list{margin-top:16px}
+.fee-list .r{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:11px 0;border-bottom:1px solid var(--mist-soft);font-size:15.5px;color:#33493C}
+.fee-list .r:last-child{border-bottom:0}
+.fee-list .amt{font-family:var(--caps);font-weight:600;font-size:15px;color:var(--forest-deep);white-space:nowrap}
+.fee-note{font-size:14px;color:#4A5F52;margin-top:16px;line-height:1.6}
+.fee-note b{color:var(--forest-deep)}
+
+/* Splose free-chat booking embed. Unlike the referral form, this one DOES post a
+   sploseIframeResize message, so the height is driven by the widget rather than the fixed-height
+   estimate the referral card needs. Initial height is a sane pre-resize default. */
+.booking-embed{max-width:840px;margin:26px auto 0;background:#fff;border:1px solid var(--mist);border-radius:24px;overflow:hidden}
+.booking-embed iframe{display:block;width:100%;border:0}
+
+/* founder cards now carry real bios + credentials, so paragraphs go left-aligned (centred long
+   copy is unreadable) while the avatar, name and role stay centred. */
+.founder-card p{text-align:left;margin-bottom:10px}
+.founder-card p:last-of-type{margin-bottom:0}
+.founder-card .langs{font-size:14px;color:#4A5F52;font-style:italic;text-align:left;width:100%;margin-top:2px}
+.creds{margin:16px 0 0;padding:16px 0 0;border-top:1px solid var(--mist);width:100%;text-align:left}
+.creds ul{list-style:none;margin:0;padding:0}
+.creds li{font-size:13.5px;color:#4A5F52;padding:3px 0;display:flex;gap:9px;line-height:1.5}
+.creds li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--sage);flex:none;margin-top:7px}
+.creds .ck{font-family:var(--caps);font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-mid);display:block;margin-bottom:8px}
+
+/* Grove Notes / Shop teaser cards are not links (nowhere to send anyone yet), so kill the
+   pointer affordance the .arch hover styles imply. */
+.arch.static{cursor:default}
+
 </style>
 
 </head>
@@ -478,18 +529,68 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
   <div class="wrap">
     <div class="eyebrow"><svg class="leaf-glyph" width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true"><path d="M8 13 C8 8 8 6 8 5" stroke="#84A594" stroke-width="1.6" stroke-linecap="round"/><path d="M8 6 C5 5.4 3.4 3.4 3.4 1 C6.2 1.6 8 3.4 8 6 Z" fill="#84A594"/><path d="M8 7.6 C11 7 12.6 5 12.6 2.6 C9.8 3.2 8 5 8 7.6 Z" fill="#C9D8CE"/></svg>FAQ</div>
     <h1>Questions? We've got you.</h1>
-    <p>The things families ask us most, answered plainly. Can't find what you need? Email us at <a href="mailto:hello@kithgrovehealthcare.com.au" style="color:var(--sage-mid)">hello@kithgrovehealthcare.com.au</a>, we're always happy to chat.</p>
+    <p>Ages, what we help with, where we come to you, fees and funding. The things families ask us most, answered plainly. Can't find what you need? Email us at <a href="mailto:hello@kithgrovehealthcare.com.au" style="color:var(--sage-mid)">hello@kithgrovehealthcare.com.au</a>, we're always happy to chat.</p>
   </div>
 </div>
 
 <section class="reveal section-mist section-pad">
   <div class="wrap">
     <div class="faq-list">
-      <details><summary>How do we get started?</summary><div class="a">Two ways in, whichever suits. Send a referral through the form on this site and we'll come back to you within two business days, or book the free 15-minute chat first if you'd rather talk it through before committing to anything. <a href="/kithgrove/referral/" style="color:var(--sage-mid)">Send a referral</a> or <a href="/kithgrove/home/#chat" style="color:var(--sage-mid)">book a chat</a>.</div></details>
+      <details><summary>What ages do you work with?</summary><div class="a">Our main focus is early intervention and paediatrics, and most of the children we see are somewhere between newborn and nine years old. We've both worked with clients right across the lifespan as well, so if your situation sits outside that range it's still worth asking.</div></details>
+<details><summary>What sorts of things do you help with?</summary><div class="a">Late talking, speech sounds, feeding difficulties, difficulty understanding or using language, social communication and making friends, and literacy and early reading skills. A lot of our work is also with parents directly, helping you understand your child's development and what to do about it at home. Our playgroups build developmental and communication skills through play, with practical strategies for the adults in the room.</div></details>
+<details><summary>Where do sessions happen? Do you have a clinic?</summary><div class="a">Not yet. At the moment we do community visits, which means we come to you at home, at day care or at school. We currently service areas north of the river. Playgroup locations are given to you when you book.</div></details>
+<details><summary>How much does it cost, and what funding do you take?</summary><div class="a">Our NDIS rates and funding options are set out in full <a href="#fees" style="color:var(--sage-mid)">just below this list</a>. In short: we work with self-managed and plan-managed NDIS participants and with private-paying families. We are not an NDIS-registered provider, so we can't take agency-managed plans.</div></details>
+<details><summary>How long is a session, and how often would we come in?</summary><div class="a">Sessions generally run 45 to 60 minutes, though the length can vary depending on your child's engagement and what they need on the day. For NDIS clients, how often you're seen depends on your individual funding and plan. For private-paying families, we tailor the frequency and intensity to how often you'd like to book.</div></details>
+<details><summary>Are you taking new clients right now?</summary><div class="a">Yes, we're welcoming enquiries and referrals now, so get in touch and we can talk through what you need. Daphne is seeing clients Thursdays and Fridays, and moves to Monday through Friday from 20 August 2026. Sallina has limited availability at the moment. <a href="/kithgrove/referral/" style="color:var(--sage-mid)">Send a referral</a> or <a href="/kithgrove/home/#chat-form" style="color:var(--sage-mid)">book a free chat</a>.</div></details>
+<details><summary>How do we get started?</summary><div class="a">Two ways in, whichever suits. Send a referral through the form on this site and we'll aim to come back to you within 48 hours, or book the free 15-minute chat first if you'd rather talk it through before committing to anything. <a href="/kithgrove/referral/" style="color:var(--sage-mid)">Send a referral</a> or <a href="/kithgrove/home/#chat-form" style="color:var(--sage-mid)">book a chat</a>.</div></details>
 <details><summary>Do I need a referral from my GP or paediatrician?</summary><div class="a">No. Parents, GPs, paediatricians and educators can all refer, and families can refer themselves too.</div></details>
-<details><summary>What happens after I send a referral?</summary><div class="a">We'll be in touch within two business days to arrange next steps.</div></details>
-<details><summary>I'm not sure if we need therapy yet, can I just talk to someone first?</summary><div class="a">Yes, that's exactly what our free 15-minute chat is for. No referral needed, just a friendly conversation about what you're noticing. <a href="/kithgrove/home/#chat" style="color:var(--sage-mid)">Book a time</a>.</div></details>
-<details><summary>Where are you based?</summary><div class="a">Perth, Western Australia. We're growing here first, with plans to build out a wider allied-health community over time.</div></details>
+<details><summary>What happens after I send a referral?</summary><div class="a">We'll aim to be in touch within 48 hours to arrange next steps.</div></details>
+<details><summary>I'm not sure if we need therapy yet, can I just talk to someone first?</summary><div class="a">Yes, that's exactly what our free 15-minute chat is for. No referral needed, no cost, just a friendly conversation about what you're noticing. <a href="/kithgrove/home/#chat-form" style="color:var(--sage-mid)">Book a time</a>.</div></details>
+<details><summary>Can I speak to someone on the phone?</summary><div class="a">We don't have a phone line yet. Email us at <a href="mailto:hello@kithgrovehealthcare.com.au" style="color:var(--sage-mid)">hello@kithgrovehealthcare.com.au</a>, say you'd like a call, and one of us will get in touch to arrange it.</div></details>
+<details><summary>Do you speak any languages other than English?</summary><div class="a">Yes. Between us we speak Vietnamese and conversational Chinese as well as English, and we particularly enjoy working with culturally and linguistically diverse families.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="reveal section-card section-pad" id="fees">
+  <div class="wrap" style="text-align:center">
+    <div class="eyebrow"><svg class="leaf-glyph" width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true"><path d="M8 13 C8 8 8 6 8 5" stroke="#84A594" stroke-width="1.6" stroke-linecap="round"/><path d="M8 6 C5 5.4 3.4 3.4 3.4 1 C6.2 1.6 8 3.4 8 6 Z" fill="#84A594"/><path d="M8 7.6 C11 7 12.6 5 12.6 2.6 C9.8 3.2 8 5 8 7.6 Z" fill="#C9D8CE"/></svg>Fees and funding</div>
+    <h2 class="h2">What it costs, up front.</h2>
+    <p class="sub">We'd rather you knew before you enquired than after. Here's exactly what we charge and what we can take.</p>
+    <div class="fees" style="text-align:left;margin-top:36px">
+      <div class="fee-card">
+        <h3>NDIS</h3>
+        <p class="lede">For self-managed and plan-managed participants. Charged at the NDIS price guide rate.</p>
+        <div class="fee-list">
+          <div class="r"><span>Therapy sessions</span><span class="amt">$193.99 per hour</span></div>
+          <div class="r"><span>Travel time to you</span><span class="amt">$48.50 per 30 min</span></div>
+          <div class="r"><span>Travel distance</span><span class="amt">$1 per km</span></div>
+        </div>
+        <p class="fee-note">We travel up to 30 minutes each way, so travel time never comes to more than <b>$48.50 each way</b>. Where you're located is part of what we look at when we review a new NDIS referral or a waitlist spot.</p>
+      </div>
+      <div class="fee-card">
+        <h3>Private</h3>
+        <p class="lede">Our private fees are different to the NDIS rates, and we offer packages that may suit your family better than one-off sessions.</p>
+        <p class="fee-note">Email <a href="mailto:hello@kithgrovehealthcare.com.au" style="color:var(--forest)">hello@kithgrovehealthcare.com.au</a> and we'll send you our current private fee schedule and package options.</p>
+      </div>
+      <div class="fee-card">
+        <h3>What we can and can't take</h3>
+        <div class="fee-list">
+          <div class="r"><span>NDIS, self-managed</span><span class="amt">Yes</span></div>
+          <div class="r"><span>NDIS, plan-managed</span><span class="amt">Yes</span></div>
+          <div class="r"><span>NDIS, agency-managed</span><span class="amt">Not yet</span></div>
+          <div class="r"><span>Private paying</span><span class="amt">Yes</span></div>
+        </div>
+        <p class="fee-note">We're not currently an NDIS-registered provider, which is why agency-managed plans are the one we can't take. Self-managed and plan-managed participants are welcome.</p>
+      </div>
+      <div class="fee-card">
+        <h3>Cancellations</h3>
+        <p class="fee-note" style="margin-top:6px">Cancellations made with less than 24 hours' notice are charged at the full session fee, because the session is billed as though it went ahead. Life happens, so if something comes up, tell us as early as you can and we'll do what we can.</p>
+      </div>
+    </div>
+    <div class="contact-ctas">
+      <a class="btn-pill" href="/kithgrove/referral/">Make a referral</a>
+      <a class="btn btn-ghost" style="border-color:var(--forest);color:var(--forest-deep)" href="/kithgrove/home/#chat-form">Book a free chat</a>
     </div>
   </div>
 </section>
@@ -502,11 +603,11 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
     <div>
       <div class="f-eyebrow"><svg class="leaf-glyph" width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true"><path d="M8 13 C8 8 8 6 8 5" stroke="#84A594" stroke-width="1.6" stroke-linecap="round"/><path d="M8 6 C5 5.4 3.4 3.4 3.4 1 C6.2 1.6 8 3.4 8 6 Z" fill="#84A594"/><path d="M8 7.6 C11 7 12.6 5 12.6 2.6 C9.8 3.2 8 5 8 7.6 Z" fill="#C9D8CE"/></svg>Get in touch</div>
       <h3>Contact information</h3>
-      <p class="f-copy">We're planting Kith Grove in Perth right now. Reach out and we'll keep you posted as the grove grows.</p>
+      <p class="f-copy">Speech pathology for children from newborn to nine, in your home, day care or school north of the river. We aim to reply within 48 hours.</p>
       <div class="f-lines">
         <div><b>Email:</b> <a href="mailto:hello@kithgrovehealthcare.com.au" style="color:inherit">hello@kithgrovehealthcare.com.au</a></div>
         <div><b>Instagram:</b> @kithgrove</div>
-        <div><b>Location:</b> Perth, Western Australia</div>
+        <div><b>Where we visit:</b> North of the river, Perth WA</div>
       </div>
     </div>
     <div class="f-col">

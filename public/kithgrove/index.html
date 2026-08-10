@@ -19,9 +19,9 @@ iframe.active{visibility:visible}
 <html lang=&quot;en&quot;>
 <head>
 <meta charset=&quot;utf-8&quot;>
-<title>Kith Grove Healthcare | Perth speech pathology, growing into a community</title>
+<title>Kith Grove Healthcare | Perth speech pathology for children, newborn to nine</title>
 <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
-<meta name=&quot;description&quot; content=&quot;Perth speech pathology practice growing into a full allied-health community. Warm, person-centred care for families and clinicians.&quot;>
+<meta name=&quot;description&quot; content=&quot;Speech pathology for Perth children from newborn to nine. Late talking, speech sounds, feeding and early literacy. We come to you at home, day care or school north of the river. Self-managed and plan-managed NDIS, and private.&quot;>
 <style>
 
 @font-face {
@@ -464,6 +464,57 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
   .arch{border-radius:50% 50% 22px 22px / 90px 90px 22px 22px}
 }
 
+/* ---- round 2, built from the client's answers (2026-08-10) ---- */
+
+/* &quot;What we help with&quot;: 6 concern cards (reusing .support-card) + a 2-up pair underneath for the
+   two things that aren't child concerns but ARE real services (parent support, playgroups). Six
+   splits cleanly 3x2 at desktop; the odd pair sits below rather than leaving a ragged last row. */
+.help-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;text-align:left}
+@media(max-width:760px){.help-pair{grid-template-columns:1fr}}
+
+/* practical-facts strip: ages / where / languages / funding, the four things a parent needs
+   before they can decide anything. Deliberately above the fold-ish and scannable. */
+.fact-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px;text-align:left}
+.fact{background:#fff;border:1px solid var(--mist);border-radius:16px;padding:18px 20px}
+.fact .k{font-family:var(--caps);font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-mid);display:block;margin-bottom:6px}
+.fact .v{font-size:15px;color:#33493C;line-height:1.5}
+.fact .v a{color:var(--forest)}
+@media(max-width:1000px){.fact-row{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.fact-row{grid-template-columns:1fr}}
+
+/* fees block (FAQ page). Rates published at the client's request, 2026-08-10. */
+.fees{max-width:760px;margin:0 auto}
+.fee-card{background:#fff;border:1px solid var(--mist);border-radius:20px;padding:26px 26px 22px;margin-bottom:20px}
+.fee-card h3{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--forest-deep);margin-bottom:4px}
+.fee-card .lede{font-size:15px;color:#3E5448}
+.fee-list{margin-top:16px}
+.fee-list .r{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:11px 0;border-bottom:1px solid var(--mist-soft);font-size:15.5px;color:#33493C}
+.fee-list .r:last-child{border-bottom:0}
+.fee-list .amt{font-family:var(--caps);font-weight:600;font-size:15px;color:var(--forest-deep);white-space:nowrap}
+.fee-note{font-size:14px;color:#4A5F52;margin-top:16px;line-height:1.6}
+.fee-note b{color:var(--forest-deep)}
+
+/* Splose free-chat booking embed. Unlike the referral form, this one DOES post a
+   sploseIframeResize message, so the height is driven by the widget rather than the fixed-height
+   estimate the referral card needs. Initial height is a sane pre-resize default. */
+.booking-embed{max-width:840px;margin:26px auto 0;background:#fff;border:1px solid var(--mist);border-radius:24px;overflow:hidden}
+.booking-embed iframe{display:block;width:100%;border:0}
+
+/* founder cards now carry real bios + credentials, so paragraphs go left-aligned (centred long
+   copy is unreadable) while the avatar, name and role stay centred. */
+.founder-card p{text-align:left;margin-bottom:10px}
+.founder-card p:last-of-type{margin-bottom:0}
+.founder-card .langs{font-size:14px;color:#4A5F52;font-style:italic;text-align:left;width:100%;margin-top:2px}
+.creds{margin:16px 0 0;padding:16px 0 0;border-top:1px solid var(--mist);width:100%;text-align:left}
+.creds ul{list-style:none;margin:0;padding:0}
+.creds li{font-size:13.5px;color:#4A5F52;padding:3px 0;display:flex;gap:9px;line-height:1.5}
+.creds li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--sage);flex:none;margin-top:7px}
+.creds .ck{font-family:var(--caps);font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-mid);display:block;margin-bottom:8px}
+
+/* Grove Notes / Shop teaser cards are not links (nowhere to send anyone yet), so kill the
+   pointer affordance the .arch hover styles imply. */
+.arch.static{cursor:default}
+
 </style>
 
 </head>
@@ -502,16 +553,48 @@ if(t&amp;&amp;l){t.addEventListener('click',()=>{const o=l.classList.toggle('ope
       <span class=&quot;hc&quot;>HEALTHCARE</span>
     </h1>
     <span class=&quot;tagline&quot;>COMMUNITY&amp;ensp;&amp;bull;&amp;ensp;CARE&amp;ensp;&amp;bull;&amp;ensp;GROWTH</span>
-    <p>Healthcare that feels like community, because it is. Speech pathology for Perth families, from two speech pathologists who wanted care to feel personal rather than processed.</p>
+    <p>Healthcare that feels like community, because it is. Speech pathology for little ones, newborns through to nine, in your own home, day care or school.</p>
     <div class=&quot;cta&quot;>
       <a class=&quot;btn btn-cream&quot; href=&quot;/kithgrove/referral/&quot;>Make a referral</a>
-      <a class=&quot;btn btn-ghost&quot; href=&quot;/kithgrove/about/&quot;>Meet the founders</a>
+      <a class=&quot;btn btn-ghost&quot; href=&quot;#help&quot;>See what we help with</a>
     </div>
-    <div class=&quot;loc&quot;>Perth, Western Australia</div>
+    <div class=&quot;loc&quot;>North of the river, Perth WA</div>
   </div>
 </header>
 
-<svg class=&quot;wave&quot; viewBox=&quot;0 0 1440 70&quot; preserveAspectRatio=&quot;none&quot; aria-hidden=&quot;true&quot; ><path d=&quot;M0,40 C240,75 420,5 720,28 C1020,51 1240,12 1440,34 L1440,70 L0,70 Z&quot; fill=&quot;#F5F4EF&quot;/></svg>
+<svg class=&quot;wave&quot; viewBox=&quot;0 0 1440 70&quot; preserveAspectRatio=&quot;none&quot; aria-hidden=&quot;true&quot; ><path d=&quot;M0,40 C240,75 420,5 720,28 C1020,51 1240,12 1440,34 L1440,70 L0,70 Z&quot; fill=&quot;#FAFBF9&quot;/></svg>
+
+<section class=&quot;reveal section-card section-pad&quot; id=&quot;help&quot;>
+  <div class=&quot;wrap&quot; style=&quot;text-align:center&quot;>
+    <div class=&quot;eyebrow&quot;><svg class=&quot;leaf-glyph&quot; width=&quot;16&quot; height=&quot;14&quot; viewBox=&quot;0 0 16 14&quot; fill=&quot;none&quot; aria-hidden=&quot;true&quot;><path d=&quot;M8 13 C8 8 8 6 8 5&quot; stroke=&quot;#84A594&quot; stroke-width=&quot;1.6&quot; stroke-linecap=&quot;round&quot;/><path d=&quot;M8 6 C5 5.4 3.4 3.4 3.4 1 C6.2 1.6 8 3.4 8 6 Z&quot; fill=&quot;#84A594&quot;/><path d=&quot;M8 7.6 C11 7 12.6 5 12.6 2.6 C9.8 3.2 8 5 8 7.6 Z&quot; fill=&quot;#C9D8CE&quot;/></svg>What we help with</div>
+    <h2 class=&quot;h2&quot;>If any of this sounds like your week, you're in the right place.</h2>
+    <p class=&quot;sub&quot;>Our focus is early intervention and paediatrics. Most of the families we see have a child somewhere between newborn and nine, and we come to you: at home, at day care or at school, north of the river. We've both worked with clients right across the lifespan too, so if your situation sits outside that, ask us anyway.</p>
+    <div class=&quot;support-grid&quot;>
+      <div class=&quot;support-card&quot;><h3>Late talking</h3><p>Not many words yet, or none at all, and you're weighing up whether to wait and see.</p></div>
+      <div class=&quot;support-card&quot;><h3>Speech sounds</h3><p>You can understand your child perfectly. Their teacher, the neighbours and grandma can't.</p></div>
+      <div class=&quot;support-card&quot;><h3>Feeding difficulties</h3><p>Starting solids, a very short list of safe foods, or mealtimes that have turned into a battle.</p></div>
+      <div class=&quot;support-card&quot;><h3>Understanding and using language</h3><p>Following instructions, putting sentences together, or finding the words they're after.</p></div>
+      <div class=&quot;support-card&quot;><h3>Social communication and friendships</h3><p>Joining in, taking turns, and the business of making friends at day care or school.</p></div>
+      <div class=&quot;support-card&quot;><h3>Literacy and early reading</h3><p>Letters and sounds, early reading, and the run-up to big school.</p></div>
+    </div>
+    <div class=&quot;help-pair&quot;>
+      <div class=&quot;support-card&quot;>
+        <h3>Support for parents</h3>
+        <p>A lot of our work is with you, not just your child: understanding what's typical for their age, what you're actually seeing, and what to try next.</p>
+      </div>
+      <div class=&quot;support-card&quot;>
+        <h3>Playgroups</h3>
+        <p>Building developmental and communication skills through play, with practical strategies for the parents and carers in the room. Locations are given to you when you book.</p>
+      </div>
+    </div>
+    <div class=&quot;fact-row&quot;>
+      <div class=&quot;fact&quot;><span class=&quot;k&quot;>Ages</span><span class=&quot;v&quot;>Newborn to nine, with experience across the lifespan.</span></div>
+      <div class=&quot;fact&quot;><span class=&quot;k&quot;>Where</span><span class=&quot;v&quot;>We come to you, so there's no clinic run and no waiting room. North of the river.</span></div>
+      <div class=&quot;fact&quot;><span class=&quot;k&quot;>Languages</span><span class=&quot;v&quot;>English, Vietnamese and conversational Chinese.</span></div>
+      <div class=&quot;fact&quot;><span class=&quot;k&quot;>Funding</span><span class=&quot;v&quot;>Self-managed and plan-managed NDIS, or private. <a href=&quot;/kithgrove/faq/#fees&quot;>See our fees</a>.</span></div>
+    </div>
+  </div>
+</section>
 
 <section class=&quot;band on-light reveal&quot; id=&quot;about&quot;>
   <div class=&quot;wrap&quot;>
@@ -530,19 +613,18 @@ if(t&amp;&amp;l){t.addEventListener('click',()=>{const o=l.classList.toggle('ope
 <section class=&quot;supports reveal section-mist section-pad&quot; id=&quot;supports&quot;>
   <div class=&quot;wrap&quot;>
     <div class=&quot;eyebrow&quot;><svg class=&quot;leaf-glyph&quot; width=&quot;16&quot; height=&quot;14&quot; viewBox=&quot;0 0 16 14&quot; fill=&quot;none&quot; aria-hidden=&quot;true&quot;><path d=&quot;M8 13 C8 8 8 6 8 5&quot; stroke=&quot;#84A594&quot; stroke-width=&quot;1.6&quot; stroke-linecap=&quot;round&quot;/><path d=&quot;M8 6 C5 5.4 3.4 3.4 3.4 1 C6.2 1.6 8 3.4 8 6 Z&quot; fill=&quot;#84A594&quot;/><path d=&quot;M8 7.6 C11 7 12.6 5 12.6 2.6 C9.8 3.2 8 5 8 7.6 Z&quot; fill=&quot;#C9D8CE&quot;/></svg>Our supports</div>
-    <h2 class=&quot;h2&quot;>Speech pathology today. Here's what we're planting next.</h2>
+    <h2 class=&quot;h2&quot;>Speech pathology and playgroups today. Here's what we're planting next.</h2>
     <p class=&quot;sub&quot;>We're starting where our roots are deepest, and growing branch by branch into the supports our community tells us they need. Everything below is on its way, in roughly this order.</p>
     <div class=&quot;support-grid&quot;>
       <div class=&quot;support-card&quot;><h3>Allied health services</h3><p>A multidisciplinary team under one roof as the grove matures.</p></div>
-      <div class=&quot;support-card&quot;><h3>Parent workshops</h3><p>Practical education sessions, real strategies you can use at the dinner table tonight.</p></div>
-      <div class=&quot;support-card&quot;><h3>Playgroups</h3><p>Language-rich, therapist-supported play where little ones and parents connect.</p></div>
+      <div class=&quot;support-card&quot;><h3>Parent workshops</h3><p>Practical education sessions, with strategies you can put to work the same week.</p></div>
       <div class=&quot;support-card&quot;><h3>Supervision &amp;amp; mentoring</h3><p>Packages that back other clinicians to grow with confidence.</p></div>
       <div class=&quot;support-card&quot;><h3>The shop</h3><p>Guides, printable visuals and practice sheets for families and therapists, wherever you are.</p></div>
       <div class=&quot;support-card&quot;><h3>Community platform</h3><p>A space where families and clinicians ask questions and support one another.</p></div>
     </div>
     <div class=&quot;supports-cta&quot;>
       <a class=&quot;btn-pill&quot; href=&quot;/kithgrove/referral/&quot;>Make a referral</a>
-      <a class=&quot;btn btn-ghost&quot; style=&quot;border-color:var(--forest);color:var(--forest-deep)&quot; href=&quot;#chat&quot;>Book a free chat instead</a>
+      <a class=&quot;btn btn-ghost&quot; style=&quot;border-color:var(--forest);color:var(--forest-deep)&quot; href=&quot;#chat-form&quot;>Book a free chat instead</a>
     </div>
   </div>
 </section>
@@ -562,21 +644,41 @@ if(t&amp;&amp;l){t.addEventListener('click',()=>{const o=l.classList.toggle('ope
     <div class=&quot;mission&quot;>
       <div class=&quot;eyebrow left&quot;><svg class=&quot;leaf-glyph&quot; width=&quot;16&quot; height=&quot;14&quot; viewBox=&quot;0 0 16 14&quot; fill=&quot;none&quot; aria-hidden=&quot;true&quot;><path d=&quot;M8 13 C8 8 8 6 8 5&quot; stroke=&quot;#84A594&quot; stroke-width=&quot;1.6&quot; stroke-linecap=&quot;round&quot;/><path d=&quot;M8 6 C5 5.4 3.4 3.4 3.4 1 C6.2 1.6 8 3.4 8 6 Z&quot; fill=&quot;#84A594&quot;/><path d=&quot;M8 7.6 C11 7 12.6 5 12.6 2.6 C9.8 3.2 8 5 8 7.6 Z&quot; fill=&quot;#C9D8CE&quot;/></svg>Talk to us</div>
       <h2 class=&quot;h2&quot;>Say hello to Daphne and Sallina.</h2>
-      <p>Whether you're after that free 15-minute chat or just have a question before you dive in, drop us a line here, or email us at <a href=&quot;mailto:hello@kithgrovehealthcare.com.au&quot; style=&quot;color:var(--forest-deep)&quot;>hello@kithgrovehealthcare.com.au</a>. We read every message ourselves, no call centre, no chatbot.</p>
-      <form class=&quot;mini-form&quot; id=&quot;chat-form&quot; onsubmit=&quot;return false&quot;>
-        <div class=&quot;rf-row&quot;>
-          <div class=&quot;field&quot;><label for=&quot;c-name&quot;>Your name</label><input id=&quot;c-name&quot; type=&quot;text&quot; placeholder=&quot;First name&quot;></div>
-          <div class=&quot;field&quot;><label for=&quot;c-email&quot;>Your email</label><input id=&quot;c-email&quot; type=&quot;email&quot; placeholder=&quot;you@email.com&quot;></div>
-        </div>
-        <div class=&quot;rf-row single&quot;>
-          <div class=&quot;field&quot;><label for=&quot;c-msg&quot;>What's on your mind?</label><textarea id=&quot;c-msg&quot; rows=&quot;3&quot; placeholder=&quot;A quick question, or just say hi, whatever's easiest.&quot;></textarea></div>
-        </div>
-        <div class=&quot;rf-actions&quot;>
-          <span class=&quot;design-note&quot;><b>Design note:</b> this form will notify hello@kithgrovehealthcare.com.au on every submission, wiring up next. Prefer a Splose booking widget here instead of a plain form? Happy either way.</span>
-          <button class=&quot;btn-pill&quot; type=&quot;button&quot;>Send message</button>
-        </div>
-      </form>
+      <p>No referral, no cost, no commitment. Pick a time below and one of us will call you for fifteen minutes to talk through what you're noticing and whether we're the right fit.</p>
+      <p>Daphne is seeing clients Thursdays and Fridays, and moves to Monday through Friday from 20 August 2026. Sallina has limited availability at the moment. If nothing suits, email us at <a href=&quot;mailto:hello@kithgrovehealthcare.com.au&quot; style=&quot;color:var(--forest-deep)&quot;>hello@kithgrovehealthcare.com.au</a> and we'll sort something out. We read every message ourselves, no call centre, no chatbot.</p>
+      <div class=&quot;contact-ctas&quot; style=&quot;justify-content:flex-start&quot;>
+        <a class=&quot;btn-pill&quot; href=&quot;#chat-form&quot;>Pick a time</a>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class=&quot;reveal section-mist section-pad&quot; id=&quot;chat-form&quot;>
+  <div class=&quot;wrap&quot; style=&quot;text-align:center&quot;>
+    <div class=&quot;eyebrow&quot;><svg class=&quot;leaf-glyph&quot; width=&quot;16&quot; height=&quot;14&quot; viewBox=&quot;0 0 16 14&quot; fill=&quot;none&quot; aria-hidden=&quot;true&quot;><path d=&quot;M8 13 C8 8 8 6 8 5&quot; stroke=&quot;#84A594&quot; stroke-width=&quot;1.6&quot; stroke-linecap=&quot;round&quot;/><path d=&quot;M8 6 C5 5.4 3.4 3.4 3.4 1 C6.2 1.6 8 3.4 8 6 Z&quot; fill=&quot;#84A594&quot;/><path d=&quot;M8 7.6 C11 7 12.6 5 12.6 2.6 C9.8 3.2 8 5 8 7.6 Z&quot; fill=&quot;#C9D8CE&quot;/></svg>Free 15-minute chat</div>
+    <h2 class=&quot;h2&quot;>Book a time that suits you.</h2>
+    <p class=&quot;sub&quot;>Straight into our calendar, and you'll get a confirmation by email. If you'd rather talk to a person first, email <a href=&quot;mailto:hello@kithgrovehealthcare.com.au&quot; style=&quot;color:var(--forest)&quot;>hello@kithgrovehealthcare.com.au</a> and we'll arrange a phone call.</p>
+    <div class=&quot;booking-embed&quot;>
+  <iframe id=&quot;splose-booking-61b1cd4a-e508-4d87-9fc3-91072f6e5bf0&quot; src=&quot;https://kith-grove-healthcare.splose.com/online-booking/61b1cd4a-e508-4d87-9fc3-91072f6e5bf0?embedVersion=v2&quot; title=&quot;Book a free 15-minute chat with Kith Grove Healthcare&quot; name=&quot;onlineBookingEmbeded&quot; scrolling=&quot;auto&quot; width=&quot;100%&quot; height=&quot;700&quot; loading=&quot;lazy&quot; frameBorder=&quot;0&quot; style=&quot;display:block;transition:height 0.3s ease;&quot;></iframe>
+</div>
+<script>
+window.addEventListener('message',function(e){
+  if(e.origin!=='https://kith-grove-healthcare.splose.com')return;
+  if(!e.data||!e.data.type)return;
+  var f=document.getElementById('splose-booking-61b1cd4a-e508-4d87-9fc3-91072f6e5bf0');
+  if(!f||e.source!==f.contentWindow)return;
+  if(e.data.type==='sploseIframeResize'){
+    var h=e.data.height;
+    if(typeof h==='number'&amp;&amp;isFinite(h)&amp;&amp;h>=0){f.style.height=h+'px';}
+  }
+  if(e.data.type==='sploseIframeScrollToTop'){f.scrollIntoView({behavior:'smooth',block:'start'});}
+  if(e.data.type==='sploseBookingConfirmed'){
+    var p=e.data.payload||{};
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'splose_booking_confirmed',booking_page_uuid:String(p.booking_page_uuid),booking_page_name:String(p.booking_page_name),service_name:String(p.service_name),location_name:String(p.location_name),service_price:Number(p.service_price)});
+  }
+});
+</script>
   </div>
 </section>
 
@@ -627,11 +729,11 @@ if(t&amp;&amp;l){t.addEventListener('click',()=>{const o=l.classList.toggle('ope
     <div>
       <div class=&quot;f-eyebrow&quot;><svg class=&quot;leaf-glyph&quot; width=&quot;16&quot; height=&quot;14&quot; viewBox=&quot;0 0 16 14&quot; fill=&quot;none&quot; aria-hidden=&quot;true&quot;><path d=&quot;M8 13 C8 8 8 6 8 5&quot; stroke=&quot;#84A594&quot; stroke-width=&quot;1.6&quot; stroke-linecap=&quot;round&quot;/><path d=&quot;M8 6 C5 5.4 3.4 3.4 3.4 1 C6.2 1.6 8 3.4 8 6 Z&quot; fill=&quot;#84A594&quot;/><path d=&quot;M8 7.6 C11 7 12.6 5 12.6 2.6 C9.8 3.2 8 5 8 7.6 Z&quot; fill=&quot;#C9D8CE&quot;/></svg>Get in touch</div>
       <h3>Contact information</h3>
-      <p class=&quot;f-copy&quot;>We're planting Kith Grove in Perth right now. Reach out and we'll keep you posted as the grove grows.</p>
+      <p class=&quot;f-copy&quot;>Speech pathology for children from newborn to nine, in your home, day care or school north of the river. We aim to reply within 48 hours.</p>
       <div class=&quot;f-lines&quot;>
         <div><b>Email:</b> <a href=&quot;mailto:hello@kithgrovehealthcare.com.au&quot; style=&quot;color:inherit&quot;>hello@kithgrovehealthcare.com.au</a></div>
         <div><b>Instagram:</b> @kithgrove</div>
-        <div><b>Location:</b> Perth, Western Australia</div>
+        <div><b>Where we visit:</b> North of the river, Perth WA</div>
       </div>
     </div>
     <div class=&quot;f-col&quot;>
