@@ -336,11 +336,16 @@ nav .btn{padding:10px 22px;font-size:12.5px}
 /* keep anchor targets clear of the sticky nav when scrolled to (in-page or cross-page) */
 [id]{scroll-margin-top:90px}
 
-/* mobile nav toggle */
+/* mobile nav toggle. Breakpoint is 1060px, not the more usual 820/900, because the nav carries
+   SEVEN items plus the referral button since Fees was split onto its own page (2026-08-11).
+   Measured: the links block is 766px wide, and below ~1060px it starts colliding with the Kith
+   wordmark on the left. Verified overlapping at 1000px and clear at 1100px, so the hamburger
+   takes over before the collision rather than after it. If a nav item is ever removed, this can
+   come back down; re-measure rather than guessing. */
 .nav-in{flex-wrap:wrap}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-toggle{display:none;background:none;border:0;color:var(--cream);cursor:pointer;padding:8px;margin-left:auto}
-@media(max-width:820px){
+@media(max-width:1060px){
   .nav-toggle{display:flex;align-items:center;justify-content:center}
   .nav-links{position:fixed;top:63px;left:0;right:0;background:var(--forest);flex-direction:column;align-items:flex-start;gap:2px;padding:10px clamp(22px,4vw,48px) 22px;transform:translateY(-8px);opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;border-bottom:1px solid rgba(201,216,206,.25);z-index:49}
   .nav-links.open{opacity:1;transform:translateY(0);pointer-events:auto}
@@ -543,9 +548,10 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
     </button>
     <div class=&quot;nav-links&quot;>
     <a class=&quot;link active&quot; href=&quot;/kithgrove/home/&quot; aria-current=&quot;page&quot;>Home</a>
-    <a class=&quot;link&quot; href=&quot;/kithgrove/about/&quot;>About us</a>
+    <a class=&quot;link&quot; href=&quot;/kithgrove/about/&quot;>About</a>
     <a class=&quot;link&quot; href=&quot;/kithgrove/grove-notes/&quot;>Grove Notes</a>
     <a class=&quot;link&quot; href=&quot;/kithgrove/shop/&quot;>Shop</a>
+    <a class=&quot;link&quot; href=&quot;/kithgrove/fees/&quot;>Fees</a>
     <a class=&quot;link&quot; href=&quot;/kithgrove/faq/&quot;>FAQ</a>
     <a class=&quot;link&quot; href=&quot;/kithgrove/contact/&quot;>Contact</a>
     <a class=&quot;btn btn-cream&quot; href=&quot;/kithgrove/referral/&quot;>Make a referral</a>
@@ -623,7 +629,7 @@ if(t&amp;&amp;l){t.addEventListener('click',()=>{const o=l.classList.toggle('ope
       <div class=&quot;fact&quot;><span class=&quot;k&quot;>Ages</span><span class=&quot;v&quot;>Newborn to nine, with experience across the lifespan.</span></div>
       <div class=&quot;fact&quot;><span class=&quot;k&quot;>Where</span><span class=&quot;v&quot;>We come to you, so there's no clinic run and no waiting room. North of the river.</span></div>
       <div class=&quot;fact&quot;><span class=&quot;k&quot;>Languages</span><span class=&quot;v&quot;>English, Vietnamese and conversational Chinese.</span></div>
-      <div class=&quot;fact&quot;><span class=&quot;k&quot;>Funding</span><span class=&quot;v&quot;>Self-managed and plan-managed NDIS, or private. <a href=&quot;/kithgrove/faq/#fees&quot;>See our fees</a>.</span></div>
+      <div class=&quot;fact&quot;><span class=&quot;k&quot;>Funding</span><span class=&quot;v&quot;>Self-managed and plan-managed NDIS, or private. <a href=&quot;/kithgrove/fees/&quot;>See our fees</a>.</span></div>
     </div>
   </div>
 </section>
@@ -771,9 +777,10 @@ window.addEventListener('message',function(e){
     <div class=&quot;f-col&quot;>
       <h4>Visit</h4>
       <a href=&quot;/kithgrove/home/&quot;>Home</a>
-      <a href=&quot;/kithgrove/about/&quot;>About us</a>
+      <a href=&quot;/kithgrove/about/&quot;>About</a>
       <a href=&quot;/kithgrove/grove-notes/&quot;>Grove Notes</a>
       <a href=&quot;/kithgrove/shop/&quot;>Shop</a>
+      <a href=&quot;/kithgrove/fees/&quot;>Fees</a>
       <a href=&quot;/kithgrove/faq/&quot;>FAQ</a>
       <a href=&quot;/kithgrove/contact/&quot;>Contact</a>
     </div>

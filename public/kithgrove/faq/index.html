@@ -319,11 +319,16 @@ nav .btn{padding:10px 22px;font-size:12.5px}
 /* keep anchor targets clear of the sticky nav when scrolled to (in-page or cross-page) */
 [id]{scroll-margin-top:90px}
 
-/* mobile nav toggle */
+/* mobile nav toggle. Breakpoint is 1060px, not the more usual 820/900, because the nav carries
+   SEVEN items plus the referral button since Fees was split onto its own page (2026-08-11).
+   Measured: the links block is 766px wide, and below ~1060px it starts colliding with the Kith
+   wordmark on the left. Verified overlapping at 1000px and clear at 1100px, so the hamburger
+   takes over before the collision rather than after it. If a nav item is ever removed, this can
+   come back down; re-measure rather than guessing. */
 .nav-in{flex-wrap:wrap}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-toggle{display:none;background:none;border:0;color:var(--cream);cursor:pointer;padding:8px;margin-left:auto}
-@media(max-width:820px){
+@media(max-width:1060px){
   .nav-toggle{display:flex;align-items:center;justify-content:center}
   .nav-links{position:fixed;top:63px;left:0;right:0;background:var(--forest);flex-direction:column;align-items:flex-start;gap:2px;padding:10px clamp(22px,4vw,48px) 22px;transform:translateY(-8px);opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;border-bottom:1px solid rgba(201,216,206,.25);z-index:49}
   .nav-links.open{opacity:1;transform:translateY(0);pointer-events:auto}
@@ -526,9 +531,10 @@ nav a.btn.active{outline:2px solid var(--sage);outline-offset:2px}
     </button>
     <div class="nav-links">
     <a class="link" href="/kithgrove/home/">Home</a>
-    <a class="link" href="/kithgrove/about/">About us</a>
+    <a class="link" href="/kithgrove/about/">About</a>
     <a class="link" href="/kithgrove/grove-notes/">Grove Notes</a>
     <a class="link" href="/kithgrove/shop/">Shop</a>
+    <a class="link" href="/kithgrove/fees/">Fees</a>
     <a class="link active" href="/kithgrove/faq/" aria-current="page">FAQ</a>
     <a class="link" href="/kithgrove/contact/">Contact</a>
     <a class="btn btn-cream" href="/kithgrove/referral/">Make a referral</a>
@@ -555,7 +561,7 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
       <details><summary>What ages do you work with?</summary><div class="a">Our main focus is early intervention and paediatrics, and most of the children we see are somewhere between newborn and nine years old. We've both worked with clients right across the lifespan as well, so if your situation sits outside that range it's still worth asking.</div></details>
 <details><summary>What sorts of things do you help with?</summary><div class="a">Late talking, speech sounds, feeding difficulties, difficulty understanding or using language, social communication and making friends, and literacy and early reading skills. A lot of our work is also with parents directly, helping you understand your child's development and what to do about it at home. Our playgroups build developmental and communication skills through play, with practical strategies for the adults in the room.</div></details>
 <details><summary>Where do sessions happen? Do you have a clinic?</summary><div class="a">Not yet. At the moment we do community visits, which means we come to you at home, at day care or at school. We currently service areas north of the river. Playgroup locations are given to you when you book.</div></details>
-<details><summary>How much does it cost, and what funding do you take?</summary><div class="a">Our NDIS rates and funding options are set out in full <a href="#fees" style="color:var(--sage-mid)">just below this list</a>. In short: we work with self-managed and plan-managed NDIS participants and with private-paying families. We are not an NDIS-registered provider, so we can't take agency-managed plans.</div></details>
+<details><summary>How much does it cost, and what funding do you take?</summary><div class="a">In short: we work with self-managed and plan-managed NDIS participants and with private-paying families. We are not an NDIS-registered provider, so we can't take agency-managed plans. Our rates, what we can and can't take, and our cancellation policy are all on the <a href="/kithgrove/fees/" style="color:var(--sage-mid)">fees and funding page</a>.</div></details>
 <details><summary>How long is a session, and how often would we come in?</summary><div class="a">Sessions generally run 45 to 60 minutes, though the length can vary depending on your child's engagement and what they need on the day. For NDIS clients, how often you're seen depends on your individual funding and plan. For private-paying families, we tailor the frequency and intensity to how often you'd like to book.</div></details>
 <details><summary>Are you taking new clients right now?</summary><div class="a">Yes, we're welcoming enquiries and referrals now. What we can take on changes as the practice grows, so rather than list our hours here, the booking page always shows the times we currently have open, straight from our calendar. Send a referral and we'll come back to you with what we can offer, or book a free chat and we'll talk it through. <a href="/kithgrove/referral/" style="color:var(--sage-mid)">Send a referral</a> or <a href="/kithgrove/home/#chat-form" style="color:var(--sage-mid)">book a free chat</a>.</div></details>
 <details><summary>How do we get started?</summary><div class="a">Two ways in, whichever suits. Send a referral through the form on this site and we'll aim to come back to you within 48 hours, or book the free 15-minute chat first if you'd rather talk it through before committing to anything. <a href="/kithgrove/referral/" style="color:var(--sage-mid)">Send a referral</a> or <a href="/kithgrove/home/#chat-form" style="color:var(--sage-mid)">book a chat</a>.</div></details>
@@ -564,49 +570,6 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
 <details><summary>I'm not sure if we need therapy yet, can I just talk to someone first?</summary><div class="a">Yes, that's exactly what our free 15-minute chat is for. No referral needed, no cost, just a friendly conversation about what you're noticing. <a href="/kithgrove/home/#chat-form" style="color:var(--sage-mid)">Book a time</a>.</div></details>
 <details><summary>Can I speak to someone on the phone?</summary><div class="a">We don't have a phone line yet. Email us at <a href="mailto:hello@kithgrovehealthcare.com.au" style="color:var(--sage-mid)">hello@kithgrovehealthcare.com.au</a>, say you'd like a call, and one of us will get in touch to arrange it.</div></details>
 <details><summary>Do you speak any languages other than English?</summary><div class="a">Yes. Between us we speak Vietnamese and conversational Chinese as well as English, and we particularly enjoy working with culturally and linguistically diverse families.</div></details>
-    </div>
-  </div>
-</section>
-
-<section class="reveal section-card section-pad" id="fees">
-  <div class="wrap" style="text-align:center">
-    <div class="eyebrow"><svg class="leaf-glyph" width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true"><path d="M8 13 C8 8 8 6 8 5" stroke="#84A594" stroke-width="1.6" stroke-linecap="round"/><path d="M8 6 C5 5.4 3.4 3.4 3.4 1 C6.2 1.6 8 3.4 8 6 Z" fill="#84A594"/><path d="M8 7.6 C11 7 12.6 5 12.6 2.6 C9.8 3.2 8 5 8 7.6 Z" fill="#C9D8CE"/></svg>Fees and funding</div>
-    <h2 class="h2">What it costs, up front.</h2>
-    <p class="sub">We'd rather you knew before you enquired than after. Here's exactly what we charge and what we can take.</p>
-    <div class="fees" style="text-align:left;margin-top:36px">
-      <div class="fee-card">
-        <h3>NDIS</h3>
-        <p class="lede">For self-managed and plan-managed participants. Charged at the NDIS price guide rate.</p>
-        <div class="fee-list">
-          <div class="r"><span>Therapy sessions</span><span class="amt">$193.99 per hour</span></div>
-          <div class="r"><span>Travel time to you</span><span class="amt">$48.50 per 30 min driving</span></div>
-          <div class="r"><span>Travel distance</span><span class="amt">$1 per km</span></div>
-        </div>
-        <p class="fee-note">Charged on driving time to and from you. We travel up to 30 minutes each way, so where you're located is part of what we look at when we review a new NDIS referral or a waitlist spot.</p>
-      </div>
-      <div class="fee-card">
-        <h3>Private</h3>
-        <p class="lede">Our private fees are different to the NDIS rates, and we offer packages that may suit your family better than one-off sessions.</p>
-        <p class="fee-note">Email <a href="mailto:hello@kithgrovehealthcare.com.au" style="color:var(--forest)">hello@kithgrovehealthcare.com.au</a> and we'll send you our current private fee schedule and package options.</p>
-      </div>
-      <div class="fee-card">
-        <h3>What we can and can't take</h3>
-        <div class="fee-list">
-          <div class="r"><span>NDIS, self-managed</span><span class="amt">Yes</span></div>
-          <div class="r"><span>NDIS, plan-managed</span><span class="amt">Yes</span></div>
-          <div class="r"><span>NDIS, agency-managed</span><span class="amt">Not yet</span></div>
-          <div class="r"><span>Private paying</span><span class="amt">Yes</span></div>
-        </div>
-        <p class="fee-note">We're not currently an NDIS-registered provider, which is why agency-managed plans are the one we can't take. Self-managed and plan-managed participants are welcome.</p>
-      </div>
-      <div class="fee-card">
-        <h3>Cancellations</h3>
-        <p class="fee-note" style="margin-top:6px">Cancellations made with less than 24 hours' notice are charged at the full session fee, because the session is billed as though it went ahead. Life happens, so if something comes up, tell us as early as you can and we'll do what we can.</p>
-      </div>
-    </div>
-    <div class="contact-ctas">
-      <a class="btn-pill" href="/kithgrove/referral/">Make a referral</a>
-      <a class="btn btn-ghost" style="border-color:var(--forest);color:var(--forest-deep)" href="/kithgrove/home/#chat-form">Book a free chat</a>
     </div>
   </div>
 </section>
@@ -629,9 +592,10 @@ if(t&&l){t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.se
     <div class="f-col">
       <h4>Visit</h4>
       <a href="/kithgrove/home/">Home</a>
-      <a href="/kithgrove/about/">About us</a>
+      <a href="/kithgrove/about/">About</a>
       <a href="/kithgrove/grove-notes/">Grove Notes</a>
       <a href="/kithgrove/shop/">Shop</a>
+      <a href="/kithgrove/fees/">Fees</a>
       <a href="/kithgrove/faq/">FAQ</a>
       <a href="/kithgrove/contact/">Contact</a>
     </div>
