@@ -201,7 +201,50 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="relative py-16 sm:py-24 md:py-32 bg-backgroundAlt">
+      <section id="clients" className="relative py-16 sm:py-24 md:py-32 bg-backgroundAlt">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-primary mb-4 tracking-tight">
+              Client Work
+            </h2>
+            <div className="w-20 h-0.5 bg-accent mx-auto mb-4"></div>
+            <p className="text-muted text-sm uppercase tracking-wider mb-4">Selected Engagements</p>
+            <p className="text-base sm:text-lg md:text-xl text-secondary max-w-3xl mx-auto font-description font-light">
+              Alongside our own products, we take on a small number of client engagements where the work aligns with what we build.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            <div className="card-premium p-6 sm:p-8 md:p-10 group">
+              <div className="flex flex-col sm:flex-row items-start justify-between mb-6 gap-4">
+                <h3 className="font-heading font-semibold text-2xl sm:text-3xl text-primary tracking-tight">
+                  Kith Grove Healthcare
+                </h3>
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-accent/10 rounded-xl flex items-center justify-center group-hover:bg-accent/20 transition-colors flex-shrink-0">
+                  <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM4 9h16" />
+                  </svg>
+                </div>
+              </div>
+              <p className="text-secondary font-description font-light leading-relaxed text-base sm:text-lg mb-6">
+                Brand system and public website for a Perth speech pathology practice providing early intervention and paediatric services. The site sets out the practice&apos;s services, clinician credentials, service area, and fees and funding in full, and embeds their existing booking and referral software directly into the page so enquiries land straight in the practice&apos;s own systems.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["Healthcare", "Brand System", "Web Design", "Allied Health"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1.5 sm:px-4 sm:py-2 bg-accent/10 text-accent text-xs sm:text-sm font-medium rounded-full border border-accent/20"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="relative py-16 sm:py-24 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-primary mb-4 tracking-tight">
