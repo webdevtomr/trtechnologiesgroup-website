@@ -18,6 +18,8 @@
 <link rel="preload" as="image" href="work/kith-open.jpg" fetchpriority="high">
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="site.css">
+<!-- reveal styles are scoped to .js, set before first paint -->
+<script>document.documentElement.className+=' js'</script>
 </head>
 <body>
 
@@ -28,9 +30,34 @@
   <nav class="nav-links" aria-label="Primary">
     <a class="nav-link opt" href="index.html#work">All work</a>
     <a class="nav-link opt" href="index.html#studio">Studio</a>
-    <a class="btn" href="index.html#contact">Start a project</a>
+    <a class="cta" href="index.html#contact"><span>Start a project</span><span class="disc" aria-hidden="true">→</span></a>
+    <button class="burger" type="button" aria-label="Open menu" aria-controls="menu" aria-expanded="false"><span></span><span></span></button>
   </nav>
 </header>
+
+<!-- The same full-screen menu as the homepage; site.js keeps it inert while closed. -->
+<div class="menu" id="menu">
+  <p class="menu-top" style="--i:0">TR Technologies Group — websites and software, Perth</p>
+
+  <nav class="menu-nav" aria-label="Menu">
+    <a class="menu-link" href="index.html" style="--i:1"><span class="ix num">01</span><span class="wd">Home</span></a>
+    <a class="menu-link" href="index.html#work" style="--i:2"><span class="ix num">02</span><span class="wd">Work</span></a>
+    <a class="menu-link" href="index.html#build" style="--i:3"><span class="ix num">03</span><span class="wd">What we build</span></a>
+    <a class="menu-link" href="index.html#studio" style="--i:4"><span class="ix num">04</span><span class="wd">Studio</span></a>
+    <a class="menu-link" href="index.html#price" style="--i:5"><span class="ix num">05</span><span class="wd">Pricing</span></a>
+    <a class="menu-link" href="index.html#contact" style="--i:6"><span class="ix num">06</span><span class="wd">Contact</span></a>
+  </nav>
+
+  <div>
+    <div class="menu-foot" style="--i:7">
+      <p class="label">Perth, Western Australia</p>
+      <p class="label num">31°57′S 115°51′E</p>
+      <p class="label"><a href="mailto:hello@trtechnologies.com.au">hello@trtechnologies.com.au</a></p>
+    </div>
+    <a class="cta cta-lg" href="index.html#contact" style="--i:8"><span>Start a project</span><span class="disc" aria-hidden="true">→</span></a>
+  </div>
+</div>
+
 
 <main id="main">
 

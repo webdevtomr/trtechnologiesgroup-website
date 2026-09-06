@@ -21,6 +21,10 @@
 <link rel="preload" as="image" href="work/tr-hero.jpg" fetchpriority="high">
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="site.css">
+<!-- The reveal styles are scoped to .js so that a page without script is
+     never left with its content transitioned out of sight. Set here, before
+     first paint, so there is nothing to flash. -->
+<script>document.documentElement.className+=' js'</script>
 
 <script type="application/ld+json">
 {
@@ -51,130 +55,182 @@
     <a class="nav-link opt" href="#build">What we build</a>
     <a class="nav-link opt" href="#studio">Studio</a>
     <a class="nav-link opt" href="#price">Pricing</a>
-    <a class="btn" href="#contact">Start a project</a>
+    <a class="cta" href="#contact"><span>Start a project</span><span class="disc" aria-hidden="true">→</span></a>
+    <button class="burger" type="button" aria-label="Open menu" aria-controls="menu" aria-expanded="false"><span></span><span></span></button>
   </nav>
 </header>
+
+<!-- A full screen of the studio rather than a dropdown. Closed, site.js keeps
+     it inert, so it is out of the tab order without being display:none. -->
+<div class="menu" id="menu">
+  <p class="menu-top" style="--i:0">TR Technologies Group — websites and software, Perth</p>
+
+  <nav class="menu-nav" aria-label="Menu">
+    <a class="menu-link" href="#work"   style="--i:1"><span class="ix num">01</span><span class="wd">Work</span></a>
+    <a class="menu-link" href="#build"  style="--i:2"><span class="ix num">02</span><span class="wd">What we build</span></a>
+    <a class="menu-link" href="#studio" style="--i:3"><span class="ix num">03</span><span class="wd">Studio</span></a>
+    <a class="menu-link" href="#price"  style="--i:4"><span class="ix num">04</span><span class="wd">Pricing</span></a>
+    <a class="menu-link" href="#contact" style="--i:5"><span class="ix num">05</span><span class="wd">Contact</span></a>
+  </nav>
+
+  <div>
+    <div class="menu-foot" style="--i:6">
+      <p class="label">Perth, Western Australia</p>
+      <p class="label num">31°57′S 115°51′E</p>
+      <p class="label"><a href="mailto:hello@trtechnologies.com.au">hello@trtechnologies.com.au</a></p>
+    </div>
+    <a class="cta cta-lg" href="#contact" style="--i:7"><span>Start a project</span><span class="disc" aria-hidden="true">→</span></a>
+  </div>
+</div>
 
 <main id="main">
 <span id="top"></span>
 
-<!-- ===================================================== HERO -->
+<!-- ===================================================== HERO
+     The photograph holds still and the page travels over it. Everything in
+     here is choreographed off one class, .lit, which site.js sets once the
+     type has settled - so the headline is cut into its real lines before it
+     is asked to move. -->
 <section class="hero" data-tone="light">
-  <div class="hero-media">
-    <img class="hero-still" src="work/tr-hero.jpg" alt="A corrugated iron shed behind dry grass under a wide clear sky, Western Australia." width="2000" height="1117" fetchpriority="high">
+  <div class="hero-media" data-par="0.075">
+    <img class="hero-still" src="work/tr-hero.jpg" alt="A corrugated iron shed behind dry grass under a wide clear sky, Western Australia." width="1800" height="1004" fetchpriority="high">
     <!-- the source is attached by site.js, and only when motion is allowed -->
     <video class="hero-vid" muted loop playsinline preload="none"
            poster="work/tr-hero.jpg" aria-hidden="true" tabindex="-1"
            data-src="work/tr-hero.mp4"></video>
   </div>
 
-  <div class="hero-in">
-    <h1 class="d-hero">Websites built for your business.</h1>
-    <p class="lead">Designed locally, with the experience and taste to make you look and perform better than the competition, and turn more visitors into customers.</p>
-    <div class="hero-cta">
-      <a class="btn btn-lg" href="#contact">Start a project</a>
-      <a class="btn btn-lg btn-ghost" href="#work">See the work</a>
+  <div class="hero-in" data-par="-0.085">
+    <p class="hero-eye">Web and software studio · Perth, Western Australia</p>
+    <h1 class="d-hero" data-mask style="--d:.18s">Websites built for your business.</h1>
+    <p class="lead" data-rise style="--d:.62s">Designed locally, with the experience and taste to make you look and perform better than the competition, and turn more visitors into customers.</p>
+    <div class="hero-cta" data-rise style="--d:.74s">
+      <a class="cta cta-lg" href="#contact"><span>Start a project</span><span class="disc" aria-hidden="true">→</span></a>
+      <a class="quiet" href="#work">See the work <span class="arw" aria-hidden="true">→</span></a>
     </div>
   </div>
 
   <div class="hero-foot">
-    <p class="label">Perth, Western Australia</p>
-    <p class="label">Three projects · 2025–26</p>
+    <p class="m" data-rise style="--i:0;--d:.95s">31°57′S 115°51′E</p>
+    <p class="m m-time" data-rise style="--i:1;--d:.95s"><span class="dot" data-hours aria-hidden="true"></span><span class="num" data-clock></span> AWST · Mon–Fri<span class="sr"></span></p>
+    <p class="m" data-rise style="--i:2;--d:.95s">Three projects · 2025–26</p>
+    <span class="hero-cue m-sep" aria-hidden="true"></span>
   </div>
 </section>
 
-<!-- ===================================================== POSITIONING -->
+<!-- ===================================================== POSITIONING
+     The sparse screen. One statement at the largest size on the page, one
+     paragraph, and the widest band above and below it - this is the breath
+     between the photograph and the work. -->
 <section class="say shell" data-tone="light">
   <div class="say-grid">
-    <h2 class="d1">Most studios stop at the website. We keep <span class="accent">going</span>.</h2>
-    <p class="lead">Positioning, copy, design, engineering, infrastructure, and the operational software the business actually runs on. Doing all of it is why the shopfront and the machinery behind it fit together, and why there is nobody in the middle to lose anything.</p>
+    <h2 class="d0" data-mask>Most studios stop at the website. We keep <span class="accent">going</span>.</h2>
+    <p class="lead" data-rise style="--d:.2s">Positioning, copy, design, engineering, infrastructure, and the operational software the business actually runs on. Doing all of it is why the shopfront and the machinery behind it fit together, and why there is nobody in the middle to lose anything.</p>
   </div>
 </section>
 
-<!-- ===================================================== WORK -->
-<section id="work" class="work shell" data-tone="light">
+<!-- ===================================================== WORK
+     The dark ground, and the densest screen on the page. The three
+     screenshots are the argument, and they carry out of a dark frame in a
+     way they never do off the paper. It is also the middle of the scroll:
+     you arrive somewhere, then come back out into the light. -->
+<section id="work" class="work on-dark" data-tone="dark">
+ <div class="shell">
   <div class="sec-head">
-    <h2 class="d1">Selected work</h2>
-    <p class="label">Three Western Australian businesses</p>
+    <div>
+      <span class="sec-ix num" data-rise>01 — Work</span>
+      <h2 class="d1" data-mask>Selected work</h2>
+    </div>
+    <p class="label" data-rise style="--d:.14s">Three Western Australian businesses</p>
   </div>
 
   <div class="tiles">
     <a class="tile" href="rm-safe.html">
-      <span class="shot"><img src="work/rmsafe-open.jpg" alt="The RM Safe homepage beside the RMSuite compliance dashboard." width="2880" height="1800" loading="lazy" decoding="async"></span>
-      <span class="nm">RM Safe <span class="arw" aria-hidden="true">→</span></span>
+      <span class="shot" data-clip><span class="shot-in"><img src="work/rmsafe-open.jpg" alt="The RM Safe homepage beside the RMSuite compliance dashboard." width="2880" height="1800" loading="lazy" decoding="async"></span></span>
+      <span class="hd"><span class="ix num">01</span><span class="nm">RM Safe</span><span class="arw" aria-hidden="true">↗</span></span>
       <span class="desc">Compliance software · 2025–26</span>
       <span class="sum">Thirty years of workplace safety knowledge, turned into a product a small business can run on its own.</span>
     </a>
 
     <a class="tile" href="kith-grove.html">
-      <span class="shot"><img src="work/kith-open.jpg" alt="The Kith Grove Healthcare homepage, a script logo on deep sage." width="2880" height="1800" loading="lazy" decoding="async"></span>
-      <span class="nm">Kith Grove <span class="arw" aria-hidden="true">→</span></span>
+      <span class="shot" data-clip style="--d:.1s"><span class="shot-in"><img src="work/kith-open.jpg" alt="The Kith Grove Healthcare homepage, a script logo on deep sage." width="2880" height="1800" loading="lazy" decoding="async"></span></span>
+      <span class="hd"><span class="ix num">02</span><span class="nm">Kith Grove</span><span class="arw" aria-hidden="true">↗</span></span>
       <span class="desc">Allied health website · 2025</span>
       <span class="sum">A paediatric practice that works where children actually are: at home, at day care and at school.</span>
     </a>
 
     <a class="tile" href="nana-bread.html">
-      <span class="shot"><img src="work/nana-open.jpg" alt="The Nana Bread storefront, a script logo on saffron." width="2880" height="1800" loading="lazy" decoding="async"></span>
-      <span class="nm">Nana Bread <span class="arw" aria-hidden="true">→</span></span>
+      <span class="shot" data-clip style="--d:.2s"><span class="shot-in"><img src="work/nana-open.jpg" alt="The Nana Bread storefront, a script logo on saffron." width="2880" height="1800" loading="lazy" decoding="async"></span></span>
+      <span class="hd"><span class="ix num">03</span><span class="nm">Nana Bread</span><span class="arw" aria-hidden="true">↗</span></span>
       <span class="desc">Bakery ecommerce · 2025</span>
       <span class="sum">A bake-to-order bakery that had outgrown taking orders by direct message, one evening at a time.</span>
     </a>
   </div>
+ </div>
 </section>
 
-<!-- ===================================================== WHAT WE BUILD -->
+<!-- ===================================================== WHAT WE BUILD
+     An index, not a set of cards. Reading down six ruled rows after three
+     large pictures is the change of density the page needs here, and it
+     stops the homepage becoming a stack of identical grids. -->
 <section id="build" class="caps shell" data-tone="light">
   <div class="sec-head">
-    <h2 class="d1">What we build</h2>
-    <p class="label">Most clients come for one and end up needing the other</p>
+    <div>
+      <span class="sec-ix num" data-rise>02 — Capability</span>
+      <h2 class="d1" data-mask>What we build</h2>
+    </div>
+    <p class="label" data-rise style="--d:.14s">Most clients come for one and end up needing the other</p>
   </div>
 
-  <div class="cap-grid">
-    <div class="cap">
-      <span class="n">01</span>
+  <ol class="cap-list">
+    <li class="cap" data-rise style="--i:0">
+      <span class="n num">01</span>
       <h3>Business websites</h3>
       <p>A site that represents the company you are now, not the one you were when it was last built. Positioning, structure, copy, design and build, plus a CMS you can actually edit.</p>
-    </div>
-    <div class="cap">
-      <span class="n">02</span>
+    </li>
+    <li class="cap" data-rise style="--i:1">
+      <span class="n num">02</span>
       <h3>Ecommerce</h3>
       <p>Selling online properly: storefront, payments, stock and shipping, with the fulfilment rules built in rather than bolted on afterwards.</p>
-    </div>
-    <div class="cap">
-      <span class="n">03</span>
+    </li>
+    <li class="cap" data-rise style="--i:2">
+      <span class="n num">03</span>
       <h3>Web applications</h3>
       <p>Customer portals, booking systems, member areas, referral flows. The software your customers touch, which means it has to be obvious the first time.</p>
-    </div>
-    <div class="cap">
-      <span class="n">04</span>
+    </li>
+    <li class="cap" data-rise style="--i:3">
+      <span class="n num">04</span>
       <h3>Operational software</h3>
       <p>The spreadsheet that quietly became critical, rebuilt as something a team can run on, with the permissions, the audit trail and the edge cases a spreadsheet never had.</p>
-    </div>
-    <div class="cap">
-      <span class="n">05</span>
+    </li>
+    <li class="cap" data-rise style="--i:4">
+      <span class="n num">05</span>
       <h3>SaaS platforms</h3>
       <p>A product with customers, billing and a roadmap. Scoped in stages, so you see something real working before committing to the whole build.</p>
-    </div>
-    <div class="cap">
-      <span class="n">06</span>
+    </li>
+    <li class="cap" data-rise style="--i:5">
+      <span class="n num">06</span>
       <h3>AI where it earns its place</h3>
       <p>Used where it removes genuine work: drafting a document, pulling structured data out of a mess, sorting what a person would otherwise sort. Not bolted on so the site can say it has AI.</p>
-    </div>
-  </div>
+    </li>
+  </ol>
 </section>
 
 <!-- ===================================================== STUDIO -->
 <section id="studio" class="studio shell" data-tone="light">
   <div class="sec-head">
-    <h2 class="d1">Two people. You get both of them.</h2>
-    <p class="label">No juniors, no account layer</p>
+    <div>
+      <span class="sec-ix num" data-rise>03 — Studio</span>
+      <h2 class="d1" data-mask>Two people. You get both of them.</h2>
+    </div>
+    <p class="label" data-rise style="--d:.14s">No juniors, no account layer</p>
   </div>
 
-  <p class="lead">Most studios our size apologise for being small. It is the entire argument: the people you talk to at the start are the people writing the code at the end, and there is nobody in between to lose anything.</p>
+  <p class="lead" data-rise>Most studios our size apologise for being small. It is the entire argument: the people you talk to at the start are the people writing the code at the end, and there is nobody in between to lose anything.</p>
 
   <div class="hands">
-    <div class="hand">
-      <span class="label">01 of two</span>
+    <div class="hand" data-rise style="--i:0">
+      <span class="label num">01 of two</span>
       <h3>Tom</h3>
       <span class="role">Strategy &amp; Product</span>
       <p class="body tight">Works out what the project actually is before anything gets designed: the business, the customer, the commercial goal. Then handles positioning, structure, copy and the interface itself.</p>
@@ -184,8 +240,8 @@
         <li>Product and interface design</li>
       </ul>
     </div>
-    <div class="hand">
-      <span class="label">02 of two</span>
+    <div class="hand" data-rise style="--i:1">
+      <span class="label num">02 of two</span>
       <h3>Andy</h3>
       <span class="role">Technology &amp; Engineering</span>
       <p class="body tight">Turns the plan into technology that holds up: the application, the integrations and the infrastructure, built so it still works properly on a Tuesday morning in two years.</p>
@@ -197,50 +253,68 @@
     </div>
   </div>
 
-  <p class="together">On every project both of us are across the whole thing. That is only possible because we take on a small number of projects at a time, and it is the reason the detail holds up.</p>
+  <p class="together" data-rise>On every project both of us are across the whole thing. That is only possible because we take on a small number of projects at a time, and it is the reason the detail holds up.</p>
 </section>
 
-<!-- ===================================================== PRICING -->
-<section id="price" class="price shell" data-tone="light">
-  <div class="sec-head">
-    <h2 class="d1">How we price, before you ask</h2>
-    <p class="label">So you can decide whether the hour is worth spending</p>
+<!-- ===================================================== PRICING
+     A quarter-tone off the paper, so the section owns its own surface
+     without another hard tonal jump this soon after the work. -->
+<section id="price" class="price" data-tone="light">
+ <div class="shell">
+  <div class="sec-head open">
+    <div>
+      <span class="sec-ix num" data-rise>04 — Money</span>
+      <h2 class="d1" data-mask>How we price, before you ask</h2>
+    </div>
+    <p class="label" data-rise style="--d:.14s">So you can decide whether the hour is worth spending</p>
   </div>
 
-  <div class="price-rows">
-    <div class="price-row">
+  <div class="price-grid">
+    <div class="price-row" data-rise style="--i:0">
+      <span class="n num">01</span>
       <h3>Fixed scope, fixed price</h3>
       <p>We scope the work properly and quote a number for it. You are not billed by the hour and you are not surprised at the end. If the scope changes, you find out what that costs before we build it.</p>
     </div>
-    <div class="price-row">
+    <div class="price-row" data-rise style="--i:1">
+      <span class="n num">02</span>
       <h3>One conversation gets you a number</h3>
       <p>A call and a look at what you already have is usually enough for us to tell you the range, what we would do first, and what can sensibly wait until later.</p>
     </div>
-    <div class="price-row">
+    <div class="price-row" data-rise style="--i:2">
+      <span class="n num">03</span>
       <h3>We will tell you when not to spend it</h3>
       <p>If the honest answer is that you need a smaller version, or a different kind of help, or nothing at all yet, that is what you will be told. It costs us a project and saves you a year.</p>
     </div>
-    <div class="price-row">
+    <div class="price-row" data-rise style="--i:3">
+      <span class="n num">04</span>
       <h3>Websites and software are priced differently</h3>
       <p>A marketing website is a defined piece of work with a defined end. Operational software and SaaS platforms are scoped in stages, so you can see something working before committing to the whole build.</p>
     </div>
   </div>
+ </div>
 </section>
 
 <!-- ===================================================== CONTACT -->
 <section id="contact" class="contact shell" data-tone="light">
   <div class="sec-head">
-    <h2 class="d1">How can we help?</h2>
-    <p class="label">Perth, Western Australia · AWST · Mon–Fri</p>
+    <div>
+      <span class="sec-ix num" data-rise>05 — Contact</span>
+      <h2 class="d1" data-mask>How can we help?</h2>
+    </div>
+    <p class="label" data-rise style="--d:.14s">Perth, Western Australia · AWST · Mon–Fri</p>
   </div>
 
   <div class="contact-grid">
-    <div>
+    <div data-rise>
       <p class="lead">You will get a reply from Tom or Andy, not a form response, usually inside a working day. If we are not the right studio for what you need, we will say so and point you at someone who is.</p>
       <a class="mailto" href="mailto:hello@trtechnologies.com.au">hello@trtechnologies.com.au</a>
+      <div class="contact-meta">
+        <p class="m num">31°57′S 115°51′E</p>
+        <p class="m"><span class="num" data-clock></span> AWST — the time here right now</p>
+      </div>
     </div>
 
-    <form id="enquiry" novalidate data-to="hello@trtechnologies.com.au">
+    <form id="enquiry" novalidate data-to="hello@trtechnologies.com.au" data-rise style="--d:.12s">
       <fieldset>
         <legend class="label">What are you building?</legend>
         <div class="opts">
