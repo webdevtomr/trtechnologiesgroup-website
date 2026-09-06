@@ -1,0 +1,514 @@
+/* ==========================================================================
+   TR TECHNOLOGIES GROUP
+
+   Built to the spec that came out of three rounds of review:
+
+     Ground     cool light off-white, true black          (r1)
+     Accent     electric blue #1F6FEB - the only client-free hue now that
+                the client palette is red, sage and saffron
+     Type       Archivo display, Switzer text             (r2, r3)
+     Body size  16px                                      (r2)
+     Corners    soft                                      (r2)
+     Labels     sentence case, not tracked caps           (r2)
+     Nav        mark left, links right, solid CTA         (r1)
+     Hero       full-bleed image, statement over it       (r1, r3)
+     Work       uniform tiles, three across, large, generous spacing  (r3)
+     Motion     none                                      (r3)
+
+   On motion: "No motion at all" was the only option accepted after seeing all
+   three levels running inside a real page. So there are no entrance
+   animations, no scroll-triggered reveals and no page transitions anywhere in
+   this file. What remains is interface feedback only - hover and focus states,
+   which are how a control tells you it is a control, not decoration.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TOKENS
+   -------------------------------------------------------------------------- */
+:root{
+  --paper:#F2F2F0;
+  --paper-2:#E7E7E4;
+  --paper-3:#D8D8D4;
+  --white:#FFFFFF;
+  --ink:#0D0D0F;
+  --ink-2:#46464A;
+  --muted:#74747A;
+
+  --accent:#1F6FEB;
+  --accent-dark:#1656C4;
+
+  --rule:rgba(13,13,15,.14);
+  --rule-2:rgba(13,13,15,.07);
+
+  --dark:#0D0D0F;
+  --on-dark:#F2F2F0;
+  --on-dark-2:rgba(242,242,240,.66);
+  --rule-dark:rgba(242,242,240,.2);
+
+  /* client colours, sampled from their live sites */
+  --rmsafe:#D8241C;
+  --kith:#3C6C54;
+  --nana:#FCD800;
+
+  --display:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --text:'Switzer','Helvetica Neue',Arial,sans-serif;
+
+  --t-hero:clamp(2.4rem,6vw,5.75rem);
+  --t-d1:clamp(1.9rem,3.9vw,3.4rem);
+  --t-d2:clamp(1.45rem,2.5vw,2.15rem);
+  --t-d3:clamp(1.1rem,1.55vw,1.35rem);
+  --t-lead:clamp(1rem,1.25vw,1.1875rem);
+  --t-body:1rem;
+  --t-small:.875rem;
+
+  --measure:34rem;
+  --measure-tight:27rem;
+
+  --gut:clamp(1.15rem,3.4vw,3.5rem);
+  --band:clamp(4.75rem,9vw,10rem);
+  --band-tight:clamp(2.75rem,5vw,4.5rem);
+  --shell:94rem;
+
+  --r-sm:6px;
+  --r-md:10px;
+  --r-lg:14px;
+  --r-pill:100px;
+
+  --t-ui:.15s;
+  --ease:cubic-bezier(.3,.8,.4,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{
+  -webkit-text-size-adjust:100%;
+  scroll-behavior:smooth;
+  scroll-padding-top:5.5rem;
+  background:var(--paper);
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--text);
+  font-size:var(--t-body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3,h4{margin:0;font-weight:400}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+dl,dd{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:var(--r-sm)}
+.on-dark :focus-visible{outline-color:var(--on-dark)}
+::selection{background:var(--accent);color:#fff}
+
+.skip{
+  position:absolute;left:var(--gut);top:-4rem;z-index:200;
+  background:var(--ink);color:var(--paper);padding:.75rem 1.15rem;
+  border-radius:var(--r-pill);text-decoration:none;font-weight:500;font-size:var(--t-small);
+}
+.skip:focus{top:.75rem}
+
+/* --------------------------------------------------------------------------
+   2. TYPE
+   -------------------------------------------------------------------------- */
+.d-hero{font-family:var(--display);font-weight:500;font-size:var(--t-hero);line-height:1;letter-spacing:-.035em}
+.d1{font-family:var(--display);font-weight:500;font-size:var(--t-d1);line-height:1.04;letter-spacing:-.032em}
+.d2{font-family:var(--display);font-weight:500;font-size:var(--t-d2);line-height:1.1;letter-spacing:-.026em}
+.d3{font-family:var(--display);font-weight:500;font-size:var(--t-d3);line-height:1.25;letter-spacing:-.018em}
+
+.lead{font-size:var(--t-lead);line-height:1.55;max-width:var(--measure);color:var(--ink-2)}
+.body{font-size:var(--t-body);line-height:1.68;max-width:var(--measure);color:var(--ink-2)}
+.body + .body{margin-top:.85em}
+.tight{max-width:var(--measure-tight)}
+
+/* labels are sentence case - no tracked-out capitals anywhere */
+.label{font-weight:500;font-size:var(--t-small);color:var(--muted)}
+.label-ink{color:var(--ink)}
+.on-dark .label{color:var(--on-dark-2)}
+
+.sec-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:.5rem 2rem;flex-wrap:wrap;
+  padding-bottom:1.15rem;border-bottom:1px solid var(--rule);
+  margin-bottom:clamp(2rem,3.6vw,3.25rem);
+}
+.sec-head > *{min-width:0}
+/* the trailing label is a caption, not a headline - let it wrap and keep it
+   off the right edge rather than letting it run out of the container */
+.sec-head .label{text-align:right;max-width:32ch}
+@media (max-width:820px){.sec-head .label{text-align:left}}
+
+/* --------------------------------------------------------------------------
+   3. SHELL
+   -------------------------------------------------------------------------- */
+.shell{max-width:var(--shell);margin-inline:auto;padding-inline:var(--gut)}
+.on-dark{
+  background:var(--dark);color:var(--on-dark);
+  --rule:var(--rule-dark);--rule-2:var(--rule-dark);
+  --ink:var(--on-dark);--ink-2:var(--on-dark-2);--muted:var(--on-dark-2);
+  --paper-2:#1A1A1D;
+}
+
+/* --------------------------------------------------------------------------
+   4. MASTHEAD
+   -------------------------------------------------------------------------- */
+.masthead{
+  position:fixed;inset:0 0 auto;z-index:100;
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem var(--gut);
+  color:var(--nav-fg,var(--ink));
+}
+.masthead.stuck{
+  background:color-mix(in srgb,var(--nav-bg,var(--paper)) 90%,transparent);
+  backdrop-filter:blur(16px) saturate(1.4);
+  -webkit-backdrop-filter:blur(16px) saturate(1.4);
+  box-shadow:0 1px 0 var(--nav-rule,var(--rule));
+}
+.mark{display:flex;align-items:center;gap:.6rem;text-decoration:none;white-space:nowrap;margin-right:auto}
+.mark{align-items:center}
+.mark-svg{height:clamp(19px,2.1vw,24px);width:auto;display:block}
+.mark .full{font-weight:500;font-size:var(--t-small);opacity:.62}
+@media (max-width:600px){.mark .full{display:none}}
+
+.nav-links{display:flex;align-items:center;gap:.2rem}
+.nav-link{
+  font-weight:500;font-size:var(--t-small);text-decoration:none;
+  padding:.5rem .8rem;border-radius:var(--r-pill);
+  transition:background-color var(--t-ui) var(--ease),color var(--t-ui) var(--ease);
+}
+.nav-link:hover{background:color-mix(in srgb,currentColor 10%,transparent)}
+@media (max-width:820px){.nav-link.opt{display:none}}
+
+.btn{
+  --btn-bg:var(--ink);--btn-fg:var(--paper);
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--btn-bg);color:var(--btn-fg);border:1px solid var(--btn-bg);
+  padding:.7rem 1.2rem;border-radius:var(--r-pill);text-decoration:none;cursor:pointer;
+  font-family:var(--text);font-weight:500;font-size:var(--t-small);
+  transition:background-color var(--t-ui) var(--ease),border-color var(--t-ui) var(--ease),
+             color var(--t-ui) var(--ease);
+}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:active{background:var(--accent-dark);border-color:var(--accent-dark)}
+.btn-lg{padding:.85rem 1.5rem;font-size:.9375rem}
+.btn-ghost{--btn-bg:transparent;--btn-fg:currentColor;border-color:currentColor}
+.btn-ghost:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.on-dark .btn{--btn-bg:var(--on-dark);--btn-fg:var(--dark)}
+.masthead .btn{padding:.55rem 1rem}
+
+/* --------------------------------------------------------------------------
+   5. HERO - full bleed, statement over the sky
+   The photograph is pale at the top, so the type is dark ink rather than the
+   usual white-on-a-black-scrim. A soft light wash guarantees the contrast
+   without hiding the picture.
+   -------------------------------------------------------------------------- */
+.hero{
+  position:relative;
+  min-height:min(88vh,52rem);
+  display:flex;flex-direction:column;justify-content:space-between;
+  overflow:hidden;
+  background:var(--paper-2);
+}
+.hero-media{position:absolute;inset:0;z-index:0}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 62%}
+
+/* The photograph is the still; the video is the same frame with the grass
+   moving, faded in over the top once it can actually play. The still is what
+   loads first and what everyone sees if the video never arrives - so the hero
+   is never blank and never shifts. */
+.hero-vid{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 62%;
+  opacity:0;pointer-events:none;
+}
+/* the two copies only become visible together, and from then on their opacity
+   is driven frame by frame in script - so no CSS transition here */
+.hero-media.vid-ready .hero-still{opacity:0;transition:opacity 1s linear}
+.hero-still{transition:opacity 1s linear}
+@media (prefers-reduced-motion:reduce){.hero-vid{display:none}}
+/* The picture is busiest exactly where the supporting copy sits, so the wash
+   has to stay strong past the buttons and only release over the grass. Values
+   below were set by measuring contrast against the darkest pixels of the iron,
+   not by eye. */
+.hero-media::after{
+  content:"";position:absolute;inset:0;
+  background:
+    /* a short dark foot so the caption strip reads over the grass */
+    linear-gradient(to top,
+      rgba(13,13,15,.62) 0%,
+      rgba(13,13,15,.28) 9%,
+      rgba(13,13,15,0) 20%),
+    /* the light wash that carries the headline and the copy */
+    linear-gradient(to bottom,
+      rgba(242,242,240,.96) 0%,
+      rgba(242,242,240,.93) 40%,
+      rgba(242,242,240,.86) 58%,
+      rgba(242,242,240,.55) 72%,
+      rgba(242,242,240,.12) 88%,
+      rgba(242,242,240,0) 100%);
+}
+.hero-in{
+  position:relative;z-index:2;width:100%;max-width:var(--shell);margin-inline:auto;
+  padding:clamp(7rem,15vh,9.5rem) var(--gut) 0;
+}
+.hero h1{max-width:24ch;margin-bottom:clamp(1rem,2.2vw,1.6rem);text-wrap:balance}
+/* full-strength ink, not the muted body grey - this sits on a photograph */
+.hero .lead{max-width:36rem;color:var(--ink);font-weight:500}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:clamp(1.3rem,2.8vw,2rem)}
+.hero-cta .btn-ghost{background:color-mix(in srgb,var(--paper) 72%,transparent);border-color:var(--ink)}
+.hero-cta .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+
+.hero-foot{
+  position:relative;z-index:2;width:100%;max-width:var(--shell);margin-inline:auto;
+  padding:0 var(--gut) clamp(1.4rem,3vw,2.2rem);
+  display:flex;flex-wrap:wrap;gap:.4rem 2rem;justify-content:space-between;align-items:baseline;
+  color:var(--on-dark-2);
+}
+.hero-foot .label{color:rgba(242,242,240,.8)}
+@media (max-width:700px){
+  /* the hero collapses to its content height here, so space-between has
+     nothing to push against - the caption needs its own gap */
+  .hero{min-height:auto;padding-bottom:1rem}
+  .hero-media img,.hero-vid{object-position:50% 70%}
+  .hero-in{padding-bottom:clamp(2.5rem,9vw,4rem)}
+}
+
+/* --------------------------------------------------------------------------
+   6. POSITIONING
+   -------------------------------------------------------------------------- */
+.say{padding:var(--band) 0}
+.say-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+  gap:clamp(1.75rem,4.5vw,4.5rem);align-items:start}
+@media (max-width:900px){.say-grid{grid-template-columns:1fr}}
+.say h2{max-width:19ch}
+.say .accent{color:var(--accent)}
+
+/* --------------------------------------------------------------------------
+   7. WORK - uniform tiles, three across, large and generously spaced
+   Three projects, three columns. Every tile is identical: same ratio, same
+   caption structure, same everything. The work varies; the frame does not.
+   -------------------------------------------------------------------------- */
+.work{padding-bottom:var(--band)}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(2.5rem,4.5vw,4rem) clamp(1.5rem,3.2vw,3rem)}
+@media (max-width:1000px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:680px){.tiles{grid-template-columns:1fr;gap:clamp(2rem,7vw,3rem)}}
+
+.tile{display:block;text-decoration:none;color:inherit}
+/* every part of a tile is a span inside the anchor, so each one has to be told
+   to be a block - otherwise the name, the discipline and the summary run
+   together on one line */
+/* 16:10 matches the native ratio of all three screenshots, so nothing is
+   cropped and the three tiles still read as identical frames */
+.tile .shot{
+  display:block;aspect-ratio:16/10;overflow:hidden;border-radius:var(--r-lg);background:var(--paper-2);
+  border:1px solid var(--rule-2);
+}
+.tile .shot img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.tile .nm{
+  font-family:var(--display);font-weight:500;font-size:clamp(1.25rem,1.85vw,1.6rem);
+  letter-spacing:-.03em;line-height:1.15;margin-top:1rem;
+  display:flex;align-items:baseline;gap:.4rem;
+  transition:color var(--t-ui) var(--ease);
+}
+.tile .nm .arw{font-size:.7em}
+.tile .desc{display:block;font-size:var(--t-small);color:var(--muted);margin-top:.3rem}
+.tile .sum{display:block;font-size:var(--t-body);line-height:1.6;color:var(--ink-2);margin-top:.7rem}
+.tile:hover .nm{color:var(--accent)}
+.tile:hover .shot{border-color:var(--accent)}
+
+/* --------------------------------------------------------------------------
+   8. CAPABILITIES - uniform, same treatment as the tiles
+   -------------------------------------------------------------------------- */
+.caps{padding:var(--band) 0;border-top:1px solid var(--rule)}
+.cap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(2.25rem,4vw,3.5rem) clamp(1.5rem,3vw,2.75rem)}
+@media (max-width:900px){.cap-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.cap-grid{grid-template-columns:1fr}}
+.cap{border-top:2px solid var(--ink);padding-top:1.25rem}
+.cap .n{display:block;color:var(--accent);font-weight:500;font-size:var(--t-small);margin-bottom:.6rem}
+.cap h3{font-family:var(--display);font-weight:500;font-size:1.1875rem;letter-spacing:-.024em;margin-bottom:.6rem}
+.cap p{font-size:var(--t-small);line-height:1.65;color:var(--ink-2)}
+
+/* --------------------------------------------------------------------------
+   9. STUDIO
+   -------------------------------------------------------------------------- */
+.studio{padding:var(--band) 0}
+.hands{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4rem);margin-top:clamp(1.8rem,4vw,3rem)}
+.hand{border-top:2px solid var(--ink);padding-top:1.1rem}
+.hand h3{font-family:var(--display);font-weight:500;font-size:clamp(1.75rem,3vw,2.5rem);
+  line-height:1;letter-spacing:-.035em;margin:.5rem 0 .3rem}
+.hand .role{display:block;color:var(--accent);font-weight:500;font-size:var(--t-small);margin-bottom:.9rem}
+.hand .does{margin-top:1rem;padding-top:.85rem;border-top:1px solid var(--rule-2);display:grid;gap:.35rem}
+.hand .does li{font-size:var(--t-small);color:var(--muted)}
+@media (max-width:760px){.hands{grid-template-columns:1fr;gap:2.2rem}}
+.together{margin-top:clamp(1.6rem,3.5vw,2.6rem);font-size:var(--t-lead);line-height:1.55;
+  max-width:46rem;color:var(--ink-2)}
+
+/* --------------------------------------------------------------------------
+   10. PRICING
+   -------------------------------------------------------------------------- */
+.price{padding:var(--band) 0}
+.price-rows{border-top:1px solid var(--rule)}
+.price-row{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.5fr);
+  gap:.55rem clamp(1.5rem,4vw,3.5rem);padding:clamp(1.6rem,3vw,2.4rem) 0;border-bottom:1px solid var(--rule)}
+.price-row h3{font-family:var(--display);font-weight:500;font-size:1.1875rem;letter-spacing:-.024em}
+.price-row p{font-size:var(--t-small);line-height:1.65;color:var(--ink-2);max-width:46rem}
+@media (max-width:760px){.price-row{grid-template-columns:1fr}}
+
+/* --------------------------------------------------------------------------
+   11. CONTACT
+   -------------------------------------------------------------------------- */
+.contact{padding:var(--band) 0 var(--band-tight)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);
+  gap:clamp(1.8rem,4.5vw,4.5rem);padding-top:clamp(1.4rem,3vw,2.2rem)}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+.mailto{
+  display:inline-block;margin-top:1.2rem;text-decoration:none;
+  font-family:var(--display);font-weight:500;font-size:clamp(1.25rem,2.4vw,1.9rem);
+  line-height:1.2;letter-spacing:-.032em;
+  border-bottom:2px solid var(--rule);padding-bottom:.08em;
+  transition:color var(--t-ui) var(--ease),border-color var(--t-ui) var(--ease);
+}
+.mailto:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+form{display:grid;gap:1.15rem}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:.6rem}
+legend{padding:0}
+.opts{display:flex;flex-wrap:wrap;gap:.4rem}
+.opts label{
+  font-weight:500;font-size:var(--t-small);border:1px solid var(--rule);
+  padding:.5rem .9rem;border-radius:var(--r-pill);cursor:pointer;color:var(--ink-2);
+  transition:background-color var(--t-ui) var(--ease),color var(--t-ui) var(--ease),
+             border-color var(--t-ui) var(--ease);
+}
+.opts label:hover{border-color:var(--ink);color:var(--ink)}
+.opts input{position:absolute;opacity:0;width:0;height:0}
+.opts label:has(input:checked){background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.opts label:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+
+.field{display:grid;gap:.35rem}
+.field > span{font-weight:500;font-size:var(--t-small);color:var(--muted)}
+.field input,.field textarea{
+  font-family:var(--text);font-size:var(--t-body);color:var(--ink);
+  background:var(--white);border:1px solid var(--rule);border-radius:var(--r-md);
+  padding:.75rem .9rem;width:100%;
+  transition:border-color var(--t-ui) var(--ease);
+}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(43,75,255,.14)}
+.field textarea{resize:vertical;min-height:5.5rem;line-height:1.6}
+::placeholder{color:var(--muted);opacity:.85}
+.note{font-size:var(--t-small);color:var(--muted);line-height:1.6}
+.note[data-state="err"]{color:#C0271D}
+
+/* --------------------------------------------------------------------------
+   12. FOOTER
+   -------------------------------------------------------------------------- */
+.foot{border-top:1px solid var(--rule);padding:1.4rem 0 2.2rem}
+.foot-in{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-between;align-items:baseline}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--accent)}
+
+/* --------------------------------------------------------------------------
+   13. PROJECT PAGES
+   -------------------------------------------------------------------------- */
+.proj-hero{padding:clamp(7rem,14vh,9.5rem) 0 0}
+.crumb{display:flex;gap:.5rem;align-items:center;margin-bottom:clamp(1rem,2.4vw,1.8rem)}
+.crumb a{text-decoration:none;color:var(--muted)}
+.crumb a:hover{color:var(--accent)}
+.proj-title{font-family:var(--display);font-weight:500;font-size:clamp(2.4rem,6.5vw,6rem);
+  line-height:1;letter-spacing:-.04em;margin-bottom:clamp(.9rem,2vw,1.4rem)}
+.proj-say{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:1rem clamp(1.5rem,4vw,3.5rem);align-items:end;padding-bottom:clamp(1.2rem,3vw,2rem)}
+@media (max-width:820px){.proj-say{grid-template-columns:1fr}}
+
+.proj-open{margin-top:clamp(1.6rem,3.5vw,2.6rem)}
+.proj-open .plate{aspect-ratio:16/9}
+@media (max-width:760px){.proj-open .plate{aspect-ratio:4/3}}
+
+.proj-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem clamp(1rem,2.4vw,2.5rem);
+  padding:var(--band-tight) 0;border-bottom:1px solid var(--rule)}
+@media (max-width:760px){.proj-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.proj-facts dt{margin-bottom:.3rem}
+.proj-facts dd{font-size:var(--t-small);line-height:1.55}
+
+.plate{position:relative;overflow:hidden;border-radius:var(--r-lg);background:var(--paper-2);
+  border:1px solid var(--rule-2)}
+.plate img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.plate-c img{object-position:50% 50%}
+.cap-line{margin-top:.75rem}
+
+.proj-body{padding:var(--band) 0}
+.blk{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(1rem,2.4vw,2.5rem);
+  padding-bottom:var(--band)}
+.blk:last-child{padding-bottom:0}
+.b-say{grid-column:1/5}
+.b-vis{grid-column:6/13}
+.blk.rev .b-say{grid-column:9/13}
+.blk.rev .b-vis{grid-column:1/8;grid-row:1}
+.b-full{grid-column:1/13}
+@media (max-width:900px){
+  .blk{grid-template-columns:1fr}
+  .b-say,.b-vis,.b-full,.blk.rev .b-say,.blk.rev .b-vis{grid-column:1;grid-row:auto}
+  .b-vis{margin-top:1.3rem}
+  .blk.rev .b-vis{margin-top:0;margin-bottom:1.3rem}
+}
+.b-say h2{margin-bottom:.8rem}
+.b-say .body{max-width:30rem}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.8rem,1.6vw,1.4rem)}
+@media (max-width:600px){.pair{grid-template-columns:1fr}}
+.phone-crop{aspect-ratio:9/16}
+
+.spec-list{border-top:1px solid var(--rule);margin-top:1.2rem}
+.spec-list div{display:grid;grid-template-columns:2.5rem minmax(0,1fr) auto;gap:.4rem 1.1rem;
+  align-items:baseline;padding:.8rem 0;border-bottom:1px solid var(--rule-2)}
+.spec-list .k{font-weight:500;font-size:var(--t-small);color:var(--muted);font-variant-numeric:tabular-nums}
+.spec-list .m{font-weight:500;font-size:var(--t-body)}
+.spec-list .t{font-weight:500;font-size:var(--t-small);color:var(--accent)}
+
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem;margin-top:1.2rem}
+.tier{border:1px solid var(--rule);border-radius:var(--r-md);padding:1.1rem 1.15rem 1.25rem}
+.tier .amt{font-family:var(--display);font-weight:500;font-size:clamp(1.6rem,3vw,2.25rem);
+  line-height:1;letter-spacing:-.035em}
+.tier .who{display:block;margin-top:.45rem;font-size:var(--t-small);color:var(--muted)}
+@media (max-width:620px){.tiers{grid-template-columns:1fr}}
+
+.next{border-top:1px solid var(--rule)}
+.next a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;
+  text-decoration:none;padding:var(--band-tight) var(--gut);max-width:var(--shell);margin-inline:auto}
+.next .nm{font-family:var(--display);font-weight:500;font-size:clamp(1.8rem,4.5vw,3.4rem);
+  line-height:1;letter-spacing:-.036em;margin-top:.4rem;display:block;
+  transition:color var(--t-ui) var(--ease)}
+.next .arw{font-size:clamp(1.3rem,2.6vw,2rem)}
+.next a:hover .nm{color:var(--accent)}
+
+/* --------------------------------------------------------------------------
+   14. REDUCED MOTION
+   There is no decorative motion to switch off. This is belt and braces for the
+   handful of hover/focus transitions above.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important}
+}
+
+/* --------------------------------------------------------------------------
+   15. PRINT
+   -------------------------------------------------------------------------- */
+@media print{
+  .masthead,.skip{display:none!important}
+  body{background:#fff;color:#000}
+  .hero{min-height:0}
+  .hero-media::after{display:none}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:.75em;color:#555}
+}

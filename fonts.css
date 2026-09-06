@@ -1,0 +1,33 @@
+/* ==========================================================================
+   TR TECHNOLOGIES GROUP — type
+
+     Archivo   display   headlines and project names, 500–600
+     Switzer   text      body copy, labels, interface
+
+   Both were the only faces to survive every round of review without a single
+   rejection. Archivo is variable (400–700), so weight is free.
+
+   Archivo: SIL Open Font Licence 1.1.
+   Switzer: Indian Type Foundry, ITF Free Font Licence — commercial use and
+   self-hosting permitted. Nothing here loads from a CDN at runtime.
+   ========================================================================== */
+
+@font-face{
+  font-family:'Archivo';
+  src:url('fonts/Archivo-var.woff2') format('woff2-variations'),
+      url('fonts/Archivo-var.woff2') format('woff2');
+  font-weight:400 700;
+  font-style:normal;
+  font-display:swap;
+}
+
+@font-face{
+  font-family:'Switzer';
+  src:url('fonts/Switzer-400.woff2') format('woff2');
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'Switzer';
+  src:url('fonts/Switzer-500.woff2') format('woff2');
+  font-weight:500; font-style:normal; font-display:swap;
+}
