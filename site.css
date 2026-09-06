@@ -286,7 +286,7 @@ button{font:inherit;color:inherit}
 /* --------------------------------------------------------------------------
    6. POSITIONING
    -------------------------------------------------------------------------- */
-.say{padding:var(--band) 0}
+.say{padding-block:var(--band)}
 .say-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
   gap:clamp(1.75rem,4.5vw,4.5rem);align-items:start}
 @media (max-width:900px){.say-grid{grid-template-columns:1fr}}
@@ -330,7 +330,7 @@ button{font:inherit;color:inherit}
 /* --------------------------------------------------------------------------
    8. CAPABILITIES - uniform, same treatment as the tiles
    -------------------------------------------------------------------------- */
-.caps{padding:var(--band) 0;border-top:1px solid var(--rule)}
+.caps{padding-block:var(--band);border-top:1px solid var(--rule)}
 .cap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
   gap:clamp(2.25rem,4vw,3.5rem) clamp(1.5rem,3vw,2.75rem)}
 @media (max-width:900px){.cap-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -343,7 +343,7 @@ button{font:inherit;color:inherit}
 /* --------------------------------------------------------------------------
    9. STUDIO
    -------------------------------------------------------------------------- */
-.studio{padding:var(--band) 0}
+.studio{padding-block:var(--band)}
 .hands{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4rem);margin-top:clamp(1.8rem,4vw,3rem)}
 .hand{border-top:2px solid var(--ink);padding-top:1.1rem}
 .hand h3{font-family:var(--display);font-weight:500;font-size:clamp(1.75rem,3vw,2.5rem);
@@ -358,7 +358,7 @@ button{font:inherit;color:inherit}
 /* --------------------------------------------------------------------------
    10. PRICING
    -------------------------------------------------------------------------- */
-.price{padding:var(--band) 0}
+.price{padding-block:var(--band)}
 .price-rows{border-top:1px solid var(--rule)}
 .price-row{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.5fr);
   gap:.55rem clamp(1.5rem,4vw,3.5rem);padding:clamp(1.6rem,3vw,2.4rem) 0;border-bottom:1px solid var(--rule)}
@@ -369,7 +369,7 @@ button{font:inherit;color:inherit}
 /* --------------------------------------------------------------------------
    11. CONTACT
    -------------------------------------------------------------------------- */
-.contact{padding:var(--band) 0 var(--band-tight)}
+.contact{padding-block:var(--band) var(--band-tight)}
 .contact-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);
   gap:clamp(1.8rem,4.5vw,4.5rem);padding-top:clamp(1.4rem,3vw,2.2rem)}
 @media (max-width:860px){.contact-grid{grid-template-columns:1fr}}
@@ -449,7 +449,7 @@ legend{padding:0}
 .plate-c img{object-position:50% 50%}
 .cap-line{margin-top:.75rem}
 
-.proj-body{padding:var(--band) 0}
+.proj-body{padding-block:var(--band)}
 .blk{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(1rem,2.4vw,2.5rem);
   padding-bottom:var(--band)}
 .blk:last-child{padding-bottom:0}
