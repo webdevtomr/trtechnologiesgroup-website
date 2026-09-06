@@ -21,30 +21,31 @@
 <!-- reveal styles are scoped to .js, set before first paint -->
 <script>document.documentElement.className+=' js'</script>
 </head>
-<body>
+<body class="pj-nana">
+
+<div class="grain" aria-hidden="true"></div>
 
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="masthead">
-  <a class="mark" href="#top" aria-label="TR Technologies Group, home"><img class="mark-svg" src="brand/tr-mark@3x.png" alt="" width="96" height="68" decoding="async"><span class="full">Technologies Group</span></a>
+  <a class="mark" href="index.html" aria-label="TR Technologies Group, home"><img class="mark-svg" src="brand/tr-mark@3x.png" alt="" width="96" height="68" decoding="async"><span class="full">Technologies Group</span></a>
   <nav class="nav-links" aria-label="Primary">
-    <a class="nav-link opt" href="index.html#work">All work</a>
+    <a class="nav-link opt" href="work.html">All work</a>
     <a class="nav-link opt" href="index.html#studio">Studio</a>
     <a class="cta" href="index.html#contact"><span>Start a project</span><span class="disc" aria-hidden="true">→</span></a>
     <button class="burger" type="button" aria-label="Open menu" aria-controls="menu" aria-expanded="false"><span></span><span></span></button>
   </nav>
 </header>
 
-<!-- The same full-screen menu as the homepage; site.js keeps it inert while closed. -->
 <div class="menu" id="menu">
   <p class="menu-top" style="--i:0">TR Technologies Group — websites and software, Perth</p>
 
   <nav class="menu-nav" aria-label="Menu">
     <a class="menu-link" href="index.html" style="--i:1"><span class="ix num">01</span><span class="wd">Home</span></a>
-    <a class="menu-link" href="index.html#work" style="--i:2"><span class="ix num">02</span><span class="wd">Work</span></a>
+    <a class="menu-link" href="work.html" style="--i:2"><span class="ix num">02</span><span class="wd">Work</span></a>
     <a class="menu-link" href="index.html#build" style="--i:3"><span class="ix num">03</span><span class="wd">What we build</span></a>
-    <a class="menu-link" href="index.html#studio" style="--i:4"><span class="ix num">04</span><span class="wd">Studio</span></a>
-    <a class="menu-link" href="index.html#price" style="--i:5"><span class="ix num">05</span><span class="wd">Pricing</span></a>
+    <a class="menu-link" href="index.html#process" style="--i:4"><span class="ix num">04</span><span class="wd">Process</span></a>
+    <a class="menu-link" href="index.html#studio" style="--i:5"><span class="ix num">05</span><span class="wd">Studio</span></a>
     <a class="menu-link" href="index.html#contact" style="--i:6"><span class="ix num">06</span><span class="wd">Contact</span></a>
   </nav>
 
@@ -58,99 +59,121 @@
   </div>
 </div>
 
-
 <main id="main">
 
-<section class="proj-hero shell" data-tone="light">
-  <p class="crumb label"><a href="index.html#work">Selected work</a> <span aria-hidden="true">/</span> <span>03</span></p>
+<header class="pj-open" data-tone="dark">
+  <div class="pj-in">
+    <p class="pj-crumb"><a href="work.html">Selected work</a> <span aria-hidden="true">/</span> <span class="num">03</span></p>
+    <h1 class="pj-title" data-mask style="--d:.12s">Nana Bread</h1>
+    <p class="pj-say" data-rise style="--d:.5s">A Perth bakery that makes gourmet banana bread to order, sells at the markets, and had outgrown taking orders by direct message.</p>
+    <p data-rise style="--d:.62s"><a class="pj-live" href="https://www.nanabreadperth.com/" target="_blank" rel="noreferrer">Visit nanabreadperth.com <span class="arw" aria-hidden="true">↗</span></a></p>
 
-  <h1 class="proj-title">Nana Bread</h1>
-
-  <div class="proj-say">
-    <p class="lead">A Perth bakery that makes gourmet banana bread to order, sells at the markets, and had outgrown taking orders by direct message.</p>
-    <p class="label">2025 · Perth, WA · <a href="https://www.nanabreadperth.com/" target="_blank" rel="noreferrer">nanabreadperth.com&nbsp;↗</a></p>
+    <dl class="pj-facts" data-rise style="--d:.7s">
+      <div><dt>Year</dt><dd><span class="num">2025</span></dd></div>
+      <div><dt>Sector</dt><dd>Food &amp; beverage, bake to order</dd></div>
+      <div><dt>Scope</dt><dd>Brand application, storefront, checkout, pickup logic, wholesale enquiries</dd></div>
+      <div><dt>Tom / Andy</dt><dd>Structure, copy, storefront design / ecommerce build, payments, fulfilment logic</dd></div>
+    </dl>
   </div>
+  <div class="corr corr-lit" data-corr="0.09" aria-hidden="true"></div>
+</header>
 
-  <div class="proj-open">
-    <figure class="plate" style="margin:0">
+<!-- The stage bleeds; the screenshot does not. Full width for the page, whole
+     edges for the picture. -->
+<div class="pj-stage dark">
+  <div class="pj-stage-in">
+    <figure class="pj-plate" style="aspect-ratio:2880/1800" data-clip>
       <img src="work/nana-open.jpg" alt="The Nana Bread homepage: the script logo on saffron under a market banner, with the order button beneath." width="2880" height="1800" fetchpriority="high" decoding="async">
     </figure>
   </div>
+</div>
 
-  <dl class="proj-facts">
-    <div><dt class="label">Sector</dt><dd>Food &amp; beverage, bake to order</dd></div>
-    <div><dt class="label">Scope</dt><dd>Brand application, storefront, checkout, pickup logic, wholesale enquiries</dd></div>
-    <div><dt class="label">Tom</dt><dd>Structure, copy, storefront design</dd></div>
-    <div><dt class="label">Andy</dt><dd>Ecommerce build, payments, fulfilment logic</dd></div>
-  </dl>
-</section>
+<div class="pj-body">
 
-<div class="shell proj-body">
+  <section class="pj-sec after-bleed shell">
+    <div class="pj-said">
+      <div>
+        <span class="pj-ix num" data-rise>01 — The problem</span>
+        <h2 class="pj-h" data-mask>Demand was never the problem.</h2>
+      </div>
+      <div data-rise style="--d:.14s">
+        <p class="pj-p">Orders were arriving as direct messages and being reconciled by hand. That works right up until it doesn’t: a business run that way is capped at the number of messages one person can answer in an evening, and that person is the same one who has to be up baking.</p>
+        <p class="pj-p">It also produces the worst possible failure: taking money for something that was never going to exist, because the tray was already spoken for.</p>
+      </div>
+    </div>
+  </section>
 
-  <div class="blk">
-    <div class="b-say">
-      <p class="label" style="margin-bottom:.9rem">01 · The problem</p>
-      <h2 class="d2">Demand was never the problem.</h2>
-      <p class="body">Orders were arriving as direct messages and being reconciled by hand. That works right up until it doesn’t: a business run that way is capped at the number of messages one person can answer in an evening, and that person is the same one who has to be up baking.</p>
-      <p class="body">It also produces the worst possible failure: taking money for something that was never going to exist, because the tray was already spoken for.</p>
+  <section class="pj-sec tight shell">
+    <div class="pj-pair">
+      <!-- a matched pair: the same frame twice, so the two screens are read
+           against each other rather than as two unrelated pictures -->
+      <div>
+        <figure class="pj-plate" style="aspect-ratio:4/3" data-clip>
+          <img src="work/nana-story.jpg" alt="The Nana Bread story section, with photographs of the bakers." width="2304" height="1800" loading="lazy" decoding="async">
+        </figure>
+        <p class="pj-cap">A small business, said plainly</p>
+      </div>
+      <div>
+        <figure class="pj-plate" style="aspect-ratio:4/3;--d:.1s" data-clip>
+          <img src="work/nana-products.jpg" alt="The Nana Bread range with photographs, prices and add-to-cart controls." width="2560" height="1520" loading="lazy" decoding="async">
+        </figure>
+        <p class="pj-cap">The range, priced and ready to order</p>
+      </div>
     </div>
-    <div class="b-vis">
-      <figure class="plate" style="margin:0;aspect-ratio:2304/1800">
-        <img src="work/nana-story.jpg" alt="The Nana Bread story section, with photographs of the bakers." width="2304" height="1800" loading="lazy" decoding="async">
-      </figure>
-      <p class="label cap-line">A small business, said plainly</p>
-    </div>
-  </div>
+  </section>
 
-  <div class="blk rev">
-    <div class="b-say">
-      <p class="label" style="margin-bottom:.9rem">02 · What we built</p>
-      <h2 class="d2">A storefront that knows the baking schedule.</h2>
-      <p class="body">The range, the prices and the pickup windows live in one place, and the checkout knows all three. You choose your treats and a pickup slot in the same step, which is the order people think in, not a cart, then a surprise about collection.</p>
-      <p class="body">Wholesale and catering sit on their own path, because a café ordering weekly needs a different conversation to someone buying a loaf for Saturday.</p>
+  <section class="pj-sec shell">
+    <div class="pj-split rev">
+      <div class="s-say">
+        <span class="pj-ix num" data-rise>02 — What we built</span>
+        <h2 class="pj-h" data-mask>A storefront that knows the baking schedule.</h2>
+        <p class="pj-p" data-rise style="--d:.14s">The range, the prices and the pickup windows live in one place, and the checkout knows all three. You choose your treats and a pickup slot in the same step, which is the order people think in, not a cart, then a surprise about collection.</p>
+        <p class="pj-p" data-rise style="--d:.18s">Wholesale and catering sit on their own path, because a café ordering weekly needs a different conversation to someone buying a loaf for Saturday.</p>
+      </div>
+      <div class="s-vis">
+        <figure class="pj-plate" style="aspect-ratio:1792/1280" data-clip>
+          <img src="work/nana-order.jpg" alt="The “Ready to Order?” section, showing the three-step pickup arrangement and the Thursday cut-off." width="1792" height="1280" loading="lazy" decoding="async">
+        </figure>
+        <p class="pj-cap">The arrangement, stated before the checkout</p>
+      </div>
     </div>
-    <div class="b-vis">
-      <figure class="plate" style="margin:0;aspect-ratio:2560/1520">
-        <img src="work/nana-products.jpg" alt="The Nana Bread range with photographs, prices and add-to-cart controls." width="2560" height="1520" loading="lazy" decoding="async">
-      </figure>
-      <p class="label cap-line">The range, priced and ready to order</p>
-    </div>
-  </div>
+  </section>
 
-  <div class="blk">
-    <div class="b-say">
-      <p class="label" style="margin-bottom:.9rem">03 · The mechanism</p>
-      <h2 class="d2">The cut-off follows the baking schedule, not the clock.</h2>
-      <p class="body">Orders close on Thursday evening for the coming pickup window, and the production limits sit inside the checkout rather than in someone’s head. When the day’s tray is gone, the shop closes itself.</p>
-      <p class="body">Bake-to-order is unfamiliar to most people buying online. They expect a box tomorrow. So the arrangement is stated on the page before anyone reaches the checkout, which removes almost every question the business used to answer by message.</p>
+  <section class="pj-dark" data-tone="dark">
+    <div class="pj-in">
+      <div class="pj-claim">
+        <div>
+          <span class="pj-ix num" data-rise>03 — The mechanism</span>
+          <h2 class="pj-h" data-mask>The cut-off follows the baking schedule, not the clock.</h2>
+        </div>
+        <div data-rise style="--d:.16s">
+          <p class="pj-p">Orders close on Thursday evening for the coming pickup window, and the production limits sit inside the checkout rather than in someone’s head. When the day’s tray is gone, the shop closes itself.</p>
+          <p class="pj-p">Bake-to-order is unfamiliar to most people buying online. They expect a box tomorrow. So the arrangement is stated on the page before anyone reaches the checkout, which removes almost every question the business used to answer by message.</p>
+        </div>
+      </div>
     </div>
-    <div class="b-vis">
-      <figure class="plate" style="margin:0;aspect-ratio:1792/1280">
-        <img src="work/nana-order.jpg" alt="The “Ready to Order?” section, showing the three-step pickup arrangement and the Thursday cut-off." width="1792" height="1280" loading="lazy" decoding="async">
-      </figure>
-      <p class="label cap-line">The arrangement, stated before the checkout</p>
-    </div>
-  </div>
+    <div class="corr corr-lit" data-corr="0.09" aria-hidden="true"></div>
+  </section>
 
-  <div class="blk rev">
-    <div class="b-say">
-      <p class="label" style="margin-bottom:.9rem">04 · Where it is ordered</p>
-      <h2 class="d2">On a phone, usually on a Thursday.</h2>
-      <p class="body">Close to all of this happens on a phone, often straight from a post. Ordering is one tap from the first screen, and the market banner does the job the caption used to do: telling a regular where to find them this weekend.</p>
-    </div>
-    <div class="b-vis">
-      <figure class="plate phone-crop" style="margin:0;max-width:20rem">
+  <section class="pj-sec shell">
+    <div class="pj-phone">
+      <div>
+        <span class="pj-ix num" data-rise>04 — Where it is ordered</span>
+        <h2 class="pj-h" data-mask>On a phone, usually on a Thursday.</h2>
+        <p class="pj-p" data-rise style="--d:.14s">Close to all of this happens on a phone, often straight from a post. Ordering is one tap from the first screen, and the market banner does the job the caption used to do: telling a regular where to find them this weekend.</p>
+      </div>
+      <figure class="pj-plate" data-clip style="--d:.1s">
         <img src="work/nana-phone.jpg" alt="Nana Bread on a phone: the market banner, the logo and the order button on one screen." width="1200" height="2580" loading="lazy" decoding="async">
       </figure>
-      <p class="label cap-line">Phone, at actual size</p>
     </div>
-  </div>
+  </section>
 
 </div>
 
-<nav class="next" aria-label="Next project">
-  <a href="rm-safe.html">
-    <span><span class="label">Back to the start · 01</span><span class="nm">RM Safe</span></span>
+<nav class="pj-next" aria-label="Next project">
+  <div class="pj-next-bg" aria-hidden="true"><img src="work/dow-open.jpg" alt="" width="2880" height="1800" loading="lazy" decoding="async"></div>
+  <a href="work.html">
+    <span><span class="lbl">Next · 04</span><span class="nm">Dental on Wheels</span></span>
     <span class="arw" aria-hidden="true">→</span>
   </a>
 </nav>

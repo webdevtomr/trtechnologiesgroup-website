@@ -125,6 +125,58 @@ button{font:inherit;color:inherit}
 .on-dark :focus-visible,.menu :focus-visible{outline-color:var(--on-dark)}
 ::selection{background:var(--accent);color:#fff}
 
+/* --------------------------------------------------------------------------
+   1b. MATERIAL
+
+   Two things, both drawn from the photograph rather than imported.
+
+   GRAIN. A flat #F2F2F0 reads as a CSS background. One fixed tile of noise
+   centred on mid-grey, blended with soft-light, reads as paper: values above
+   mid-grey lift the ground and values below sink it, so the same tile
+   textures the light sections and the dark one without needing two layers.
+   It sits above everything, takes no pointer events, and is one composited
+   layer that never repaints because it never moves.
+
+   CORRUGATION. The hero is a wall of ribbed iron; the ribs are the one piece
+   of geometry this studio already owns. Used only where the page changes
+   ground - into the dark work section and back out of it - as a soft
+   repeating ramp, not a line pattern, masked so it dissolves rather than
+   ends. Its phase shifts fractionally with scroll, which is the whole of the
+   effect: enough to catch the eye moving past, not enough to look at.
+   -------------------------------------------------------------------------- */
+.grain{
+  position:fixed;inset:0;z-index:300;pointer-events:none;
+  background-image:url(brand/grain.png);
+  background-size:160px 160px;
+  mix-blend-mode:soft-light;
+  opacity:.55;
+}
+@media print{.grain{display:none}}
+
+.corr{
+  --corr-h:clamp(3rem,6vw,5.5rem);
+  --corr-ink:13,13,15;
+  position:relative;height:var(--corr-h);pointer-events:none;
+  background-image:
+    repeating-linear-gradient(90deg,
+      rgba(var(--corr-ink),0)    0px,
+      rgba(var(--corr-ink),.055) 3px,
+      rgba(var(--corr-ink),0)    6px,
+      rgba(var(--corr-ink),0)    11px),
+    repeating-linear-gradient(90deg,
+      rgba(var(--corr-ink),0)    0px,
+      rgba(var(--corr-ink),.022) 19px,
+      rgba(var(--corr-ink),0)    38px,
+      rgba(var(--corr-ink),0)    83px);
+  background-position:var(--corr-x,0px) 0, calc(var(--corr-x,0px) * .45) 0;
+  /* the ribs run out rather than stopping at a hard edge */
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000);
+  mask-image:linear-gradient(to bottom,transparent,#000);
+}
+/* On both sides of a ground change the ribbing intensifies towards the edge,
+   so the band coming back out of the dark only swaps its ink for light. */
+.corr-lit{--corr-ink:242,242,240}
+
 .skip{
   position:absolute;left:var(--gut);top:-4rem;z-index:400;
   background:var(--ink);color:var(--paper);padding:.75rem 1.15rem;
@@ -441,8 +493,8 @@ body.nav-open .menu-link,body.nav-open .menu-top,body.nav-open .menu-foot > *{
    -------------------------------------------------------------------------- */
 .hero{
   position:relative;
-  min-height:min(90svh,53rem);
-  display:flex;flex-direction:column;justify-content:space-between;
+  min-height:min(86svh,50rem);
+  display:flex;flex-direction:column;justify-content:flex-start;
   overflow:hidden;
   background:var(--paper-2);
 }
@@ -466,23 +518,46 @@ body.nav-open .menu-link,body.nav-open .menu-top,body.nav-open .menu-foot > *{
 .hero-still{transition:opacity 1s linear}
 @media (prefers-reduced-motion:reduce){.hero-vid{display:none}}
 
-/* Two washes. The upper one carries the headline and releases entirely by the
-   time it reaches the roofline. The lower one is a short foot so the metadata
-   strip reads over the grass. Values were set against the darkest pixels of
-   the iron, not by eye. */
+/* Three washes, each doing one job.
+
+   The copy sits over the rustiest, busiest part of the wall, so the wash that
+   carries it is a FIELD anchored under the text block rather than a curtain
+   drawn over the whole frame - a soft ellipse, no seam, dead by two thirds
+   across. That is what keeps the right of the photograph completely clean
+   while the type has a real ground under it. Then a light veil down the top
+   so the masthead has something to sit on, and a short dark foot so the
+   metadata reads over the grass.
+
+   Values are set against the darkest pixels of the iron, measured, not by
+   eye: everything in .hero-in clears 7:1 against its own backdrop. */
 .hero-media::after{
   content:"";position:absolute;inset:0;
   background:
-    linear-gradient(to top,
-      rgba(12,12,14,.58) 0%,
-      rgba(12,12,14,.24) 8%,
-      rgba(12,12,14,0) 19%),
+    radial-gradient(96% 66% at 6% 43%,
+      rgba(242,242,240,.95) 0%,
+      rgba(242,242,240,.9) 32%,
+      rgba(242,242,240,.62) 52%,
+      rgba(242,242,240,.2) 70%,
+      rgba(242,242,240,0) 84%),
     linear-gradient(to bottom,
-      rgba(242,242,240,.9) 0%,
-      rgba(242,242,240,.82) 26%,
-      rgba(242,242,240,.62) 44%,
-      rgba(242,242,240,.24) 58%,
-      rgba(242,242,240,0) 70%);
+      rgba(242,242,240,.88) 0%,
+      rgba(242,242,240,.66) 18%,
+      rgba(242,242,240,.22) 34%,
+      rgba(242,242,240,0) 48%);
+}
+/* Narrow screens set the copy across the full width, so the field has to be
+   a curtain again - there is no clean right-hand side left to protect. */
+@media (max-width:900px){
+  .hero-media::after{
+    background:
+      linear-gradient(to bottom,
+        rgba(242,242,240,.95) 0%,
+        rgba(242,242,240,.93) 34%,
+        rgba(242,242,240,.88) 52%,
+        rgba(242,242,240,.6) 68%,
+        rgba(242,242,240,.12) 86%,
+        rgba(242,242,240,0) 100%);
+  }
 }
 
 /* the whole photograph arrives once, from a small overscale */
@@ -518,28 +593,32 @@ body.nav-open .menu-link,body.nav-open .menu-top,body.nav-open .menu-foot > *{
 }
 .quiet::after{
   content:"";position:absolute;left:0;right:0;bottom:.15rem;height:1px;background:currentColor;
-  transform:scaleX(1);transform-origin:100% 50%;opacity:.35;
+  transform:scaleX(1);transform-origin:100% 50%;opacity:.55;
   transition:transform .42s var(--e-io),opacity var(--d-ui) var(--e-ui);
 }
 .quiet:hover::after,.quiet:focus-visible::after{transform:scaleX(1);transform-origin:0 50%;opacity:1}
 .quiet .arw{transition:transform .4s var(--e-io)}
 .quiet:hover .arw{transform:translateX(.25rem)}
 
-/* Studio metadata. Place, position, local time - three true facts, set small
-   and level along the foot of the picture. */
+/* Studio metadata - place, position, local time. Three true facts, set as a
+   plate caption on the paper directly under the photograph rather than over
+   it. Type on sunlit dry grass measured 1.25:1 however the scrim was tuned,
+   and the grass is the best part of the frame; a caption belongs under a
+   picture anyway. The edge of the image is the rule above it. */
 .hero-foot{
   position:relative;z-index:2;width:100%;max-width:var(--shell);margin-inline:auto;
-  padding:0 var(--gut) clamp(1.4rem,3.2vw,2.4rem);
-  display:flex;flex-wrap:wrap;gap:.35rem 2.25rem;align-items:baseline;
-  color:rgba(242,242,240,.78);
+  padding:clamp(.85rem,1.6vw,1.15rem) var(--gut);
+  display:flex;flex-wrap:wrap;gap:.35rem 2.25rem;align-items:center;
+  color:var(--muted);
 }
+.hero-rail{border-bottom:1px solid var(--rule);background:var(--paper)}
 .hero-foot .m{font-size:var(--t-micro);font-weight:500;white-space:nowrap}
 .hero-foot .m-sep{margin-left:auto}
 /* Green only while the studio is actually open, which site.js works out from
    Perth time - a light that is always on is a light that means nothing. */
 .hero-foot .dot{
   display:inline-block;width:5px;height:5px;border-radius:50%;
-  background:rgba(242,242,240,.4);
+  background:var(--paper-3);
   margin-right:.5rem;vertical-align:middle;
   transition:background-color .6s var(--e-ui);
 }
@@ -551,21 +630,20 @@ body.nav-open .menu-link,body.nav-open .menu-top,body.nav-open .menu-foot > *{
   clip-path:inset(50%);white-space:nowrap;border:0}
 @keyframes pulse{0%,72%,100%{opacity:1}84%{opacity:.28}}
 
-/* the cue is a rule that draws itself down once, then stays */
-.hero-cue{display:block;width:1px;height:clamp(1.6rem,4vh,2.75rem);
-  background:rgba(242,242,240,.6);transform-origin:50% 0}
-.js .hero-cue{transform:scaleY(0);transition:transform 1s var(--e-io) 1.5s}
-.js .hero.lit .hero-cue{transform:scaleY(1)}
+/* the cue draws itself out once, then stays */
+.hero-cue{display:block;width:clamp(2rem,5vw,4rem);height:1px;
+  background:var(--ink);opacity:.45;transform-origin:100% 50%}
+.js .hero-cue{transform:scaleX(0);transition:transform 1s var(--e-io) 1.5s}
+.js .hero.lit + .hero-rail .hero-cue{transform:scaleX(1)}
 
 @media (max-width:700px){
   /* the hero collapses to its content height here, so space-between has
      nothing to push against - the caption needs its own gap */
-  .hero{min-height:auto;padding-bottom:1rem}
+  .hero{min-height:auto}
   .hero-media img,.hero-vid{object-position:50% 66%}
-  .hero-in{padding-bottom:clamp(3rem,11vw,4.5rem)}
+  .hero-in{padding-bottom:clamp(3.25rem,12vw,5rem)}
   .hero-foot{gap:.3rem 1.4rem}
-  .hero-foot .m-sep{margin-left:0}
-  .hero-cue{display:none}
+  .hero-foot .m-sep{display:none}
 }
 @media (max-width:520px){
   .hero h1{max-width:13ch}
@@ -595,7 +673,8 @@ body.nav-open .menu-link,body.nav-open .menu-top,body.nav-open .menu-foot > *{
    frame than off the paper. It also gives the scroll a middle - you arrive
    somewhere, then come back out.
    -------------------------------------------------------------------------- */
-.work{padding-block:var(--band) calc(var(--band) * .92)}
+.work{padding-block:0}
+.work-in{padding-block:var(--band) calc(var(--band) * .82)}
 .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
   gap:clamp(2.75rem,4.5vw,4rem) clamp(1.5rem,3.2vw,3rem)}
 @media (max-width:1000px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -637,6 +716,33 @@ body.nav-open .menu-link,body.nav-open .menu-top,body.nav-open .menu-foot > *{
 .tile .desc{display:block;font-size:var(--t-micro);color:var(--muted);margin-top:.6rem}
 .tile .sum{display:block;font-size:var(--t-small);line-height:1.62;color:var(--ink-2);
   margin-top:.6rem;max-width:34ch}
+
+/* "See all work" is the only way out of this section to the rest of the work,
+   so it is a full-width row you cannot miss, not a text link under a tile.
+   The ground fills from the left on hover and the whole row inverts. */
+.work-more{margin-top:clamp(2.5rem,5vw,4rem)}
+.work-more a{
+  position:relative;isolation:isolate;overflow:hidden;
+  display:flex;align-items:baseline;gap:1rem;
+  padding:clamp(1.15rem,2.4vw,1.75rem) clamp(1rem,2vw,1.75rem);
+  border-top:1px solid var(--rule-dark);border-bottom:1px solid var(--rule-dark);
+  text-decoration:none;color:var(--on-dark);
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(1.15rem,2.2vw,1.75rem);letter-spacing:-.03em;line-height:1.1;
+  transition:color .45s var(--e-io);
+}
+.work-more a::before{
+  content:"";position:absolute;inset:0;z-index:-1;background:var(--on-dark);
+  transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .55s var(--e-io);
+}
+.work-more a:hover,.work-more a:focus-visible{color:var(--dark)}
+.work-more a:hover::before,.work-more a:focus-visible::before{transform:scaleX(1)}
+.work-more .ct{font-family:var(--text);font-size:var(--t-micro);color:var(--on-dark-2);
+  transition:color .45s var(--e-io)}
+.work-more a:hover .ct{color:rgba(12,12,14,.62)}
+.work-more .arw{margin-left:auto;transition:transform .5s var(--e-io)}
+.work-more a:hover .arw{transform:translateX(.45rem)}
 
 /* --------------------------------------------------------------------------
    11. WHAT WE BUILD - an index, not a set of cards
@@ -784,77 +890,338 @@ legend{padding:0}
 
 /* --------------------------------------------------------------------------
    16. PROJECT PAGES
+
+   The homepage puts the work on a dark ground, so a project page opens on
+   one too - you click out of the dark and arrive in the dark, and the page
+   climbs into the light from there. That is the whole structural idea.
+
+   Each page also takes the client's own colour, sampled from their live
+   site, as its accent, in two values: one that holds up on paper and one
+   that holds up on the dark. So the three pages are visibly three different
+   projects without being three different designs.
+
+   Composition varies deliberately down the page - dark screen, full-bleed
+   picture, sparse text, split, dark interlude, pair, phone - rather than
+   alternating text-left / text-right four times, which is what it did.
    -------------------------------------------------------------------------- */
-.proj-hero{padding:clamp(7rem,14vh,9.5rem) 0 0}
-.crumb{display:flex;gap:.5rem;align-items:center;margin-bottom:clamp(1rem,2.4vw,1.8rem)}
-.crumb a{text-decoration:none;color:var(--muted)}
-.crumb a:hover{color:var(--accent)}
-.proj-title{font-family:var(--display);font-weight:500;font-size:clamp(2.4rem,6.5vw,6rem);
-  line-height:1;letter-spacing:-.04em;margin-bottom:clamp(.9rem,2vw,1.4rem)}
-.proj-say{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:1rem clamp(1.5rem,4vw,3.5rem);align-items:end;padding-bottom:clamp(1.2rem,3vw,2rem)}
-@media (max-width:820px){.proj-say{grid-template-columns:1fr}}
+.pj-rmsafe{--accent:#C31E17;--accent-dark:#9C1610;--accent-lit:#FF7A70}
+.pj-kith  {--accent:#2F5A44;--accent-dark:#234534;--accent-lit:#86C4A2}
+.pj-nana  {--accent:#8A6A00;--accent-dark:#6C5300;--accent-lit:#FCD800}
 
-.proj-open{margin-top:clamp(1.6rem,3.5vw,2.6rem)}
-.proj-open .plate{aspect-ratio:16/9}
-@media (max-width:760px){.proj-open .plate{aspect-ratio:4/3}}
-
-.proj-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem clamp(1rem,2.4vw,2.5rem);
-  padding:var(--band-tight) 0;border-bottom:1px solid var(--rule)}
-@media (max-width:760px){.proj-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.proj-facts dt{margin-bottom:.3rem}
-.proj-facts dd{font-size:var(--t-small);line-height:1.55}
-
-.plate{position:relative;overflow:hidden;border-radius:var(--r-lg);background:var(--paper-2);
-  border:1px solid var(--rule-2)}
-.plate img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
-.plate-c img{object-position:50% 50%}
-.cap-line{margin-top:.75rem}
-
-.proj-body{padding-block:var(--band)}
-.blk{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(1rem,2.4vw,2.5rem);
-  padding-bottom:var(--band)}
-.blk:last-child{padding-bottom:0}
-.b-say{grid-column:1/5}
-.b-vis{grid-column:6/13}
-.blk.rev .b-say{grid-column:9/13}
-.blk.rev .b-vis{grid-column:1/8;grid-row:1}
-.b-full{grid-column:1/13}
-@media (max-width:900px){
-  .blk{grid-template-columns:1fr}
-  .b-say,.b-vis,.b-full,.blk.rev .b-say,.blk.rev .b-vis{grid-column:1;grid-row:auto}
-  .b-vis{margin-top:1.3rem}
-  .blk.rev .b-vis{margin-top:0;margin-bottom:1.3rem}
+/* ---- the opening screen ---- */
+.pj-open{
+  position:relative;background:var(--dark);color:var(--on-dark);
+  padding:clamp(8.5rem,21vh,13.5rem) 0 0;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  min-height:min(74svh,44rem);
+  --rule:var(--rule-dark);--rule-2:var(--rule-dark);
+  --ink:var(--on-dark);--ink-2:var(--on-dark-2);--muted:var(--on-dark-2);
+  --accent:var(--accent-lit);
 }
-.b-say h2{margin-bottom:.8rem}
-.b-say .body{max-width:30rem}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.8rem,1.6vw,1.4rem)}
-@media (max-width:600px){.pair{grid-template-columns:1fr}}
-.phone-crop{aspect-ratio:9/16}
+.pj-in{max-width:var(--shell);margin-inline:auto;padding-inline:var(--gut)}
 
-.spec-list{border-top:1px solid var(--rule);margin-top:1.2rem}
-.spec-list div{display:grid;grid-template-columns:2.5rem minmax(0,1fr) auto;gap:.4rem 1.1rem;
-  align-items:baseline;padding:.8rem 0;border-bottom:1px solid var(--rule-2)}
-.spec-list .k{font-weight:500;font-size:var(--t-small);color:var(--muted);font-variant-numeric:tabular-nums}
-.spec-list .m{font-weight:500;font-size:var(--t-body)}
-.spec-list .t{font-weight:500;font-size:var(--t-small);color:var(--accent)}
+.pj-crumb{display:flex;gap:.55rem;align-items:baseline;
+  font-size:var(--t-micro);font-weight:500;color:var(--on-dark-2);
+  margin-bottom:clamp(1.75rem,4vw,3rem)}
+.pj-crumb a{text-decoration:none;
+  background-image:linear-gradient(currentColor,currentColor);
+  background-repeat:no-repeat;background-position:0 100%;background-size:0 1px;
+  transition:color var(--d-ui) var(--e-ui),background-size .4s var(--e-io)}
+.pj-crumb a:hover{color:var(--accent-lit);background-size:100% 1px}
 
-.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem;margin-top:1.2rem}
-.tier{border:1px solid var(--rule);border-radius:var(--r-md);padding:1.1rem 1.15rem 1.25rem}
-.tier .amt{font-family:var(--display);font-weight:500;font-size:clamp(1.6rem,3vw,2.25rem);
-  line-height:1;letter-spacing:-.035em}
-.tier .who{display:block;margin-top:.45rem;font-size:var(--t-small);color:var(--muted)}
-@media (max-width:620px){.tiers{grid-template-columns:1fr}}
+.pj-title{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(2.9rem,10.5vw,9rem);line-height:.88;letter-spacing:-.048em;
+  margin-bottom:clamp(1.5rem,3.5vw,2.5rem);
+}
+.pj-say{max-width:38rem;font-size:clamp(1.15rem,1.6vw,1.5rem);line-height:1.4;
+  color:var(--on-dark);font-weight:500;letter-spacing:-.012em}
+.pj-live{
+  display:inline-flex;align-items:baseline;gap:.5rem;margin-top:clamp(1.4rem,3vw,2.1rem);
+  text-decoration:none;font-weight:500;font-size:var(--t-small);color:var(--on-dark);
+  padding-bottom:.3rem;border-bottom:1px solid var(--rule-dark);
+  transition:color var(--d-ui) var(--e-ui),border-color var(--d-ui) var(--e-ui)}
+.pj-live .arw{transition:transform .45s var(--e-io)}
+.pj-live:hover{color:var(--accent-lit);border-color:var(--accent-lit)}
+.pj-live:hover .arw{transform:translate3d(.2rem,-.2rem,0)}
 
-.next{border-top:1px solid var(--rule)}
-.next a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;
-  text-decoration:none;padding:var(--band-tight) var(--gut);max-width:var(--shell);margin-inline:auto}
-.next .nm{font-family:var(--display);font-weight:500;font-size:clamp(1.8rem,4.5vw,3.4rem);
-  line-height:1;letter-spacing:-.036em;margin-top:.4rem;display:block;
-  transition:color var(--d-ui) var(--e-ui),transform .5s var(--e-io)}
-.next .arw{font-size:clamp(1.3rem,2.6vw,2rem);transition:transform .5s var(--e-io)}
-.next a:hover .nm{color:var(--accent);transform:translateX(.35rem)}
-.next a:hover .arw{transform:translateX(.4rem)}
+/* the facts, on the dark, as a ruled ledger rather than four columns of grey */
+.pj-facts{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1.5rem clamp(1.25rem,3vw,3rem);
+  margin-top:clamp(3rem,7vw,5.5rem);
+  padding:clamp(1.5rem,3vw,2.25rem) 0 clamp(2.5rem,5vw,4rem);
+  border-top:1px solid var(--rule-dark);
+}
+.pj-facts > div{display:grid;gap:.5rem;align-content:start}
+.pj-facts dt{font-size:var(--t-micro);font-weight:500;color:var(--accent-lit)}
+.pj-facts dd{font-size:var(--t-small);line-height:1.55;color:var(--on-dark)}
+@media (max-width:820px){.pj-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:460px){.pj-facts{grid-template-columns:1fr}}
+
+/* ---- plates ----
+
+   ONE RULE, and everything here follows from it: a screenshot is never bled
+   to the edge of the page and never cropped to fit a height.
+
+   Bleeding a screenshot removes its edge, so a screen with a white header
+   dissolves into the paper and reads as a broken embed rather than as a
+   picture of a website. Cropping one to a height cuts through interface -
+   half a logo, half a pricing card - at whatever line the viewport happens
+   to land on. Full bleed is for photography, which has no edges to lose.
+
+   So the plate always shows the whole screen at its own ratio, inside a
+   frame. Scale comes from how wide the frame is - shell, inset, half of a
+   split, one of a pair - and the full-width moments come from putting the
+   frame on a STAGE that bleeds instead.
+   ---- */
+.pj-plate{
+  position:relative;overflow:hidden;margin:0;
+  background:var(--paper-2);border-radius:var(--r-lg);
+  border:1px solid var(--rule-2);
+  box-shadow:0 30px 70px -45px rgba(13,13,15,.42);
+}
+.pj-plate img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.pj-plate.centre img{object-position:50% 50%}
+.on-dark .pj-plate,.pj-dark .pj-plate,.pj-stage.dark .pj-plate{
+  border-color:rgba(242,242,240,.14);
+  box-shadow:0 40px 90px -50px rgba(0,0,0,.8);
+}
+
+/* narrower than the shell, for a screen that does not need the full measure */
+.pj-inset{max-width:64rem}
+.pj-inset.mid{margin-inline:auto}
+
+/* The stage is what bleeds. A full-width ground with the framed screen
+   floating inside it - the page gets its full-width moment and the
+   screenshot keeps its edges. */
+.pj-stage{background:var(--paper-2);padding-block:clamp(2.75rem,7vw,6rem)}
+.pj-stage.dark{background:var(--dark)}
+.pj-stage-in{max-width:var(--shell);margin-inline:auto;padding-inline:var(--gut)}
+.pj-stage .pj-plate{max-width:78rem;margin-inline:auto;background:var(--paper-3)}
+.pj-stage.dark .pj-cap{color:var(--on-dark-2)}
+.pj-stage .pj-cap{max-width:78rem;margin-inline:auto}
+
+.pj-cap{margin-top:.9rem;font-size:var(--t-micro);font-weight:500;color:var(--muted);
+  max-width:44ch}
+
+/* ---- the body ---- */
+.pj-body{display:grid}
+.pj-sec{padding-block:var(--band)}
+.pj-sec.tight{padding-block:var(--band-tight)}
+.pj-sec.after-bleed{padding-block:var(--band-tight) var(--band)}
+
+.pj-ix{display:block;font-size:var(--t-micro);font-weight:500;color:var(--accent);
+  margin-bottom:.9rem}
+.pj-h{font-family:var(--display);font-weight:500;
+  font-size:clamp(1.75rem,3.4vw,3rem);line-height:1.06;letter-spacing:-.034em;
+  max-width:20ch}
+.pj-p{font-size:var(--t-body);line-height:1.68;color:var(--ink-2);max-width:38ch}
+.pj-p + .pj-p{margin-top:1em}
+
+/* a sparse text screen: heading left, the argument in two columns beneath */
+.pj-said{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+  gap:clamp(1.5rem,4vw,4.5rem);align-items:start}
+.pj-said .pj-h{max-width:16ch}
+.pj-said .pj-p{max-width:42ch}
+@media (max-width:860px){.pj-said{grid-template-columns:1fr;gap:1.5rem}}
+
+/* text beside a picture */
+.pj-split{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:clamp(1.5rem,3vw,3.5rem);align-items:center}
+.pj-split .s-say{grid-column:1/6}
+.pj-split .s-vis{grid-column:7/13}
+.pj-split.rev .s-say{grid-column:8/13}
+.pj-split.rev .s-vis{grid-column:1/7;grid-row:1}
+@media (max-width:900px){
+  .pj-split{grid-template-columns:1fr;align-items:start}
+  .pj-split .s-say,.pj-split .s-vis,
+  .pj-split.rev .s-say,.pj-split.rev .s-vis{grid-column:1;grid-row:auto}
+  .pj-split .s-vis{margin-top:1.5rem}
+  .pj-split.rev .s-vis{margin-top:0;margin-bottom:1.5rem}
+}
+
+/* two pictures level with each other */
+.pj-pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.9rem,2vw,1.75rem);
+  align-items:start}
+@media (max-width:700px){.pj-pair{grid-template-columns:1fr}}
+
+/* the dark interlude: one claim, at size, with the detail under it */
+.pj-dark{
+  background:var(--dark);color:var(--on-dark);padding-block:var(--band);
+  --rule:var(--rule-dark);--rule-2:var(--rule-dark);
+  --ink:var(--on-dark);--ink-2:var(--on-dark-2);--muted:var(--on-dark-2);
+  --accent:var(--accent-lit);--paper-2:#17171A;
+}
+.pj-dark .pj-h{font-size:clamp(2rem,4.4vw,3.9rem);max-width:17ch}
+.pj-claim{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:clamp(1.5rem,4vw,4.5rem);align-items:end}
+@media (max-width:900px){.pj-claim{grid-template-columns:1fr;align-items:start}}
+
+/* the phone, at the size a phone is, on its own panel */
+.pj-phone{display:grid;grid-template-columns:minmax(0,1fr) auto;
+  gap:clamp(1.5rem,4vw,4.5rem);align-items:center;
+  background:var(--paper-2);border-radius:var(--r-lg);
+  padding:clamp(1.75rem,4vw,3.5rem)}
+.pj-phone .pj-plate{width:min(17rem,58vw);aspect-ratio:9/16;
+  border-radius:var(--r-md);box-shadow:0 24px 60px -30px rgba(13,13,15,.45)}
+@media (max-width:760px){
+  .pj-phone{grid-template-columns:1fr;justify-items:start}
+  .pj-phone .pj-plate{width:min(15rem,64vw)}
+}
+
+/* ---- the spec ledger, kept but given room ---- */
+.spec-list{border-top:1px solid var(--rule);margin-top:1.5rem}
+.spec-list div{display:grid;grid-template-columns:2.25rem minmax(0,1fr) auto;
+  gap:.4rem 1.1rem;align-items:baseline;padding:.85rem 0;
+  border-bottom:1px solid var(--rule-2)}
+.spec-list .k{font-weight:500;font-size:var(--t-micro);color:var(--muted);
+  font-variant-numeric:tabular-nums}
+.spec-list .m{font-weight:500;font-size:var(--t-small)}
+.spec-list .t{font-weight:500;font-size:var(--t-micro);color:var(--accent)}
+
+/* ---- the tiers ---- */
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(.9rem,2vw,1.5rem);margin-top:1.75rem;
+  border-top:1px solid var(--rule);padding-top:1.5rem}
+.tier .amt{display:block;font-family:var(--display);font-weight:500;
+  font-size:clamp(1.6rem,3vw,2.4rem);line-height:1;letter-spacing:-.04em}
+.tier .who{display:block;margin-top:.45rem;font-size:var(--t-micro);color:var(--muted)}
+@media (max-width:520px){.tiers{grid-template-columns:1fr;gap:1rem}}
+
+/* ---- next project: a full-bleed dark panel with the next work behind it ---- */
+.pj-next{position:relative;background:var(--dark);color:var(--on-dark);overflow:hidden}
+.pj-next-bg{position:absolute;inset:0;z-index:0;opacity:.16;
+  transition:opacity .8s var(--e-io),transform 1.2s var(--e-io)}
+.pj-next-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 0;
+  filter:grayscale(.35)}
+.pj-next a{position:relative;z-index:1;display:grid;
+  grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:end;
+  text-decoration:none;max-width:var(--shell);margin-inline:auto;
+  padding:clamp(3.5rem,9vw,7rem) var(--gut)}
+.pj-next .lbl{display:block;font-size:var(--t-micro);font-weight:500;
+  color:var(--on-dark-2);margin-bottom:.7rem}
+.pj-next .nm{display:block;font-family:var(--display);font-weight:500;
+  font-size:clamp(2.2rem,6.5vw,5rem);line-height:.95;letter-spacing:-.042em;
+  transition:transform .6s var(--e-io)}
+.pj-next .arw{font-size:clamp(1.4rem,3vw,2.4rem);transition:transform .6s var(--e-io)}
+.pj-next a:hover .nm{transform:translateX(.5rem)}
+.pj-next a:hover .arw{transform:translateX(.6rem)}
+.pj-next a:hover ~ .pj-next-bg,
+.pj-next:hover .pj-next-bg{opacity:.26;transform:scale(1.03)}
+
+/* --------------------------------------------------------------------------
+   16b. PROCESS
+
+   Five steps, read across as a ruled score rather than down as a list. The
+   number is the loudest thing in each step because the sequence is the
+   point - what it costs and how long it takes is the question underneath
+   every one of these, so the durations are stated rather than implied.
+   -------------------------------------------------------------------------- */
+.process{background:var(--dark);color:var(--on-dark);padding-block:var(--band);
+  --rule:var(--rule-dark);--rule-2:var(--rule-dark);
+  --ink:var(--on-dark);--ink-2:var(--on-dark-2);--muted:var(--on-dark-2);
+  --accent:var(--accent-lit)}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:clamp(1.25rem,2.5vw,2.5rem);border-top:1px solid var(--rule-dark);
+  padding-top:clamp(1.5rem,3vw,2.5rem)}
+.step{display:grid;gap:.6rem;align-content:start;position:relative;
+  padding-top:clamp(1rem,2vw,1.6rem)}
+/* the rule above each step draws itself in when the row arrives */
+.step::before{content:"";position:absolute;inset:0 0 auto;height:1px;
+  background:var(--accent-lit);transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .8s var(--e-io);
+  transition-delay:calc(var(--i,0) * var(--stag) + .1s)}
+.js .step.in::before{transform:scaleX(1)}
+.step .n{font-family:var(--display);font-weight:500;
+  font-size:clamp(1.9rem,3.4vw,3rem);line-height:1;letter-spacing:-.04em;
+  color:var(--on-dark)}
+.step h3{font-family:var(--display);font-weight:500;font-size:clamp(1.05rem,1.5vw,1.25rem);
+  letter-spacing:-.022em;line-height:1.2;margin-top:.35rem}
+.step p{font-size:var(--t-small);line-height:1.62;color:var(--on-dark-2)}
+.step .dur{font-size:var(--t-micro);font-weight:500;color:var(--accent-lit);
+  margin-top:.2rem}
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(1.5rem,4vw,2.5rem)}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+.process .together{border-left-color:var(--accent-lit)}
+
+/* --------------------------------------------------------------------------
+   16c. THE WORK INDEX
+
+   Every project, the first one at twice the size of the rest. One frame, two
+   scales - which is the difference between an index and a grid of squares.
+
+   Two traps caught here, both worth the comment. The section uses padding-
+   BLOCK, never the padding shorthand, because .shell sets padding-inline and
+   a shorthand later in the file silently wipes it - which is exactly what
+   took the gutters off this page. And the featured item is .first, not
+   .lead: .lead is already the body-copy class, so a tile carrying it
+   inherited max-width:34rem and sat at 544px inside a 1342px row.
+   -------------------------------------------------------------------------- */
+.wk-open{padding-block:clamp(8rem,18vh,11rem) clamp(2rem,4vw,3.25rem)}
+.wk-title{font-family:var(--display);font-weight:500;
+  font-size:clamp(2.6rem,7.5vw,6rem);line-height:.94;letter-spacing:-.045em;
+  max-width:15ch}
+.wk-say{margin-top:clamp(1.3rem,2.6vw,2rem);max-width:38rem;
+  font-size:var(--t-lead);line-height:1.5;color:var(--ink-2)}
+.wk-count{display:flex;flex-wrap:wrap;gap:.35rem .7rem;align-items:baseline;
+  margin-top:clamp(2.25rem,5vw,3.75rem);padding-top:1.15rem;
+  border-top:1px solid var(--rule);font-size:var(--t-micro);
+  font-weight:500;color:var(--muted)}
+
+.wk-list{display:grid;
+  gap:clamp(3rem,6vw,5.5rem) clamp(1.5rem,3vw,3rem);
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  padding-bottom:var(--band)}
+.wk-item.first{grid-column:1/-1}
+@media (max-width:760px){
+  .wk-list{grid-template-columns:1fr;gap:clamp(2.5rem,8vw,3.5rem)}
+}
+
+.wk-item a{display:block;text-decoration:none;color:inherit}
+.wk-item .shot{
+  display:block;position:relative;aspect-ratio:16/10;overflow:hidden;
+  border-radius:var(--r-lg);background:var(--paper-2);
+  border:1px solid var(--rule-2);
+  box-shadow:0 26px 60px -45px rgba(13,13,15,.4);
+}
+.wk-item.first .shot{aspect-ratio:2.1/1}
+@media (max-width:760px){.wk-item.first .shot{aspect-ratio:16/10}}
+.wk-item .shot-in{display:block;width:100%;height:100%;
+  transition:transform .85s var(--e-io)}
+.wk-item .shot img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.wk-item a:hover .shot-in,.wk-item a:focus-visible .shot-in{transform:scale(1.035)}
+
+.wk-item .hd{display:flex;align-items:baseline;gap:.75rem;
+  margin-top:clamp(1.1rem,2vw,1.5rem);padding-bottom:.7rem;
+  border-bottom:1px solid var(--rule);
+  transition:border-color var(--d-ui) var(--e-ui)}
+.wk-item .ix{font-size:var(--t-micro);font-weight:500;color:var(--muted);flex:none}
+.wk-item .nm{font-family:var(--display);font-weight:500;
+  font-size:clamp(1.35rem,2.1vw,1.85rem);letter-spacing:-.032em;line-height:1.12;
+  transition:color var(--d-ui) var(--e-ui)}
+.wk-item.first .nm{font-size:clamp(2rem,3.8vw,3.25rem);letter-spacing:-.04em}
+.wk-item .arw{margin-left:auto;flex:none;color:var(--muted);font-size:1.1rem;
+  transition:transform .45s var(--e-io),color var(--d-ui) var(--e-ui)}
+.wk-item a:hover .nm{color:var(--accent)}
+.wk-item a:hover .hd{border-color:var(--accent)}
+.wk-item a:hover .arw{transform:translate3d(.3rem,-.3rem,0);color:var(--accent)}
+
+.wk-item .meta{display:flex;flex-wrap:wrap;gap:.3rem .9rem;margin-top:.8rem;
+  font-size:var(--t-micro);font-weight:500;color:var(--muted)}
+.wk-item .sum{display:block;margin-top:.85rem;font-size:var(--t-small);
+  line-height:1.65;color:var(--ink-2);max-width:52ch}
+/* the featured item reads across, so its copy gets a wider measure and sits
+   beside the name rather than under it */
+.wk-item.first .sum{font-size:var(--t-body);max-width:62ch}
+@media (min-width:900px){
+  .wk-item.first .meta,.wk-item.first .sum{max-width:70ch}
+}
+
+/* a project without a page of its own still belongs in the index - it points
+   at the live site and says so */
+.wk-item .ext{color:var(--muted)}
 
 /* --------------------------------------------------------------------------
    17. REDUCED MOTION

@@ -21,30 +21,31 @@
 <!-- reveal styles are scoped to .js, set before first paint -->
 <script>document.documentElement.className+=' js'</script>
 </head>
-<body>
+<body class="pj-kith">
+
+<div class="grain" aria-hidden="true"></div>
 
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="masthead">
-  <a class="mark" href="#top" aria-label="TR Technologies Group, home"><img class="mark-svg" src="brand/tr-mark@3x.png" alt="" width="96" height="68" decoding="async"><span class="full">Technologies Group</span></a>
+  <a class="mark" href="index.html" aria-label="TR Technologies Group, home"><img class="mark-svg" src="brand/tr-mark@3x.png" alt="" width="96" height="68" decoding="async"><span class="full">Technologies Group</span></a>
   <nav class="nav-links" aria-label="Primary">
-    <a class="nav-link opt" href="index.html#work">All work</a>
+    <a class="nav-link opt" href="work.html">All work</a>
     <a class="nav-link opt" href="index.html#studio">Studio</a>
     <a class="cta" href="index.html#contact"><span>Start a project</span><span class="disc" aria-hidden="true">→</span></a>
     <button class="burger" type="button" aria-label="Open menu" aria-controls="menu" aria-expanded="false"><span></span><span></span></button>
   </nav>
 </header>
 
-<!-- The same full-screen menu as the homepage; site.js keeps it inert while closed. -->
 <div class="menu" id="menu">
   <p class="menu-top" style="--i:0">TR Technologies Group — websites and software, Perth</p>
 
   <nav class="menu-nav" aria-label="Menu">
     <a class="menu-link" href="index.html" style="--i:1"><span class="ix num">01</span><span class="wd">Home</span></a>
-    <a class="menu-link" href="index.html#work" style="--i:2"><span class="ix num">02</span><span class="wd">Work</span></a>
+    <a class="menu-link" href="work.html" style="--i:2"><span class="ix num">02</span><span class="wd">Work</span></a>
     <a class="menu-link" href="index.html#build" style="--i:3"><span class="ix num">03</span><span class="wd">What we build</span></a>
-    <a class="menu-link" href="index.html#studio" style="--i:4"><span class="ix num">04</span><span class="wd">Studio</span></a>
-    <a class="menu-link" href="index.html#price" style="--i:5"><span class="ix num">05</span><span class="wd">Pricing</span></a>
+    <a class="menu-link" href="index.html#process" style="--i:4"><span class="ix num">04</span><span class="wd">Process</span></a>
+    <a class="menu-link" href="index.html#studio" style="--i:5"><span class="ix num">05</span><span class="wd">Studio</span></a>
     <a class="menu-link" href="index.html#contact" style="--i:6"><span class="ix num">06</span><span class="wd">Contact</span></a>
   </nav>
 
@@ -58,99 +59,118 @@
   </div>
 </div>
 
-
 <main id="main">
 
-<section class="proj-hero shell" data-tone="light">
-  <p class="crumb label"><a href="index.html#work">Selected work</a> <span aria-hidden="true">/</span> <span>02</span></p>
+<header class="pj-open" data-tone="dark">
+  <div class="pj-in">
+    <p class="pj-crumb"><a href="work.html">Selected work</a> <span aria-hidden="true">/</span> <span class="num">02</span></p>
+    <h1 class="pj-title" data-mask style="--d:.12s">Kith Grove</h1>
+    <p class="pj-say" data-rise style="--d:.5s">A Perth paediatric allied health practice that works where children actually are: at home, at day care and at school.</p>
+    <p data-rise style="--d:.62s"><a class="pj-live" href="https://www.kithgrovehealthcare.com.au/" target="_blank" rel="noreferrer">Visit kithgrovehealthcare.com.au <span class="arw" aria-hidden="true">↗</span></a></p>
 
-  <h1 class="proj-title">Kith Grove</h1>
-
-  <div class="proj-say">
-    <p class="lead">A Perth paediatric allied health practice that works where children actually are: at home, at day care and at school.</p>
-    <p class="label">2025 · Perth, WA · <a href="https://www.kithgrovehealthcare.com.au/" target="_blank" rel="noreferrer">kithgrovehealthcare.com.au&nbsp;↗</a></p>
+    <dl class="pj-facts" data-rise style="--d:.7s">
+      <div><dt>Year</dt><dd><span class="num">2025</span></dd></div>
+      <div><dt>Sector</dt><dd>Paediatric allied health</dd></div>
+      <div><dt>Scope</dt><dd>Positioning, copy, design, build, referral flow, booking, CMS</dd></div>
+      <div><dt>Tom / Andy</dt><dd>Positioning, structure, copy, design / build, referral handling, booking, CMS</dd></div>
+    </dl>
   </div>
+  <div class="corr corr-lit" data-corr="0.09" aria-hidden="true"></div>
+</header>
 
-  <div class="proj-open">
-    <figure class="plate" style="margin:0">
+<!-- The stage bleeds; the screenshot does not. Full width for the page, whole
+     edges for the picture. -->
+<div class="pj-stage dark">
+  <div class="pj-stage-in">
+    <figure class="pj-plate" style="aspect-ratio:2880/1800" data-clip>
       <img src="work/kith-open.jpg" alt="The Kith Grove Healthcare homepage: a script logo on deep sage, above “Healthcare that feels like community, because it is.”" width="2880" height="1800" fetchpriority="high" decoding="async">
     </figure>
   </div>
+</div>
 
-  <dl class="proj-facts">
-    <div><dt class="label">Sector</dt><dd>Paediatric allied health</dd></div>
-    <div><dt class="label">Scope</dt><dd>Positioning, copy, design, build, referral flow, booking, CMS</dd></div>
-    <div><dt class="label">Tom</dt><dd>Positioning, structure, copy, design</dd></div>
-    <div><dt class="label">Andy</dt><dd>Build, referral handling, booking, CMS</dd></div>
-  </dl>
-</section>
+<div class="pj-body">
 
-<div class="shell proj-body">
-
-  <div class="blk">
-    <div class="b-say">
-      <p class="label" style="margin-bottom:.9rem">01 · The problem</p>
-      <h2 class="d2">Written for the regulator. Read by a parent.</h2>
-      <p class="body">Allied health websites tend to read like compliance documents: service lists, funding categories, the language of the sector talking to itself. The person actually reading is almost never in that frame of mind. They are a parent who has been told to get an assessment, is not sure what that means, and is quietly worried.</p>
-      <p class="body">A new practice has the additional problem of having no track record to point at. Everything has to be carried by how it sounds.</p>
+  <section class="pj-sec after-bleed shell">
+    <div class="pj-said">
+      <div>
+        <span class="pj-ix num" data-rise>01 — The problem</span>
+        <h2 class="pj-h" data-mask>Written for the regulator. Read by a parent.</h2>
+      </div>
+      <div data-rise style="--d:.14s">
+        <p class="pj-p">Allied health websites tend to read like compliance documents: service lists, funding categories, the language of the sector talking to itself. The person actually reading is almost never in that frame of mind. They are a parent who has been told to get an assessment, is not sure what that means, and is quietly worried.</p>
+        <p class="pj-p">A new practice has the additional problem of having no track record to point at. Everything has to be carried by how it sounds.</p>
+      </div>
     </div>
-    <div class="b-vis">
-      <figure class="plate" style="margin:0;aspect-ratio:2320/1112">
-        <img src="work/kith-growing.jpg" alt="The Kith Grove services section: “Here now, and growing with you.”" width="2320" height="1112" loading="lazy" decoding="async">
-      </figure>
-      <p class="label cap-line">Services described in the words a parent would use</p>
-    </div>
+  </section>
+
+  <div class="shell">
+    <figure class="pj-plate" style="aspect-ratio:2320/1112" data-clip>
+      <img src="work/kith-growing.jpg" alt="The Kith Grove services section: “Here now, and growing with you.”" width="2320" height="1112" loading="lazy" decoding="async">
+    </figure>
+    <p class="pj-cap" data-rise>Services described in the words a parent would use</p>
   </div>
 
-  <div class="blk rev">
-    <div class="b-say">
-      <p class="label" style="margin-bottom:.9rem">02 · The idea</p>
-      <h2 class="d2">Lead with the people and the place, not the service list.</h2>
-      <p class="body">Therapy for little ones from newborn to nine, delivered in your own home, at day care or at school. That is the difference, so it is the first thing on the page, not the fourth item under a heading called “Our Services”.</p>
-      <p class="body">Daphne and Sallina are introduced by name and photograph, early, because a parent handing over their child wants to know who that is. The qualifications are all there. They are simply not the opening argument.</p>
+  <section class="pj-sec shell">
+    <div class="pj-split">
+      <div class="s-say">
+        <span class="pj-ix num" data-rise>02 — The idea</span>
+        <h2 class="pj-h" data-mask>Lead with the people and the place, not the service list.</h2>
+        <p class="pj-p" data-rise style="--d:.14s">Therapy for little ones from newborn to nine, delivered in your own home, at day care or at school. That is the difference, so it is the first thing on the page, not the fourth item under a heading called “Our Services”.</p>
+        <p class="pj-p" data-rise style="--d:.18s">Daphne and Sallina are introduced by name and photograph, early, because a parent handing over their child wants to know who that is. The qualifications are all there. They are simply not the opening argument.</p>
+      </div>
+      <div class="s-vis">
+        <figure class="pj-plate centre" style="aspect-ratio:29/10" data-clip>
+          <img src="work/kith-team.jpg" alt="“Say hello to Daphne and Sallina”, the practitioners introduced by name and photograph." width="2320" height="800" loading="lazy" decoding="async">
+        </figure>
+        <p class="pj-cap">Faces before credentials</p>
+      </div>
     </div>
-    <div class="b-vis">
-      <figure class="plate plate-c" style="margin:0;aspect-ratio:29/10">
-        <img src="work/kith-team.jpg" alt="“Say hello to Daphne and Sallina”, the practitioners introduced by name and photograph." width="2320" height="800" loading="lazy" decoding="async">
-      </figure>
-      <p class="label cap-line">Faces before credentials</p>
-    </div>
-  </div>
+  </section>
 
-  <div class="blk">
-    <div class="b-say">
-      <p class="label" style="margin-bottom:.9rem">03 · The detail</p>
-      <h2 class="d2">Booking is the end of reading, not a separate errand.</h2>
-      <p class="body">The moment a parent decides is the moment they should be able to act. Booking sits at the natural end of the page rather than behind a “Contact” link, and it shows actual available times instead of a form asking someone to get in touch.</p>
-      <p class="body">Around it: a referral a GP or an educator can complete without ringing, published fees, an FAQ that answers the awkward questions, and Grove Notes, somewhere for the practice to be useful in public rather than only in appointments.</p>
+  <section class="pj-dark" data-tone="dark">
+    <div class="pj-in">
+      <div class="pj-claim">
+        <div>
+          <span class="pj-ix num" data-rise>03 — The detail</span>
+          <h2 class="pj-h" data-mask>Booking is the end of reading, not a separate errand.</h2>
+        </div>
+        <div data-rise style="--d:.16s">
+          <p class="pj-p">The moment a parent decides is the moment they should be able to act. Booking sits at the natural end of the page rather than behind a “Contact” link, and it shows actual available times instead of a form asking someone to get in touch.</p>
+          <p class="pj-p">Around it: a referral a GP or an educator can complete without ringing, published fees, an FAQ that answers the awkward questions, and Grove Notes, somewhere for the practice to be useful in public rather than only in appointments.</p>
+        </div>
+      </div>
     </div>
-    <div class="b-vis">
-      <figure class="plate" style="margin:0;aspect-ratio:2320/1800">
+    <div class="corr corr-lit" data-corr="0.09" aria-hidden="true"></div>
+  </section>
+
+  <div class="pj-stage">
+    <div class="pj-stage-in">
+      <figure class="pj-plate" style="aspect-ratio:2320/1800" data-clip>
         <img src="work/kith-book.jpg" alt="“Book a time that suits you”, a calendar of real appointment times on the Kith Grove site." width="2320" height="1800" loading="lazy" decoding="async">
       </figure>
-      <p class="label cap-line">Real times, at the point of deciding</p>
+      <p class="pj-cap" data-rise>Real times, at the point of deciding</p>
     </div>
   </div>
 
-  <div class="blk rev">
-    <div class="b-say">
-      <p class="label" style="margin-bottom:.9rem">04 · Where it is read</p>
-      <h2 class="d2">One-handed, late, tired.</h2>
-      <p class="body">Parents research at night, on a phone, usually with something else going on. The mobile layout is not the desktop one folded up: the referral and the phone number stay within reach, and the type is set to be read by someone who is not at their best.</p>
-    </div>
-    <div class="b-vis">
-      <figure class="plate phone-crop" style="margin:0;max-width:20rem">
+  <section class="pj-sec shell">
+    <div class="pj-phone">
+      <div>
+        <span class="pj-ix num" data-rise>04 — Where it is read</span>
+        <h2 class="pj-h" data-mask>One-handed, late, tired.</h2>
+        <p class="pj-p" data-rise style="--d:.14s">Parents research at night, on a phone, usually with something else going on. The mobile layout is not the desktop one folded up: the referral and the phone number stay within reach, and the type is set to be read by someone who is not at their best.</p>
+      </div>
+      <figure class="pj-plate" data-clip style="--d:.1s">
         <img src="work/kith-phone.jpg" alt="Kith Grove on a phone: the logo, the promise, and “Make a referral” within thumb reach." width="1200" height="2580" loading="lazy" decoding="async">
       </figure>
-      <p class="label cap-line">Phone, at actual size</p>
     </div>
-  </div>
+  </section>
 
 </div>
 
-<nav class="next" aria-label="Next project">
+<nav class="pj-next" aria-label="Next project">
+  <div class="pj-next-bg" aria-hidden="true"><img src="work/nana-open.jpg" alt="" width="2880" height="1800" loading="lazy" decoding="async"></div>
   <a href="nana-bread.html">
-    <span><span class="label">Next · 03</span><span class="nm">Nana Bread</span></span>
+    <span><span class="lbl">Next · 03</span><span class="nm">Nana Bread</span></span>
     <span class="arw" aria-hidden="true">→</span>
   </a>
 </nav>

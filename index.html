@@ -46,6 +46,8 @@
 </head>
 <body>
 
+<div class="grain" aria-hidden="true"></div>
+
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="masthead">
@@ -53,8 +55,8 @@
   <nav class="nav-links" aria-label="Primary">
     <a class="nav-link opt" href="#work">Work</a>
     <a class="nav-link opt" href="#build">What we build</a>
+    <a class="nav-link opt" href="#process">Process</a>
     <a class="nav-link opt" href="#studio">Studio</a>
-    <a class="nav-link opt" href="#price">Pricing</a>
     <a class="cta" href="#contact"><span>Start a project</span><span class="disc" aria-hidden="true">→</span></a>
     <button class="burger" type="button" aria-label="Open menu" aria-controls="menu" aria-expanded="false"><span></span><span></span></button>
   </nav>
@@ -66,11 +68,12 @@
   <p class="menu-top" style="--i:0">TR Technologies Group — websites and software, Perth</p>
 
   <nav class="menu-nav" aria-label="Menu">
-    <a class="menu-link" href="#work"   style="--i:1"><span class="ix num">01</span><span class="wd">Work</span></a>
-    <a class="menu-link" href="#build"  style="--i:2"><span class="ix num">02</span><span class="wd">What we build</span></a>
-    <a class="menu-link" href="#studio" style="--i:3"><span class="ix num">03</span><span class="wd">Studio</span></a>
-    <a class="menu-link" href="#price"  style="--i:4"><span class="ix num">04</span><span class="wd">Pricing</span></a>
-    <a class="menu-link" href="#contact" style="--i:5"><span class="ix num">05</span><span class="wd">Contact</span></a>
+    <a class="menu-link" href="work.html" style="--i:1"><span class="ix num">01</span><span class="wd">Work</span></a>
+    <a class="menu-link" href="#build"    style="--i:2"><span class="ix num">02</span><span class="wd">What we build</span></a>
+    <a class="menu-link" href="#process"  style="--i:3"><span class="ix num">03</span><span class="wd">Process</span></a>
+    <a class="menu-link" href="#studio"   style="--i:4"><span class="ix num">04</span><span class="wd">Studio</span></a>
+    <a class="menu-link" href="#price"    style="--i:5"><span class="ix num">05</span><span class="wd">Pricing</span></a>
+    <a class="menu-link" href="#contact"  style="--i:6"><span class="ix num">06</span><span class="wd">Contact</span></a>
   </nav>
 
   <div>
@@ -110,13 +113,18 @@
     </div>
   </div>
 
+</section>
+
+<!-- The plate caption. On the paper, under the picture, where a caption goes -
+     the same three facts read at 15:1 here and at 1.25:1 over the grass. -->
+<div class="hero-rail" data-tone="light">
   <div class="hero-foot">
     <p class="m" data-rise style="--i:0;--d:.95s">31°57′S 115°51′E</p>
     <p class="m m-time" data-rise style="--i:1;--d:.95s"><span class="dot" data-hours aria-hidden="true"></span><span class="num" data-clock></span> AWST · Mon–Fri<span class="sr"></span></p>
     <p class="m" data-rise style="--i:2;--d:.95s">Three projects · 2025–26</p>
     <span class="hero-cue m-sep" aria-hidden="true"></span>
   </div>
-</section>
+</div>
 
 <!-- ===================================================== POSITIONING
      The sparse screen. One statement at the largest size on the page, one
@@ -129,19 +137,23 @@
   </div>
 </section>
 
+<!-- The ribs of the iron in the hero, used only where the ground changes.
+     Their phase shifts fractionally with scroll; that is the whole effect. -->
+<div class="corr" data-corr="0.09" aria-hidden="true"></div>
+
 <!-- ===================================================== WORK
      The dark ground, and the densest screen on the page. The three
      screenshots are the argument, and they carry out of a dark frame in a
      way they never do off the paper. It is also the middle of the scroll:
      you arrive somewhere, then come back out into the light. -->
 <section id="work" class="work on-dark" data-tone="dark">
- <div class="shell">
+ <div class="shell work-in">
   <div class="sec-head">
     <div>
       <span class="sec-ix num" data-rise>01 — Work</span>
       <h2 class="d1" data-mask>Selected work</h2>
     </div>
-    <p class="label" data-rise style="--d:.14s">Three Western Australian businesses</p>
+    <p class="label" data-rise style="--d:.14s">Western Australian businesses, 2025–26</p>
   </div>
 
   <div class="tiles">
@@ -166,7 +178,10 @@
       <span class="sum">A bake-to-order bakery that had outgrown taking orders by direct message, one evening at a time.</span>
     </a>
   </div>
+
+  <p class="work-more" data-rise><a href="work.html">See all work <span class="ct num">05 projects</span><span class="arw" aria-hidden="true">→</span></a></p>
  </div>
+ <div class="corr corr-lit" data-corr="0.09" aria-hidden="true"></div>
 </section>
 
 <!-- ===================================================== WHAT WE BUILD
@@ -216,11 +231,63 @@
   </ol>
 </section>
 
+<!-- ===================================================== PROCESS
+     On the dark, because it is the second half of the argument the work
+     section starts: here is what we made, here is how it happens. Five
+     steps read across as a score rather than down as a list. -->
+<section id="process" class="process" data-tone="dark">
+  <div class="shell">
+    <div class="sec-head open">
+      <div>
+        <span class="sec-ix num" data-rise>03 — Process</span>
+        <h2 class="d1" data-mask>How a project actually runs.</h2>
+      </div>
+      <p class="label" data-rise style="--d:.14s">Two people, one project at a time, no handovers</p>
+    </div>
+
+    <ol class="steps">
+      <li class="step" data-rise style="--i:0">
+        <span class="n num">01</span>
+        <h3>Conversation</h3>
+        <p class="dur num">One call</p>
+        <p>What the business is, who the customer is and what is not working. No brief template, no discovery deck. By the end of it you know whether we are the right studio and we know whether the project is real.</p>
+      </li>
+      <li class="step" data-rise style="--i:1">
+        <span class="n num">02</span>
+        <h3>Scope and a number</h3>
+        <p class="dur num">Within a week</p>
+        <p>We write down exactly what is being built, what is deliberately not, and what it costs. Fixed scope, fixed price. If the scope changes later you find out what that costs before we build it.</p>
+      </li>
+      <li class="step" data-rise style="--i:2">
+        <span class="n num">03</span>
+        <h3>Structure and words</h3>
+        <p class="dur num">Before any design</p>
+        <p>Positioning, page structure and the actual copy come first, because a layout designed around placeholder text is a layout designed around nothing. You see and approve the argument before you see a picture of it.</p>
+      </li>
+      <li class="step" data-rise style="--i:3">
+        <span class="n num">04</span>
+        <h3>Design and build</h3>
+        <p class="dur num">The bulk of it</p>
+        <p>Designed and engineered in the same room by the two people you have been talking to. You see it working on a real URL as it goes, not as a flat picture at the end.</p>
+      </li>
+      <li class="step" data-rise style="--i:4">
+        <span class="n num">05</span>
+        <h3>Launch and after</h3>
+        <p class="dur num">Ongoing, if you want it</p>
+        <p>We put it live, hand over something you can edit, and stay reachable. Software projects continue in stages from here rather than stopping at a launch date.</p>
+      </li>
+    </ol>
+
+    <p class="together" data-rise>Larger software builds run the same way but in stages: scope a stage, build it, put it in front of real users, then decide on the next one. You never commit to the whole thing before you have seen part of it working.</p>
+  </div>
+  <div class="corr corr-lit" data-corr="0.09" aria-hidden="true"></div>
+</section>
+
 <!-- ===================================================== STUDIO -->
 <section id="studio" class="studio shell" data-tone="light">
   <div class="sec-head">
     <div>
-      <span class="sec-ix num" data-rise>03 — Studio</span>
+      <span class="sec-ix num" data-rise>04 — Studio</span>
       <h2 class="d1" data-mask>Two people. You get both of them.</h2>
     </div>
     <p class="label" data-rise style="--d:.14s">No juniors, no account layer</p>
@@ -263,7 +330,7 @@
  <div class="shell">
   <div class="sec-head open">
     <div>
-      <span class="sec-ix num" data-rise>04 — Money</span>
+      <span class="sec-ix num" data-rise>05 — Money</span>
       <h2 class="d1" data-mask>How we price, before you ask</h2>
     </div>
     <p class="label" data-rise style="--d:.14s">So you can decide whether the hour is worth spending</p>
@@ -298,7 +365,7 @@
 <section id="contact" class="contact shell" data-tone="light">
   <div class="sec-head">
     <div>
-      <span class="sec-ix num" data-rise>05 — Contact</span>
+      <span class="sec-ix num" data-rise>06 — Contact</span>
       <h2 class="d1" data-mask>How can we help?</h2>
     </div>
     <p class="label" data-rise style="--d:.14s">Perth, Western Australia · AWST · Mon–Fri</p>

@@ -240,10 +240,15 @@
      leaving the viewport, so it costs nothing for most of the page.
      --------------------------------------------------------------------- */
   const heroIn = $('.hero-in');
-  const parts = $$('[data-par]').map(el => ({ el, f: parseFloat(el.dataset.par) || 0, base: 0 }));
+  const parts = [
+    ...$$('[data-par]').map(el => ({ el, prop: '--par', unit: 'px', f: parseFloat(el.dataset.par) || 0, base: 0 })),
+    // the corrugation bands take the same treatment, but the offset lands on
+    // background-position rather than on a transform
+    ...$$('[data-corr]').map(el => ({ el, prop: '--corr-x', unit: 'px', f: parseFloat(el.dataset.corr) || 0, base: 0 })),
+  ];
 
   if (moves() && parts.length) {
-    let pRaf = 0, live = false;
+    let pRaf = 0, live = 0;
 
     /* base is the scroll position at which an element sits at zero offset:
        the moment it first enters the viewport, or straight away for anything
@@ -261,7 +266,7 @@
       const sy = scrollY;
       for (const p of parts) {
         const travel = Math.max(0, sy - p.base) * p.f;
-        p.el.style.setProperty('--par', travel.toFixed(2) + 'px');
+        p.el.style.setProperty(p.prop, travel.toFixed(2) + p.unit);
       }
       if (heroIn && hero) {
         // the copy leaves a touch faster than the page, and is gone before
@@ -272,22 +277,28 @@
       pRaf = live ? requestAnimationFrame(draw) : 0;
     };
 
-    const run = (on) => {
-      if (on === live) return;
-      live = on;
-      for (const p of parts) p.el.style.willChange = on ? 'transform' : '';
-      if (on && !pRaf) pRaf = requestAnimationFrame(draw);
-      if (!on) { cancelAnimationFrame(pRaf); pRaf = 0; }
-    };
+    /* The loop runs while ANY tracked element is on screen and stops the
+       moment the last one leaves, so it is idle for most of the page. */
+    const tick = () => { if (live && !pRaf) pRaf = requestAnimationFrame(draw); };
 
     measure();
     draw();
     addEventListener('resize', () => { measure(); if (!live) draw(); }, { passive: true });
 
-    if (hero && 'IntersectionObserver' in window) {
-      new IntersectionObserver(([e]) => run(e.isIntersecting), { threshold: 0 }).observe(hero);
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        for (const e of entries) {
+          const was = live;
+          live += e.isIntersecting ? 1 : -1;
+          if (live < 0) live = 0;
+          e.target.style.willChange = e.isIntersecting ? 'transform,background-position' : '';
+          if (!was && live) tick();
+          if (was && !live) { cancelAnimationFrame(pRaf); pRaf = 0; draw(); }
+        }
+      }, { threshold: 0, rootMargin: '20% 0px' });
+      for (const p of parts) io.observe(p.el);
     } else {
-      run(true);
+      live = 1; tick();
     }
   }
 

@@ -21,12 +21,14 @@
 <!-- reveal styles are scoped to .js, set before first paint -->
 <script>document.documentElement.className+=' js'</script>
 </head>
-<body>
+<body class="pj-rmsafe">
+
+<div class="grain" aria-hidden="true"></div>
 
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="masthead">
-  <a class="mark" href="#top" aria-label="TR Technologies Group, home"><img class="mark-svg" src="brand/tr-mark@3x.png" alt="" width="96" height="68" decoding="async"><span class="full">Technologies Group</span></a>
+  <a class="mark" href="index.html" aria-label="TR Technologies Group, home"><img class="mark-svg" src="brand/tr-mark@3x.png" alt="" width="96" height="68" decoding="async"><span class="full">Technologies Group</span></a>
   <nav class="nav-links" aria-label="Primary">
     <a class="nav-link opt" href="index.html#work">All work</a>
     <a class="nav-link opt" href="index.html#studio">Studio</a>
@@ -35,7 +37,6 @@
   </nav>
 </header>
 
-<!-- The same full-screen menu as the homepage; site.js keeps it inert while closed. -->
 <div class="menu" id="menu">
   <p class="menu-top" style="--i:0">TR Technologies Group — websites and software, Perth</p>
 
@@ -58,112 +59,141 @@
   </div>
 </div>
 
-
 <main id="main">
 
-<section class="proj-hero shell" data-tone="light">
-  <p class="crumb label"><a href="index.html#work">Selected work</a> <span aria-hidden="true">/</span> <span>01</span></p>
+<!-- The opening. Dark, because the work section you clicked out of is dark -
+     the page you land on is the same room. -->
+<header class="pj-open" data-tone="dark">
+  <div class="pj-in">
+    <p class="pj-crumb"><a href="index.html#work">Selected work</a> <span aria-hidden="true">/</span> <span class="num">01</span></p>
+    <h1 class="pj-title" data-mask style="--d:.12s">RM Safe</h1>
+    <p class="pj-say" data-rise style="--d:.5s">Thirty years of workplace safety knowledge, turned into a product a small business can run on its own.</p>
+    <p data-rise style="--d:.62s"><a class="pj-live" href="https://www.rmsafe.com/" target="_blank" rel="noreferrer">Visit rmsafe.com <span class="arw" aria-hidden="true">↗</span></a></p>
 
-  <h1 class="proj-title">RM Safe</h1>
-
-  <div class="proj-say">
-    <p class="lead">Thirty years of workplace safety knowledge, turned into a product a small business can run on its own.</p>
-    <p class="label">2025–26 · Perth, WA · <a href="https://www.rmsafe.com/" target="_blank" rel="noreferrer">rmsafe.com&nbsp;↗</a></p>
+    <dl class="pj-facts" data-rise style="--d:.7s">
+      <div><dt>Year</dt><dd class="num">2025–26</dd></div>
+      <div><dt>Sector</dt><dd>Workplace safety &amp; HR compliance</dd></div>
+      <div><dt>Scope</dt><dd>Product strategy, UX, SaaS build, document commerce, infrastructure</dd></div>
+      <div><dt>Tom / Andy</dt><dd>Product strategy and interface design / application engineering and infrastructure</dd></div>
+    </dl>
   </div>
+  <div class="corr corr-lit" data-corr="0.09" aria-hidden="true"></div>
+</header>
 
-  <div class="proj-open">
-    <figure class="plate" style="margin:0">
+<!-- Full bleed, straight out of the dark. The work is the argument, so it
+     gets the whole width before a word of commentary. -->
+<!-- The stage bleeds; the screenshot does not. Full width for the page, whole
+     edges for the picture. -->
+<div class="pj-stage dark">
+  <div class="pj-stage-in">
+    <figure class="pj-plate" style="aspect-ratio:2880/1800" data-clip>
       <img src="work/rmsafe-open.jpg" alt="The RM Safe homepage: “All your safety and HR compliance in one place”, beside the RMSuite contractor dashboard." width="2880" height="1800" fetchpriority="high" decoding="async">
     </figure>
   </div>
+</div>
 
-  <dl class="proj-facts">
-    <div><dt class="label">Sector</dt><dd>Workplace safety &amp; HR compliance</dd></div>
-    <div><dt class="label">Scope</dt><dd>Product strategy, UX, SaaS build, document commerce, infrastructure</dd></div>
-    <div><dt class="label">Tom</dt><dd>Product strategy, UX, interface design</dd></div>
-    <div><dt class="label">Andy</dt><dd>Application engineering, integrations, infrastructure</dd></div>
-  </dl>
-</section>
+<div class="pj-body">
 
-<div class="shell proj-body">
-
-  <div class="blk">
-    <div class="b-say">
-      <p class="label" style="margin-bottom:.9rem">01 · The problem</p>
-      <h2 class="d2">Expertise with a calendar for a ceiling.</h2>
-      <p class="body">The knowledge was real and the demand was proven, but it could only be delivered one way: by one person, in a room, at consulting rates. That model has a hard limit, and the limit is a diary.</p>
-      <p class="body">The businesses who needed it most were the ones least able to afford it: small operators who still have to produce a SWMS before they can get on site, keep contractor insurances current, and have something defensible if an incident happens.</p>
-    </div>
-    <div class="b-vis">
-      <figure class="plate" style="margin:0;aspect-ratio:2800/1690">
-        <img src="work/rmsafe-modules.jpg" alt="Six RMSuite modules: AI SWMS builder, incident management, employee register, contractor register, 500+ safety documents, 100+ HR documents." width="2800" height="1690" loading="lazy" decoding="async">
-      </figure>
-      <p class="label cap-line">Six separate obligations, usually held in six separate places</p>
-    </div>
-  </div>
-
-  <div class="blk rev">
-    <div class="b-say">
-      <p class="label" style="margin-bottom:.9rem">02 · What we built</p>
-      <h2 class="d2">RMSuite. One login, the whole obligation.</h2>
-      <p class="body">SWMS, incidents, employees, contractors and a library of more than 500 editable documents, in a single system rather than five. Alongside it, the commerce path for the parts that genuinely are off-the-shelf, because not every business needs the platform, and some just need the document.</p>
-      <div class="spec-list">
-        <div><span class="k">01</span><span class="m">AI SWMS builder</span><span class="t">Product</span></div>
-        <div><span class="k">02</span><span class="m">Incident management &amp; investigations</span><span class="t">Product</span></div>
-        <div><span class="k">03</span><span class="m">Employee register &amp; inductions</span><span class="t">Product</span></div>
-        <div><span class="k">04</span><span class="m">Contractor &amp; supplier compliance</span><span class="t">Product</span></div>
-        <div><span class="k">05</span><span class="m">500+ health &amp; safety documents</span><span class="t">Library</span></div>
-        <div><span class="k">06</span><span class="m">100+ HR documents</span><span class="t">Library</span></div>
+  <!-- 01. A sparse screen: the problem, told without a picture, so the page
+       changes density before it changes subject. -->
+  <section class="pj-sec after-bleed shell">
+    <div class="pj-said">
+      <div>
+        <span class="pj-ix num" data-rise>01 — The problem</span>
+        <h2 class="pj-h" data-mask>Expertise with a calendar for a ceiling.</h2>
+      </div>
+      <div data-rise style="--d:.14s">
+        <p class="pj-p">The knowledge was real and the demand was proven, but it could only be delivered one way: by one person, in a room, at consulting rates. That model has a hard limit, and the limit is a diary.</p>
+        <p class="pj-p">The businesses who needed it most were the ones least able to afford it: small operators who still have to produce a SWMS before they can get on site, keep contractor insurances current, and have something defensible if an incident happens.</p>
       </div>
     </div>
-    <div class="b-vis">
-      <figure class="plate plate-c" style="margin:0;aspect-ratio:1600/1240">
-        <img src="work/rmsafe-app.jpg" alt="The contractor register: rows of contractors with compliance status, insurance expiry dates and document counts." width="1600" height="1240" loading="lazy" decoding="async">
-      </figure>
-      <p class="label cap-line">The contractor register: the screen an operations manager lives in</p>
-    </div>
+  </section>
+
+  <div class="shell">
+    <figure class="pj-plate" style="aspect-ratio:2800/1690" data-clip>
+      <img src="work/rmsafe-modules.jpg" alt="Six RMSuite modules: AI SWMS builder, incident management, employee register, contractor register, 500+ safety documents, 100+ HR documents." width="2800" height="1690" loading="lazy" decoding="async">
+    </figure>
+    <p class="pj-cap" data-rise>Six separate obligations, usually held in six separate places</p>
   </div>
 
-  <div class="blk">
-    <div class="b-say">
-      <p class="label" style="margin-bottom:.9rem">03 · The decision that shaped it</p>
-      <h2 class="d2">Most of the work was leaving things out.</h2>
-      <p class="body">Every feature that would have needed a consultant to explain it was cut. A safety tool that requires a training session before anyone can use it is just consulting with extra steps. It would have rebuilt the exact ceiling the product existed to remove.</p>
-      <p class="body">The same logic set the pricing. One subscription covers the whole platform and all 500-plus documents, priced only by the size of the team, so nobody has to work out which module they need before they have used it.</p>
-      <div class="tiers">
-        <div class="tier"><span class="amt">$160</span><span class="who">1–5 employees</span></div>
-        <div class="tier"><span class="amt">$200</span><span class="who">6–15 employees</span></div>
-        <div class="tier"><span class="amt">$260</span><span class="who">16–25 employees</span></div>
+  <!-- 02. Text beside the screen an operations manager lives in. -->
+  <section class="pj-sec shell">
+    <div class="pj-split">
+      <div class="s-say">
+        <span class="pj-ix num" data-rise>02 — What we built</span>
+        <h2 class="pj-h" data-mask>RMSuite. One login, the whole obligation.</h2>
+        <p class="pj-p" data-rise style="--d:.14s">SWMS, incidents, employees, contractors and a library of more than 500 editable documents, in a single system rather than five. Alongside it, the commerce path for the parts that genuinely are off-the-shelf, because not every business needs the platform, and some just need the document.</p>
+        <div class="spec-list" data-rise style="--d:.2s">
+          <div><span class="k num">01</span><span class="m">AI SWMS builder</span><span class="t">Product</span></div>
+          <div><span class="k num">02</span><span class="m">Incident management &amp; investigations</span><span class="t">Product</span></div>
+          <div><span class="k num">03</span><span class="m">Employee register &amp; inductions</span><span class="t">Product</span></div>
+          <div><span class="k num">04</span><span class="m">Contractor &amp; supplier compliance</span><span class="t">Product</span></div>
+          <div><span class="k num">05</span><span class="m">500+ health &amp; safety documents</span><span class="t">Library</span></div>
+          <div><span class="k num">06</span><span class="m">100+ HR documents</span><span class="t">Library</span></div>
+        </div>
       </div>
-      <p class="label" style="margin-top:.8rem">AUD per month, as published on rmsafe.com</p>
+      <div class="s-vis">
+        <figure class="pj-plate centre" style="aspect-ratio:1600/1240" data-clip>
+          <img src="work/rmsafe-app.jpg" alt="The contractor register: rows of contractors with compliance status, insurance expiry dates and document counts." width="1600" height="1240" loading="lazy" decoding="async">
+        </figure>
+        <p class="pj-cap">The contractor register: the screen an operations manager lives in</p>
+      </div>
     </div>
-    <div class="b-vis">
-      <figure class="plate" style="margin:0;aspect-ratio:2800/1800">
+  </section>
+
+  <!-- 03. The interlude. The one decision that shaped the product, on the
+       dark, at size - the loudest thing on the page. -->
+  <section class="pj-dark" data-tone="dark">
+    <div class="pj-in">
+      <div class="pj-claim">
+        <div>
+          <span class="pj-ix num" data-rise>03 — The decision that shaped it</span>
+          <h2 class="pj-h" data-mask>Most of the work was leaving things out.</h2>
+        </div>
+        <div data-rise style="--d:.16s">
+          <p class="pj-p">Every feature that would have needed a consultant to explain it was cut. A safety tool that requires a training session before anyone can use it is just consulting with extra steps. It would have rebuilt the exact ceiling the product existed to remove.</p>
+          <p class="pj-p">The same logic set the pricing. One subscription covers the whole platform and all 500-plus documents, priced only by the size of the team, so nobody has to work out which module they need before they have used it.</p>
+          <div class="tiers">
+            <div class="tier"><span class="amt num">$160</span><span class="who">1–5 employees</span></div>
+            <div class="tier"><span class="amt num">$200</span><span class="who">6–15 employees</span></div>
+            <div class="tier"><span class="amt num">$260</span><span class="who">16–25 employees</span></div>
+          </div>
+          <p class="pj-cap">AUD per month, as published on rmsafe.com</p>
+        </div>
+      </div>
+    </div>
+    <div class="corr corr-lit" data-corr="0.09" aria-hidden="true"></div>
+  </section>
+
+  <div class="pj-stage">
+    <div class="pj-stage-in">
+      <figure class="pj-plate" style="aspect-ratio:2800/1800" data-clip>
         <img src="work/rmsafe-pricing.jpg" alt="The RM Safe pricing page: three per-month tiers, each including the whole platform and all documents." width="2800" height="1800" loading="lazy" decoding="async">
       </figure>
-      <p class="label cap-line">One price, the whole platform</p>
+      <p class="pj-cap" data-rise>One price, the whole platform</p>
     </div>
   </div>
 
-  <div class="blk rev">
-    <div class="b-say">
-      <p class="label" style="margin-bottom:.9rem">04 · In the field</p>
-      <h2 class="d2">Used on a site, on a phone, on one bar of signal.</h2>
-      <p class="body">Compliance software is not used at a desk. It is used standing on a job, by someone who has three minutes and gloves on. Everything that matters is reachable in one thumb-length, and nothing important depends on a connection that may not be there.</p>
-    </div>
-    <div class="b-vis">
-      <figure class="plate phone-crop" style="margin:0;max-width:20rem">
+  <!-- 04. The phone, at the size a phone is. -->
+  <section class="pj-sec shell">
+    <div class="pj-phone">
+      <div>
+        <span class="pj-ix num" data-rise>04 — In the field</span>
+        <h2 class="pj-h" data-mask>Used on a site, on a phone, on one bar of signal.</h2>
+        <p class="pj-p" data-rise style="--d:.14s">Compliance software is not used at a desk. It is used standing on a job, by someone who has three minutes and gloves on. Everything that matters is reachable in one thumb-length, and nothing important depends on a connection that may not be there.</p>
+      </div>
+      <figure class="pj-plate" data-clip style="--d:.1s">
         <img src="work/rmsafe-phone.jpg" alt="RM Safe on a phone, with the primary actions within thumb reach." width="1200" height="2580" loading="lazy" decoding="async">
       </figure>
-      <p class="label cap-line">Phone, at actual size</p>
     </div>
-  </div>
+  </section>
 
 </div>
 
-<nav class="next" aria-label="Next project">
+<nav class="pj-next" aria-label="Next project">
+  <div class="pj-next-bg" aria-hidden="true"><img src="work/kith-open.jpg" alt="" width="2880" height="1800" loading="lazy" decoding="async"></div>
   <a href="kith-grove.html">
-    <span><span class="label">Next · 02</span><span class="nm">Kith Grove</span></span>
+    <span><span class="lbl">Next · 02</span><span class="nm">Kith Grove</span></span>
     <span class="arw" aria-hidden="true">→</span>
   </a>
 </nav>
