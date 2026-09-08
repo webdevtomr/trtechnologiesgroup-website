@@ -59,6 +59,36 @@
       "source": "/contact",
       "destination": "/#contact",
       "permanent": true
+    },
+    {
+      "source": "/rm-safe",
+      "destination": "/work",
+      "permanent": false
+    },
+    {
+      "source": "/rm-safe.html",
+      "destination": "/work",
+      "permanent": false
+    },
+    {
+      "source": "/kith-grove",
+      "destination": "/work",
+      "permanent": false
+    },
+    {
+      "source": "/kith-grove.html",
+      "destination": "/work",
+      "permanent": false
+    },
+    {
+      "source": "/nana-bread",
+      "destination": "/work",
+      "permanent": false
+    },
+    {
+      "source": "/nana-bread.html",
+      "destination": "/work",
+      "permanent": false
     }
   ]
 }

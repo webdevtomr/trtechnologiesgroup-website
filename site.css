@@ -714,6 +714,9 @@ body.nav-open .menu-link,body.nav-open .menu-top,body.nav-open .menu-foot > *{
 .tile:hover .nm,.tile:focus-visible .nm{color:var(--accent)}
 .tile:hover .hd,.tile:focus-visible .hd{border-color:var(--accent)}
 .tile .desc{display:block;font-size:var(--t-micro);color:var(--muted);margin-top:.6rem}
+/* While the case studies are held back for client sign-off, every tile goes
+   to the client's live site instead, and says so. */
+.tile .ext,.wk-item .ext{opacity:.72}
 .tile .sum{display:block;font-size:var(--t-small);line-height:1.62;color:var(--ink-2);
   margin-top:.6rem;max-width:34ch}
 
@@ -1219,9 +1222,8 @@ legend{padding:0}
   .wk-item.first .meta,.wk-item.first .sum{max-width:70ch}
 }
 
-/* a project without a page of its own still belongs in the index - it points
-   at the live site and says so */
-.wk-item .ext{color:var(--muted)}
+/* every item points at the client's live site while the case studies are
+   held back, and says so */
 
 /* --------------------------------------------------------------------------
    17. REDUCED MOTION

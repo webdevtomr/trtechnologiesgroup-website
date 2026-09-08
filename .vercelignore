@@ -1,1 +1,7 @@
+# Case study pages are held back until each client signs off on them.
+# Un-ignore the three files and remove the matching redirects in
+# vercel.json to put one back; nothing else has to change.
 REFERENCE-AUDIT.md
+rm-safe.html
+kith-grove.html
+nana-bread.html
