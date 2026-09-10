@@ -1031,6 +1031,10 @@ legend{padding:0}
   max-width:20ch}
 .pj-p{font-size:var(--t-body);line-height:1.68;color:var(--ink-2);max-width:38ch}
 .pj-p + .pj-p{margin-top:1em}
+/* Where a heading and its copy stack in the same column - a split, the phone
+   panel - nothing was setting a gap and they ran together. In .pj-said they
+   sit in separate columns, so this deliberately does not reach them. */
+.pj-h + .pj-p,.pj-h + .spec-list,.pj-h + .tiers{margin-top:clamp(.85rem,1.6vw,1.25rem)}
 
 /* a sparse text screen: heading left, the argument in two columns beneath */
 .pj-said{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
