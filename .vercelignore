@@ -5,10 +5,10 @@ fonts/
 fonts.css
 site.css
 site.js
-work.html
-nana-bread.html
-rm-safe.html
-kith-grove.html
+/work.html
+/nana-bread.html
+/rm-safe.html
+/kith-grove.html
 work/*.png
 work/*.jpg
 work/*.jpeg
