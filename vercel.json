@@ -4,24 +4,6 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/fonts/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/work/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
       "source": "/(.*)",
       "headers": [
         {
@@ -41,13 +23,13 @@
   ],
   "redirects": [
     {
-      "source": "/about",
-      "destination": "/#studio",
+      "source": "/work",
+      "destination": "/#work",
       "permanent": true
     },
     {
-      "source": "/services",
-      "destination": "/#build",
+      "source": "/work.html",
+      "destination": "/#work",
       "permanent": true
     },
     {
@@ -56,39 +38,49 @@
       "permanent": true
     },
     {
+      "source": "/about",
+      "destination": "/#studio",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/#capabilities",
+      "permanent": true
+    },
+    {
       "source": "/contact",
       "destination": "/#contact",
       "permanent": true
     },
     {
-      "source": "/rm-safe",
-      "destination": "/work",
-      "permanent": false
-    },
-    {
-      "source": "/rm-safe.html",
-      "destination": "/work",
-      "permanent": false
-    },
-    {
-      "source": "/kith-grove",
-      "destination": "/work",
-      "permanent": false
-    },
-    {
-      "source": "/kith-grove.html",
-      "destination": "/work",
-      "permanent": false
-    },
-    {
       "source": "/nana-bread",
-      "destination": "/work",
-      "permanent": false
+      "destination": "/work/nana-bread",
+      "permanent": true
     },
     {
       "source": "/nana-bread.html",
-      "destination": "/work",
-      "permanent": false
+      "destination": "/work/nana-bread",
+      "permanent": true
+    },
+    {
+      "source": "/rm-safe",
+      "destination": "/work/rm-safe",
+      "permanent": true
+    },
+    {
+      "source": "/rm-safe.html",
+      "destination": "/work/rm-safe",
+      "permanent": true
+    },
+    {
+      "source": "/kith-grove",
+      "destination": "/work/kith-grove",
+      "permanent": true
+    },
+    {
+      "source": "/kith-grove.html",
+      "destination": "/work/kith-grove",
+      "permanent": true
     }
   ]
 }
