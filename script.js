@@ -46,7 +46,7 @@
   document.querySelectorAll('[data-copy-email]').forEach(button => {
     button.addEventListener('click', async () => {
       const status = document.querySelector('[data-copy-status]');
-      try { await navigator.clipboard.writeText('hello@trtechnologies.com.au'); status.textContent = 'Email address copied.'; }
+      try { await navigator.clipboard.writeText('info@trtechnologies.com.au'); status.textContent = 'Email address copied.'; }
       catch { status.textContent = 'You can select and copy the email address above.'; }
     });
   });
@@ -60,8 +60,8 @@
     const project = String(data.get('project') || '').trim();
     const body = `Hi Tom and Andy,\n\n${project}\n\n${business ? `Business / website: ${business}\n` : ''}From: ${name}`;
     const subject = business ? `Project enquiry — ${business}` : 'Project enquiry';
-    window.location.href = `mailto:hello@trtechnologies.com.au?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    form.querySelector('.form-status').textContent = 'If your email app did not open, email hello@trtechnologies.com.au directly. Nothing has been sent from this page.';
+    window.location.href = `mailto:info@trtechnologies.com.au?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    form.querySelector('.form-status').textContent = 'If your email app did not open, email info@trtechnologies.com.au directly. Nothing has been sent from this page.';
   });
   const dialog = document.querySelector('.image-dialog');
   document.querySelector('[data-open-image]')?.addEventListener('click', () => dialog?.showModal());

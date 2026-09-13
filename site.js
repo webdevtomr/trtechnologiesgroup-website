@@ -484,7 +484,7 @@
   if (!form) return;
 
   const status = document.getElementById('status');
-  const to = form.dataset.to || 'hello@trtechnologies.com.au';
+  const to = form.dataset.to || 'info@trtechnologies.com.au';
 
   const fail = (msg, field) => {
     status.dataset.state = 'err';
