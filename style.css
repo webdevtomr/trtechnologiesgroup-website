@@ -52,7 +52,9 @@ a:hover{text-decoration:underline;text-underline-offset:5px}
 .work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.5vw,48px)}
 .work-visual{display:flex;align-items:center;position:relative;aspect-ratio:1.02;padding:clamp(20px,2.5vw,50px);overflow:hidden}
 .work-visual-nana{background:#e1c96d}.work-visual-rm{background:#343c36}.work-visual-kith{background:#c7d0c0}
+.work-visual-app{justify-content:center}.work-visual-gymbro{background:#c6f500}.work-visual-hello-today{background:#ff6b00}
 .work-visual img{width:100%;box-shadow:0 15px 28px #0002;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.work-visual-app img{width:auto;height:100%;max-width:100%;object-fit:contain}
 .work-visual:hover img,.work-visual:focus-visible img{transform:translateY(-5px)}
 .work-arrow{position:absolute;right:17px;bottom:13px;font-size:25px;color:#fff;mix-blend-mode:difference}
 .work-caption{padding-top:23px}.work-type{font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
@@ -112,6 +114,7 @@ textarea{resize:vertical}.form-note,.form-status{font-size:11px;line-height:1.6}
 .project-facts dt{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:14px}.project-facts dd{margin:0;font-size:13px;line-height:1.5}.project-facts .text-link{padding-top:0}
 .case-cover{padding:clamp(24px,5vw,85px);background:#c7d0c0}.nana-cover{background:#e1c96d}.rm-cover,.rmsafe-cover{background:#343c36;color:#fff}
 .case-cover img{width:100%;box-shadow:0 20px 50px #0002}
+.app-cover{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(30px,6vw,90px)}.app-cover-gymbro{background:#0f1115;color:#f4f2ec}.app-cover-hello-today{background:#fbf7ef;color:#20231d}.app-cover img{max-width:440px;justify-self:center;box-shadow:none}.app-cover figcaption{display:block;padding:0}.app-cover-title{display:block;font-size:clamp(34px,4vw,62px);font-weight:500;letter-spacing:-.045em;line-height:1.05;max-width:450px}.app-cover-note{display:block;font-size:12px;line-height:1.6;margin-top:25px;max-width:310px}
 figcaption{display:flex;justify-content:space-between;gap:20px;font-size:10px;line-height:1.6;padding-top:22px}
 .case-body{padding-block:85px 100px}.case-story{display:grid;grid-template-columns:1fr 2fr;gap:10%;padding-block:50px;border-top:1px solid var(--line)}
 .case-story h2{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
@@ -149,7 +152,7 @@ figcaption{display:flex;justify-content:space-between;gap:20px;font-size:10px;li
   .contact-email{font-size:clamp(14px,4.1vw,23px);gap:12px}.contact-layout>div>p{font-size:12px}.copy-status:empty{min-height:0}
   .site-footer{display:grid;grid-template-columns:auto 1fr;gap:25px;padding-block:35px}.footer-wordmark{font-size:78px}.site-footer>div:last-child{grid-column:1/-1;display:flex;justify-content:space-between;text-align:left}.site-footer>div:nth-child(2){justify-self:end}
   .project-header{padding-block:15px 35px}.project-title-row{padding-block:30px 40px}.project-title-row h1{font-size:clamp(52px,14vw,85px)}.project-summary{font-size:14px}
-  .project-facts{grid-template-columns:1fr;gap:24px}.project-facts dt{margin-bottom:6px}.case-cover{padding:22px}figcaption{font-size:9px;flex-wrap:wrap;padding-top:17px}
+  .project-facts{grid-template-columns:1fr;gap:24px}.project-facts dt{margin-bottom:6px}.case-cover{padding:22px}.app-cover{grid-template-columns:1fr;gap:28px}.app-cover img{max-width:100%}.app-cover-title{font-size:34px}figcaption{font-size:9px;flex-wrap:wrap;padding-top:17px}
   .case-body{padding-block:40px 55px}.case-story{grid-template-columns:1fr;gap:25px;padding-block:35px}.case-story h3{font-size:35px}.case-story p{font-size:14px}
   .case-observations{grid-template-columns:1fr;gap:30px;padding-block:15px 40px}.case-observations h3{margin-top:15px}.case-detail{padding:18px}
   .project-closing{grid-template-columns:1fr;gap:25px;padding-block:40px}.project-closing h2{font-size:37px}.next-project{border-top:1px solid var(--line)}.image-dialog{padding:14px}.dialog-toolbar p{font-size:10px}
