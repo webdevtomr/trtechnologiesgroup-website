@@ -37,11 +37,11 @@ def validate(data):
 
 def send_enquiry(fields):
     sender = os.environ.get('TR_MAIL_FROM', '')
-    if not sender:
-        raise RuntimeError('Mail sender not configured')
     body = '\n\n'.join(f'{label}: {fields[key]}' for key, label in [
         ('name', 'Name'), ('email', 'Email'), ('organisation', 'Organisation'), ('message', 'Project details')])
     if os.environ.get('RESEND_API_KEY'):
+        if not sender:
+            raise RuntimeError('Mail sender not configured')
         payload = json.dumps({'from': sender, 'to': [RECIPIENT], 'reply_to': fields['email'],
                               'subject': 'TR Technologies Group website enquiry', 'text': body}).encode()
         req = Request('https://api.resend.com/emails', data=payload, method='POST',
@@ -54,7 +54,21 @@ def send_enquiry(fields):
         return
     host = os.environ.get('TR_SMTP_HOST', '')
     if not host:
-        raise RuntimeError('Mail delivery not configured')
+        # Password-free forwarding, activated by the recipient's confirmation email.
+        payload = json.dumps({key: fields[key] for key in ('name', 'email', 'organisation', 'message')} | {
+            '_subject': 'TR Technologies Group website enquiry', '_template': 'table',
+            '_url': 'https://www.trtechnologiesgroup.com/contact'}).encode()
+        req = Request('https://formsubmit.co/ajax/' + RECIPIENT, data=payload, method='POST', headers={
+            'Content-Type': 'application/json', 'Accept': 'application/json',
+            'Origin': 'https://www.trtechnologiesgroup.com', 'Referer': 'https://www.trtechnologiesgroup.com/contact',
+            'User-Agent': 'TR-Technologies-Website/1.0'})
+        with urlopen(req, timeout=15) as response:
+            result = json.load(response)
+            if str(result.get('success', '')).lower() != 'true':
+                raise RuntimeError('Form forwarding not yet activated or unavailable')
+        return
+    if not sender:
+        raise RuntimeError('Mail sender not configured')
     mail = EmailMessage()
     mail['From'] = sender
     mail['To'] = RECIPIENT
