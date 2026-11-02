@@ -1,286 +1,109 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#e4e4de">
-    <meta name="description" content="TR Technologies Group is an independent design and engineering studio in Perth. Websites, ecommerce and useful software, with Tom and Andy from idea to launch.">
-    <title>TR Technologies Group — Design & technology, together.</title>
-    <link rel="icon" href="favicon.svg?v=20260912-spatial" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20260927-apps">
-    <script src="script.js?v=20260912-spatial" defer>
-    </script>
-    <script src="spatial.js?v=20260912-spatial" defer></script>
-  </head>
-  <body class="home-page">
-    <a class="skip" href="#main">Skip to content</a>
-    <header class="site-header wrap">
-      <a class="brand" href="index.html" aria-label="TR Technologies Group home">
-        <span class="brand-mark">tr<span class="brand-square" aria-hidden="true">
-          </span>
-        </span>
-        <span class="brand-name">Technologies<br>Group</span>
-      </a>
-      <nav class="desktop-nav" aria-label="Main navigation">
-        <a href="#work">Work
-        </a>
-        <a href="#studio">Studio</a>
-        <a href="#capabilities">Capabilities</a>
-      </nav>
-      <a class="header-enquiry" href="#contact">Let’s talk <span aria-hidden="true">↗</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu <span aria-hidden="true">+</span>
-      </button>
-    </header>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
-      <a href="#work">Work <span>01</span>
-      </a>
-      <a href="#studio">Studio <span>02</span>
-      </a>
-      <a href="#capabilities">Capabilities <span>03</span>
-      </a>
-      <a href="#contact">Let’s talk <span>↗</span>
-      </a>
-      <p>Independent design & technology.<br>Perth, Western Australia.</p>
-    </nav>
-    <main id="main">
-      <section class="home-hero" aria-labelledby="hero-title">
-        <canvas id="spatial-field" aria-hidden="true"></canvas>
-        <div class="spatial-wash" aria-hidden="true"></div>
-        <div class="hero-copy wrap">
-          <p class="eyebrow">Independent design & technology / Perth</p>
-          <h1 id="hero-title">A different<br>kind of <em>studio.</em></h1>
-          <p class="hero-intro">Strategy, design and technology.<br>With Tom and Andy, from the first<br class="desktop-break"> conversation to the final interaction.</p>
-          <a class="button" href="#contact">Make something with us <span aria-hidden="true">↗</span></a>
-        </div>
-        <div class="hero-bottom wrap">
-          <p>Two people.<br>One joined-up approach.</p>
-          <div class="motion-controls" hidden><button type="button" id="spatial-motion" aria-pressed="false">Pause motion <span aria-hidden="true">Ⅱ</span></button><button type="button" id="spatial-perspective">Change perspective <span aria-hidden="true">↗</span></button></div>
-          <a href="#work">Explore our work <span aria-hidden="true">↓</span></a>
-        </div>
-      </section>
-      <section class="work-selection wrap" id="work" aria-labelledby="work-title">
-        <div class="work-heading">
-          <div><p class="eyebrow">Selected work</p><h2 id="work-title">Ideas, out in the world.</h2></div>
-          <p>Websites, apps, commerce and software.<br>Different businesses. Thought through, inside and out.</p>
-        </div>
-        <div class="work-grid">
-          <article class="work-item">
-            <a class="work-visual work-visual-nana" href="work/nana-bread.html" aria-label="Explore the Nana Bread project">
-              <img src="assets/nana.jpg" width="2880" height="1800" alt="Nana Bread’s current homepage with banana bread photography, a cream wordmark and Order now navigation" loading="lazy">
-              <span class="work-arrow" aria-hidden="true">↗</span>
-            </a>
-            <div class="work-caption"><p class="work-type">Website & ecommerce</p><h3><a href="work/nana-bread.html">Nana Bread <span aria-hidden="true">↗</span></a></h3><p>From orders by direct message to a digital storefront with a little extra personality.</p></div>
-          </article>
-          <article class="work-item">
-            <a class="work-visual work-visual-rm" href="work/rm-safe.html" aria-label="Explore the RM Safe project">
-              <img src="assets/rmsafe.jpg" width="2880" height="1800" alt="RM Safe’s website showing its compliance platform and contractor management interface" loading="lazy">
-              <span class="work-arrow" aria-hidden="true">↗</span>
-            </a>
-            <div class="work-caption"><p class="work-type">Website & software</p><h3><a href="work/rm-safe.html">RM Safe <span aria-hidden="true">↗</span></a></h3><p>Thirty years of workplace safety knowledge, connected through a website and software product.</p></div>
-          </article>
-          <article class="work-item">
-            <a class="work-visual work-visual-kith" href="work/kith-grove.html" aria-label="Explore the Kith Grove Healthcare project">
-              <img src="assets/kith.jpg" width="2880" height="1800" alt="Kith Grove Healthcare’s green website, handwritten identity and referral navigation" loading="lazy">
-              <span class="work-arrow" aria-hidden="true">↗</span>
-            </a>
-            <div class="work-caption"><p class="work-type">Healthcare website</p><h3><a href="work/kith-grove.html">Kith Grove Healthcare <span aria-hidden="true">↗</span></a></h3><p>A welcoming digital home for a paediatric practice that meets children where they are.</p></div>
-          </article>
-          <article class="work-item work-item-app">
-            <a class="work-visual work-visual-app work-visual-gymbro" href="work/gymbro.html" aria-label="Explore the GymBro project">
-              <img src="assets/gymbro-app.jpg" width="1086" height="1448" alt="A hand holding an iPhone with an illustrative GymBro coaching dashboard in charcoal, off-white and lime" loading="lazy">
-              <span class="work-arrow" aria-hidden="true">↗</span>
-            </a>
-            <div class="work-caption"><p class="work-type">Fitness coaching app</p><h3><a href="work/gymbro.html">GymBro <span aria-hidden="true">↗</span></a></h3><p>Coaching, training and client progress, connected in one app.</p></div>
-          </article>
-          <article class="work-item work-item-app">
-            <a class="work-visual work-visual-app work-visual-hello-today" href="work/hello-today.html" aria-label="Explore the Hello Today project">
-              <img src="assets/hello-today-app.jpg" width="1199" height="1600" alt="Hello Today promotional artwork with an iPhone showing the daily check-in app" loading="lazy">
-              <span class="work-arrow" aria-hidden="true">↗</span>
-            </a>
-            <div class="work-caption"><p class="work-type">Daily check-in app</p><h3><a href="work/hello-today.html">Hello Today <span aria-hidden="true">↗</span></a></h3><p>A simple daily check-in that helps families stay connected.</p></div>
-          </article>
-        </div>
-      </section>
-      <section class="studio-section" id="studio" aria-labelledby="studio-title">
-        <div class="wrap">
-          <div class="section-label">
-            <h2 id="studio-title">The studio</h2>
-            <span>Small on purpose.</span>
-            <span class="section-number" aria-hidden="true">TR / Studio</span>
-          </div>
-          <div class="studio-intro">
-            <p class="display-heading">Two people.<br>
-              <span>You get both.</span>
-            </p>
-            <div class="studio-explanation">
-              <p>You work directly with Tom and Andy, from the first conversation to the final interaction.</p>
-              <p>The people understanding your business are the people designing and building it. Strategy, design and engineering stay in the same conversation.</p>
-              <a class="text-link" href="#contact">A conversation with us <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </div>
-          <div class="founders">
-            <article class="founder">
-              <div class="founder-name">
-                <h3>Tom</h3>
-                <span>01 / Strategy, product & design</span>
-              </div>
-              <p>The big picture and the tiny details. Connecting what your business needs with what your customers experience.</p>
-            </article>
-            <article class="founder">
-              <div class="founder-name">
-                <h3>Andy</h3>
-                <span>02 / Technology & engineering</span>
-              </div>
-              <p>The thinking behind the build. Turning the design into working websites, applications and connected software.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-      <section class="capabilities-section wrap" id="capabilities" aria-labelledby="capabilities-title">
-        <div class="section-label">
-          <h2 id="capabilities-title">What we do</h2>
-          <span>From what people see to how it works.</span>
-          <span class="section-number" aria-hidden="true">TR / Capabilities</span>
-        </div>
-        <div class="capabilities-intro">
-          <h3>From the front end<br>to the moving parts.</h3>
-          <p>A new website, a product idea, or a better way to run the day-to-day. Start with what needs to change.</p>
-        </div>
-        <div class="services">
-          <article class="service">
-            <span class="service-number">01</span>
-            <div>
-              <h4>Websites & commerce</h4>
-              <p>A distinct digital presence, with a storefront or CMS you can actually run.</p>
-              <details>
-                <summary>What this can include <span aria-hidden="true">+</span>
-                </summary>
-                <div class="detail-content">
-                  <p>Positioning, copy, web design and development. Business websites, online stores and content management.</p>
-                  <a class="text-link" href="work/nana-bread.html">See Nana Bread <span aria-hidden="true">↗</span>
-                  </a>
-                </div>
-              </details>
-            </div>
-          </article>
-          <article class="service">
-            <span class="service-number">02</span>
-            <div>
-              <h4>Digital products & portals</h4>
-              <p>Useful interfaces for customers, members and the people running your business.</p>
-              <details>
-                <summary>What this can include <span aria-hidden="true">+</span>
-                </summary>
-                <div class="detail-content">
-                  <p>Web applications, customer portals, booking systems and SaaS products. Thoughtful interfaces, shaped and built in sensible stages.</p>
-                  <a class="text-link" href="work/rm-safe.html">See RM Safe <span aria-hidden="true">↗</span>
-                  </a>
-                </div>
-              </details>
-            </div>
-          </article>
-          <article class="service">
-            <span class="service-number">03</span>
-            <div>
-              <h4>Internal tools & integrations</h4>
-              <p>When the spreadsheet has become the system, we build the next step.</p>
-              <details>
-                <summary>What this can include <span aria-hidden="true">+</span>
-                </summary>
-                <div class="detail-content">
-                  <p>Connected tools, permissions and workflows that fit the way your team works. Automation and AI where they remove real work and make the experience better.</p>
-                </div>
-              </details>
-            </div>
-          </article>
-        </div>
-      </section>
-      <section class="process-section wrap" aria-labelledby="process-title">
-        <div class="process-title">
-          <h2 id="process-title">Clear from<br>the first conversation.</h2>
-          <p>Here’s how we get there, together.</p>
-        </div>
-        <ol class="process-list">
-          <li>
-            <span>01 / Get clear</span>
-            <div>
-              <h3>Find the real brief.</h3>
-              <p>Your business, your customers and what needs to change. Start with a conversation.</p>
-            </div>
-          </li>
-          <li>
-            <span>02 / Make it tangible</span>
-            <div>
-              <h3>Shape the idea.</h3>
-              <p>Agree the scope and price. Then work through the structure, words and design.</p>
-            </div>
-          </li>
-          <li>
-            <span>03 / Bring it to life</span>
-            <div>
-              <h3>Build. Refine. Launch.</h3>
-              <p>See it working as we go. Refine the details together and bring it into the world.</p>
-            </div>
-          </li>
-        </ol>
-      </section>
-      <section class="contact-section" id="contact" aria-labelledby="contact-title">
-        <div class="wrap">
-          <div class="section-label">
-            <span>Have something in mind?</span>
-            <span>Start a conversation / ↗</span>
-          </div>
-          <div class="contact-layout">
-            <div>
-              <h2 id="contact-title">Let’s make<br>
-                <span>something matter.</span>
-              </h2>
-              <a class="contact-email" href="mailto:info@trtechnologiesgroup.com">info@trtechnologiesgroup.com <span aria-hidden="true">↗</span>
-              </a>
-              <p>A half-formed idea is a perfectly good place to start. Tell us what you’re thinking.</p>
-              <button class="copy-email" type="button" data-copy-email>Copy email address <span aria-hidden="true">↗</span>
-              </button>
-              <p class="copy-status" data-copy-status role="status">
-              </p>
-            </div>
-            <details class="enquiry">
-              <summary>Help me put a brief together <span aria-hidden="true">+</span>
-              </summary>
-              <form class="enquiry-form" action="mailto:info@trtechnologiesgroup.com" method="get">
-                <label for="enquiry-name">Your name<input id="enquiry-name" name="name" autocomplete="name" required>
-                </label>
-                <label for="enquiry-business">Business or website <span>(optional)</span>
-                  <input id="enquiry-business" name="business" autocomplete="organization">
-                </label>
-                <label for="enquiry-project">What do you have in mind?<textarea id="enquiry-project" name="project" rows="4" required></textarea>
-                </label>
-                <button class="button" type="submit">Prepare an email <span aria-hidden="true">↗</span>
-                </button>
-                <p class="form-note">Opens your email app with your brief. Nothing is sent until you send it.</p>
-                <p class="form-status" role="status">
-                </p>
-              </form>
-            </details>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer class="site-footer wrap">
-      <a class="footer-wordmark" href="index.html" aria-label="TR Technologies Group home">tr<span aria-hidden="true">.</span>
-      </a>
-      <div>
-        <p>Independent design & technology.</p>
-        <p>Perth, Western Australia</p>
-      </div>
-      <div>
-        <p>© 2026 TR Technologies Group</p>
-        <a href="#main">Back to top ↑</a>
-      </div>
-    </footer>
-  </body>
-</html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#202522"><meta name="robots" content="index,follow"><title>TR Technologies Group | Technology and change, led together.</title><link rel="preload" href="assets/Archivo-var.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="assets/waterfront-hero.png" as="image"><link rel="stylesheet" href="opening.css?v=3"><link rel="stylesheet" href="firm.css?v=1"><script src="firm-opening.js?v=2" defer></script><link rel="stylesheet" href="depth.css?v=1"><script src="navigation.js?v=5" defer></script><link rel="stylesheet" href="visual.css?v=2"><script src="visual.js?v=1" defer></script><link rel="stylesheet" href="home.css?v=3"><link rel="stylesheet" href="editorial.css?v=4"><link rel="stylesheet" href="visual-finish.css?v=7"><link rel="stylesheet" href="closing.css?v=2"><script src="enquiry.js" defer></script><link rel="stylesheet" href="editorial-refinement.css?v=3"><link rel="stylesheet" href="navigation.css?v=7"><link rel="stylesheet" href="hero-work-motion.css?v=1"><script src="work-title-motion.js?v=1" defer></script><meta name="description" content="Australian AI, software engineering and organisational transformation consultancy. Technology and change, led together."><link rel="canonical" href="https://www.trtechnologiesgroup.com/"><link rel="icon" href="/favicon.svg"><meta property="og:type" content="website"><meta property="og:site_name" content="TR Technologies Group"><meta property="og:title" content="TR Technologies Group | Technology and change, led together."><meta property="og:description" content="Australian AI, software engineering and organisational transformation consultancy. Technology and change, led together."><meta property="og:url" content="https://www.trtechnologiesgroup.com/"><meta property="og:image" content="https://www.trtechnologiesgroup.com/assets/waterfront-hero.png"><meta name="twitter:card" content="summary_large_image"></head>
+<body id="top">
+<svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15M12 5l7 7-7 7"/></symbol><symbol id="diagonal" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></symbol><symbol id="swap" viewBox="0 0 24 24"><path d="M4 8h16M16 4l4 4-4 4M20 16H4M8 12l-4 4 4 4"/></symbol></svg>
+<a class="skip" href="#capabilities">Skip to content</a>
+<main>
+<section class="opening" aria-label="TR Technologies Group introduction">
+ <div class="stage">
+  <div class="physical" aria-hidden="true"><img src="assets/waterfront-hero.png" alt="" fetchpriority="high"><div class="shade"></div></div>
+  <header class="header firm-header"><a class="brand" href="./" aria-label="TR Technologies Group home"><span class="brand-mark">tr<span>.</span></span><span class="brand-name">Technologies<br>Group</span></a><nav aria-label="Main navigation"><details class="nav-disclosure"><summary>What we do</summary><div class="mega-panel"><a class="mega-overview" href="capabilities">Explore all capabilities<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></svg></a><div class="mega-columns"><div><a class="mega-title" href="capabilities/ai-automation">AI & automation</a><a href="services/ai-strategy-readiness">AI strategy & readiness</a><a href="services/workflow-automation">Workflow automation & integration</a></div><div><a class="mega-title" href="capabilities/strategy-transformation">Strategy & transformation</a><a href="services/process-operating-model">Process & operating model design</a></div><div><a class="mega-title" href="capabilities/web-software">Websites & software</a><a href="services/website-experience">Website strategy & experience</a><a href="services/software-development">Software & product development</a></div><div><a class="mega-title" href="capabilities/delivery-change">Delivery & change</a><a href="services/project-management">Project & programme delivery</a><a href="services/change-management">Change management & adoption</a><a href="services/delivery-review">Project review & recovery planning</a></div></div></div></details><a href="industries">Industries</a><a href="work">Our work</a><a href="thinking">Thinking</a><details class="nav-disclosure company-disclosure"><summary>The firm</summary><div class="company-panel"><a href="firm">About TR</a><a href="team">Our team</a><a href="engagements">Working with us</a></div></details></nav><a class="header-contact" href="contact">Let’s talk<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></svg></a><details class="mobile-menu"><summary>Menu</summary><nav aria-label="Mobile navigation"><a href="capabilities">What we do</a><a href="industries">Industries</a><a href="work">Our work</a><a href="thinking">Thinking</a><a href="firm">The firm</a><a href="team">Our team</a><a href="engagements">Working with us</a><a href="contact">Let’s talk</a></nav></details></header>
+  <div class="opening-copy"><h1><span>Technology</span><span>and change,</span><span>led together.</span></h1><div class="hero-introduction"><p>We’re an Australian AI, software engineering and organisational transformation consultancy.</p><p>We help you decide what to change, deliver the technology and make it work for your people.</p><a href="firm">Meet TR Technologies Group <svg aria-hidden="true"><use href="#diagonal"/></svg></a></div></div>
+  <div class="digital firm-scene" aria-hidden="true" inert><img class="firm-scene-image" src="assets/office-glass.jpg" alt="Conceptual office image with a silhouette behind ribbed glass"><div class="firm-scene-shade"></div><div class="digital-copy"><h2>From priorities<br>to implementation.</h2><p>With your leaders, teams and technology partners.</p><a href="capabilities">Explore what we do</a></div></div>
+ </div>
+</section>
+<section id="clients" class="client-strip" aria-label="Selected clients and products"><div class="client-strip-heading"><p>Selected clients and products</p></div><div class="client-window"><div class="client-belt"><div class="client-marks"><a class="client-nana" href="https://www.nanabreadperth.com/" aria-label="Nana Bread"><img src="assets/nana-logo.svg" alt=""><span>nana bread</span></a><a class="client-rm" href="https://www.rmsafe.com/" aria-label="RM Safe"><img src="assets/rm-logo.png" alt=""><span>RM Safe</span></a><a class="client-kith" href="https://www.kithgrovehealthcare.com.au/" aria-label="Kith Grove Healthcare"><img src="assets/kith-mark.svg" alt=""><span>GROVE</span></a><a class="client-cherokee" href="https://cherokeevillage.com.au/">Cherokee Village</a><a class="client-gymbro" href="https://www.trtechnologiesgroup.com/work/gymbro"><img src="assets/gymbro-logo.png" alt="GYMBRO"></a><a class="client-hellotoday" href="https://www.hellotoday.com.au/"><img src="assets/hellotoday-logo.png" alt="HelloToday"></a></div><div class="client-marks client-repeat" aria-hidden="true" inert><a tabindex="-1" class="client-nana" href="https://www.nanabreadperth.com/" aria-label="Nana Bread"><img src="assets/nana-logo.svg" alt=""><span>nana bread</span></a><a tabindex="-1" class="client-rm" href="https://www.rmsafe.com/" aria-label="RM Safe"><img src="assets/rm-logo.png" alt=""><span>RM Safe</span></a><a tabindex="-1" class="client-kith" href="https://www.kithgrovehealthcare.com.au/" aria-label="Kith Grove Healthcare"><img src="assets/kith-mark.svg" alt=""><span>GROVE</span></a><a tabindex="-1" class="client-cherokee" href="https://cherokeevillage.com.au/">Cherokee Village</a><a tabindex="-1" class="client-gymbro" href="https://www.trtechnologiesgroup.com/work/gymbro"><img src="assets/gymbro-logo.png" alt="GYMBRO"></a><a tabindex="-1" class="client-hellotoday" href="https://www.hellotoday.com.au/"><img src="assets/hellotoday-logo.png" alt="HelloToday"></a></div></div></div></section><section class="ed-capabilities" id="capabilities" aria-labelledby="joined-title"><div class="ed-cap-top"><div class="ed-cap-title"><h2 id="joined-title">Strategy, engineering<br>and implementation.</h2></div><div class="ed-cap-copy"><p>We work with your leaders, teams and technology partners to set priorities, deliver projects and support adoption.</p><a class="ed-link" href="capabilities">Explore our capabilities <svg aria-hidden="true"><use href="#diagonal"/></svg></a></div></div><div class="ed-practices"><a href="capabilities/strategy-transformation"><h3>Strategy & transformation</h3><p>Set priorities, improve processes and plan organisational change.</p><span class="practice-action">Explore capability <svg aria-hidden="true"><use href="#arrow"/></svg></span></a><a href="capabilities/ai-automation"><h3>AI & automation</h3><p>Assess where AI can help and automate time-consuming tasks.</p><span class="practice-action">Explore capability <svg aria-hidden="true"><use href="#arrow"/></svg></span></a><a href="capabilities/web-software"><h3>Software engineering</h3><p>Design and build software, websites and connected systems.</p><span class="practice-action">Explore capability <svg aria-hidden="true"><use href="#arrow"/></svg></span></a><a href="capabilities/delivery-change"><h3>Delivery & change</h3><p>Manage delivery, prepare teams and support new ways of working.</p><span class="practice-action">Explore capability <svg aria-hidden="true"><use href="#arrow"/></svg></span></a></div></section>
+<section class="industry-experience" aria-labelledby="industry-experience-title"><div class="industry-experience-heading"><h2 id="industry-experience-title">Cross-sector experience.<br>Australian perspective.</h2><p>Our team brings experience across Australian businesses, essential services and industry.</p><a class="ed-link" href="industries">Explore industries <svg aria-hidden="true"><use href="#diagonal"/></svg></a></div><ul class="industry-experience-list" role="list"><li><div class="industry-symbol"><svg aria-hidden="true"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+  <path d="M3.22 13H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27" />
+</svg>
+</div><h3>Healthcare</h3></li><li><div class="industry-symbol"><svg aria-hidden="true"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762" />
+</svg>
+</div><h3>Aged care & disability</h3></li><li><div class="industry-symbol"><svg aria-hidden="true"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 16h.01" />
+  <path d="M16 16h.01" />
+  <path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z" />
+  <path d="M8 16h.01" />
+</svg>
+</div><h3>Energy & resources</h3></li><li><div class="industry-symbol"><svg aria-hidden="true"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5" />
+  <path d="M14 6a6 6 0 0 1 6 6v3" />
+  <path d="M4 15v-3a6 6 0 0 1 6-6" />
+  <rect x="2" y="15" width="20" height="4" rx="1" />
+</svg>
+</div><h3>Construction & safety</h3></li><li><div class="industry-symbol"><svg aria-hidden="true"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M17.596 12.768a2 2 0 1 0 2.829-2.829l-1.768-1.767a2 2 0 0 0 2.828-2.829l-2.828-2.828a2 2 0 0 0-2.829 2.828l-1.767-1.768a2 2 0 1 0-2.829 2.829z" />
+  <path d="m2.5 21.5 1.4-1.4" />
+  <path d="m20.1 3.9 1.4-1.4" />
+  <path d="M5.343 21.485a2 2 0 1 0 2.829-2.828l1.767 1.768a2 2 0 1 0 2.829-2.829l-6.364-6.364a2 2 0 1 0-2.829 2.829l1.768 1.767a2 2 0 0 0-2.828 2.829z" />
+  <path d="m9.6 14.4 4.8-4.8" />
+</svg>
+</div><h3>Fitness & wellbeing</h3></li><li><div class="industry-symbol"><svg aria-hidden="true"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5" />
+  <path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244" />
+  <path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05" />
+</svg>
+</div><h3>Food & retail</h3></li></ul></section>
+<section class="featured-work" id="selected-work" aria-labelledby="work-title"><div class="featured-heading"><h2 id="work-title">Selected work.</h2><a class="editorial-link" href="work">Explore our work <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div><article class="tr-project-feature tr-project-feature-rm"><a class="feature-image" href="work/rm-safe" aria-label="Explore the RM Safe project"><img src="assets/hero.jpg" alt="Contextual workplace photograph of a worker beside earthmoving equipment" loading="lazy" width="2016" height="1247"></a><div class="feature-copy"><h3>RM Safe</h3><p class="feature-title">Connecting safety expertise with the tools behind it.</p><p>We brought the website, document resources and operational software together for a workplace safety consultancy.</p><a class="editorial-link" href="work/rm-safe">Explore the project <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></svg></a><span class="feature-scope">Website · Software engineering</span></div></article><article class="tr-project-feature tr-project-feature-hello"><a class="feature-image" href="https://www.hellotoday.com.au/" aria-label="Explore HelloToday"><img src="assets/hellotoday-at-home.jpg" alt="Woman using her phone at home" loading="lazy" width="1280" height="720"></a><div class="feature-copy"><h3>HelloToday</h3><p class="feature-title">A small check-in.<br>A meaningful connection.</p><p>A digital product for daily check-ins and reminders, helping people stay connected to those who support them.</p><a class="editorial-link" href="https://www.hellotoday.com.au/">Explore the product <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></svg></a><span class="feature-scope">Digital product · Everyday support</span></div></article></section><div class="consultancy-editorial" id="explore"><section class="ed-insights ed-wrap"><div class="ed-section-head"><div><h2>Plan your next technology project.</h2><p>Practical guidance on AI, software and implementation.</p></div><a class="ed-link" href="thinking">All resources <svg aria-hidden="true"><use href="#diagonal"/></svg></a></div><div class="ed-insight-grid"><a class="ed-insight" href="thinking/ai-pilot-brief"><div class="ed-cover ed-cover-ai" aria-hidden="true"><img src="assets/glass-facade.jpg" alt="" loading="lazy" width="1400" height="950"></div><h3>Before you fund<br>an AI pilot.</h3><p>Define the problem, the data and what success would look like.</p><span>Read the guide <svg aria-hidden="true"><use href="#diagonal"/></svg></span></a><a class="ed-insight" href="thinking/delivery-handover"><div class="ed-cover ed-cover-change" aria-hidden="true"><img src="assets/concrete-stairs.jpg" alt="" loading="lazy" width="1400" height="950"></div><h3>What happens<br>after launch?</h3><p>Agree who owns the system, how it is supported and what teams need.</p><span>Read the guide <svg aria-hidden="true"><use href="#diagonal"/></svg></span></a><a class="ed-insight" href="thinking/website-brief"><div class="ed-cover ed-cover-web" aria-hidden="true"><img src="assets/amber-glass.jpg" alt="" loading="lazy" width="1400" height="950"></div><h3>A better website starts<br>with a better brief.</h3><p>Clarify your audience, content and business requirements.</p><span>Read the guide <svg aria-hidden="true"><use href="#diagonal"/></svg></span></a></div></section></div><section class="tr-partnership"><div class="partnership-copy"><h2>Working with<br>your team.</h2><p>We can lead a project, work alongside your developers or coordinate delivery with your technology partners.</p><div class="partnership-links"><a class="editorial-link" href="engagements">How we work with you <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></svg></a><a class="editorial-link" href="team">Meet the team <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div></div></section><section class="tr-contact" id="enquire" aria-labelledby="enquiry-heading"><div class="tr-contact-intro"><h2 id="enquiry-heading">Let’s discuss<br>your project.</h2><p>Tell us what you’re working on and where you need help. You don’t need a finished brief.</p><div class="contact-location">Perth, Western Australia<br><span>info@trtechnologiesgroup.com</span></div></div><form class="enquiry-form" action="/api/enquiries" method="post"><div class="form-pair"><label>Your name<input name="name" autocomplete="name" required maxlength="120"></label><label>Email address<input type="email" name="email" autocomplete="email" required maxlength="254"></label></div><label>Organisation <span>(optional)</span><input name="organisation" autocomplete="organization" maxlength="160"></label><label>What are you working on?<textarea name="message" rows="4" required minlength="10" maxlength="6000" placeholder="Tell us a little about your project or challenge."></textarea></label><div class="form-trap" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></div><div class="form-submit"><button type="submit">Send enquiry <span aria-hidden="true">↗</span></button><p>We’ll use your details to respond to your enquiry.</p></div><p class="form-status" role="status" aria-live="polite"></p><noscript><p>Enable JavaScript to send this form.</p></noscript></form></section></main><footer class="tr-footer"><div class="tr-footer-top"><a class="footer-signature" href="./" aria-label="TR Technologies Group home"><span>tr.</span><span>Technologies<br>Group</span></a><nav aria-label="Footer capabilities"><h2>What we do</h2><a href="capabilities/strategy-transformation">Strategy & transformation</a><a href="capabilities/ai-automation">AI & automation</a><a href="capabilities/web-software">Software engineering</a><a href="capabilities/delivery-change">Delivery & change</a></nav><nav aria-label="Explore TR"><h2>Explore</h2><a href="industries">Industries</a><a href="work">Our work</a><a href="thinking">Thinking</a><a href="engagements">Working with us</a></nav><nav aria-label="The firm"><h2>The firm</h2><a href="firm">About TR</a><a href="team">Our team</a><a href="contact">Contact us</a></nav></div><div class="tr-footer-bottom"><span>© 2026 TR Technologies Group</span><span>Technology and change, led together.</span><a href="#top">Back to top ↑</a></div></footer><noscript><style>.opening{height:auto}.stage{position:relative}</style></noscript></body></html>

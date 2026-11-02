@@ -2,6 +2,13 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "framework": null,
+  "functions": {
+    "api/enquiries.py": {
+      "maxDuration": 30,
+      "excludeFiles": "{assets/**,**/*.html,**/*.css,**/*.js}"
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
@@ -23,42 +30,22 @@
   ],
   "redirects": [
     {
-      "source": "/work",
-      "destination": "/#work",
-      "permanent": true
-    },
-    {
-      "source": "/work.html",
-      "destination": "/#work",
-      "permanent": true
-    },
-    {
       "source": "/projects",
-      "destination": "/#work",
+      "destination": "/work",
       "permanent": true
     },
     {
       "source": "/about",
-      "destination": "/#studio",
+      "destination": "/firm",
       "permanent": true
     },
     {
       "source": "/services",
-      "destination": "/#capabilities",
-      "permanent": true
-    },
-    {
-      "source": "/contact",
-      "destination": "/#contact",
+      "destination": "/capabilities",
       "permanent": true
     },
     {
       "source": "/nana-bread",
-      "destination": "/work/nana-bread",
-      "permanent": true
-    },
-    {
-      "source": "/nana-bread.html",
       "destination": "/work/nana-bread",
       "permanent": true
     },
@@ -68,18 +55,43 @@
       "permanent": true
     },
     {
-      "source": "/rm-safe.html",
-      "destination": "/work/rm-safe",
-      "permanent": true
-    },
-    {
       "source": "/kith-grove",
       "destination": "/work/kith-grove",
       "permanent": true
     },
     {
+      "source": "/nana-bread.html",
+      "destination": "/work/nana-bread",
+      "permanent": true
+    },
+    {
+      "source": "/rm-safe.html",
+      "destination": "/work/rm-safe",
+      "permanent": true
+    },
+    {
       "source": "/kith-grove.html",
       "destination": "/work/kith-grove",
+      "permanent": true
+    },
+    {
+      "source": "/work/gymbro",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/work/hello-today",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/work/gymbro.html",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/work/hello-today.html",
+      "destination": "/work",
       "permanent": true
     }
   ]

@@ -1,0 +1,3 @@
+.physical img{object-position:64% center}
+.featured-heading{overflow:clip}
+@media(max-width:680px){.physical img{object-position:68% center}}

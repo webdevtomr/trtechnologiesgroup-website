@@ -1,16 +1,7 @@
-# Publish the approved Spatial site; keep superseded source files in Git only.
+.git
+.vercel
 *.md
-brand/
-fonts/
-fonts.css
-site.css
-site.js
-/work.html
-/nana-bread.html
-/rm-safe.html
-/kith-grove.html
-work/*.png
-work/*.jpg
-work/*.jpeg
-work/*.webp
-work/*.mp4
+.env*
+__pycache__
+**/__pycache__
+*.pyc
