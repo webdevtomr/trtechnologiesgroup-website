@@ -1,0 +1,13 @@
+/* Scoped refinement of firm, team and public project evidence. */
+.audit-feature{display:grid;grid-template-columns:0.85fr 1.15fr;gap:7%;align-items:center;padding:64px var(--edge);background:#edf1f5}
+.audit-feature h2,.audit-firm-bottom h2{font-size:clamp(32px,3.4vw,48px);line-height:1.12;letter-spacing:-.03em;margin-bottom:24px}
+.audit-feature p,.audit-firm-bottom p{font-size:19px;line-height:1.6;max-width:48ch;margin-bottom:20px;color:#465467}
+.audit-project-image{display:block;overflow:hidden;background:white;border:1px solid #c4cdd6}
+.audit-project-image img{display:block;width:100%;height:auto}
+.audit-firm-bottom{display:grid;grid-template-columns:1fr 1fr;gap:9%}
+.r3-team-page .r3-people{gap:8%}.r3-team-page .r3-people article{background:white;border-top:1px solid #c4cdd6;padding:36px 0}
+.r3-team-page .r3-people .r3-role{margin-bottom:28px}.r3-team-page .r3-background .r3-heading{max-width:20ch}
+.r3-page .audit-rm-site{height:auto;padding:48px max(var(--edge),12vw);background:#edf1f5}.r3-page .audit-rm-site img{height:auto;object-fit:contain;border:1px solid #c4cdd6}
+.audit-caption{padding:12px var(--edge) 30px;background:#edf1f5}.audit-caption .ed-link{font-size:16px}
+.r3-page .audit-rm-thumb{background:#edf1f5;padding:24px 20px 0}.r3-page .audit-rm-thumb img{width:100%;height:100%;max-width:none;object-fit:cover;object-position:top}
+@media(max-width:760px){.audit-feature,.audit-firm-bottom{grid-template-columns:1fr;gap:32px}.audit-feature{padding:40px 24px}.audit-feature h2,.audit-firm-bottom h2{font-size:34px}.r3-page .audit-rm-site{padding:24px}.r3-team-page .r3-people article{padding:28px 0}.audit-caption{padding:12px 24px 24px}}
